@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Hoc ki 7\\ASP\\ĐỒ ÁN\\PMPetCare\\PMPetCare\\PMPetCare.csproj": {}
+    "D:\\Nam4\\HKI\\QLDAPM\\Nhom\\Demo\\PetCare\\PetCare\\PMPetCare.csproj": {}
   },
   "projects": {
-    "D:\\Hoc ki 7\\ASP\\ĐỒ ÁN\\PMPetCare\\PMPetCare\\PMPetCare.csproj": {
+    "D:\\Nam4\\HKI\\QLDAPM\\Nhom\\Demo\\PetCare\\PetCare\\PMPetCare.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Hoc ki 7\\ASP\\ĐỒ ÁN\\PMPetCare\\PMPetCare\\PMPetCare.csproj",
+        "projectUniqueName": "D:\\Nam4\\HKI\\QLDAPM\\Nhom\\Demo\\PetCare\\PetCare\\PMPetCare.csproj",
         "projectName": "PMPetCare",
-        "projectPath": "D:\\Hoc ki 7\\ASP\\ĐỒ ÁN\\PMPetCare\\PMPetCare\\PMPetCare.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\Hoc ki 7\\ASP\\ĐỒ ÁN\\PMPetCare\\PMPetCare\\obj\\",
+        "projectPath": "D:\\Nam4\\HKI\\QLDAPM\\Nhom\\Demo\\PetCare\\PetCare\\PMPetCare.csproj",
+        "packagesPath": "C:\\Users\\tramy\\.nuget\\packages\\",
+        "outputPath": "D:\\Nam4\\HKI\\QLDAPM\\Nhom\\Demo\\PetCare\\PetCare\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tramy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -98,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
