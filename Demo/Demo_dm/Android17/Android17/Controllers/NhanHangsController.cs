@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Android17.Models;
 
+[Authorize(Roles = "Admin")]
 public class NhanHangsController : Controller
 {
     private readonly Android17Context _context;

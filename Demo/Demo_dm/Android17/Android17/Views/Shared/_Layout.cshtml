@@ -26,6 +26,9 @@
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
+                                <a class="nav-link" asp-controller="SanPhams" asp-action="Index">QL sản phẩm</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" asp-controller="LoaiHangs" asp-action="Index">QL loại hàng</a>
                             </li>
                             <li class="nav-item">

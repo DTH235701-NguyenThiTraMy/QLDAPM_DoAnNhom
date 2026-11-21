@@ -40,24 +40,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/LoaiHang/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9haUhhbmdcQ3JlYXRlLmNzaHRtbA==
+[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/LoaiHangs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9haUhhbmdzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/LoaiHang/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9haUhhbmdcRGVsZXRlLmNzaHRtbA==
+[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/LoaiHangs/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9haUhhbmdzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/LoaiHang/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9haUhhbmdcRGV0YWlscy5jc2h0bWw=
+[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/LoaiHangs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9haUhhbmdzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/LoaiHang/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9haUhhbmdcRWRpdC5jc2h0bWw=
+[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/LoaiHangs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9haUhhbmdzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/LoaiHang/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9haUhhbmdcSW5kZXguY3NodG1s
+[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/LoaiHangs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9haUhhbmdzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/Main/DanhSach.cshtml]
@@ -72,24 +72,44 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpblxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/NhanHang/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhbkhhbmdcQ3JlYXRlLmNzaHRtbA==
+[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/NhanHangs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhbkhhbmdzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/NhanHang/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhbkhhbmdcRGVsZXRlLmNzaHRtbA==
+[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/NhanHangs/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhbkhhbmdzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/NhanHang/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhbkhhbmdcRGV0YWlscy5jc2h0bWw=
+[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/NhanHangs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhbkhhbmdzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/NhanHang/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhbkhhbmdcRWRpdC5jc2h0bWw=
+[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/NhanHangs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhbkhhbmdzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/NhanHang/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhbkhhbmdcSW5kZXguY3NodG1s
+[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/NhanHangs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhbkhhbmdzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/SanPhams/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FuUGhhbXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/SanPhams/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FuUGhhbXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/SanPhams/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FuUGhhbXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/SanPhams/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FuUGhhbXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/SanPhams/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FuUGhhbXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Năm 4/Công nghệ ƯEB và ASP_Vi/demo/Android17/Android17/Views/Shared/Error.cshtml]
