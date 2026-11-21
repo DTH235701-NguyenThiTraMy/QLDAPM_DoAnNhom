@@ -1,0 +1,93 @@
+﻿@using Android17.Models
+@{
+    // Lấy dữ liệu do MainController nạp sẵn (nếu trang khác không có thì dùng danh sách rỗng)
+    var dsLoai = ViewBag.loaihang as List<LoaiHang> ?? new List<LoaiHang>();
+    var dsHang = ViewBag.nhanhang as List<NhanHang> ?? new List<NhanHang>();
+    string? tukhoa = ViewBag.tukhoa as string;
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Android17</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-warning" asp-controller="Main" asp-action="Index">Android17</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#menuChinh" aria-controls="menuChinh"
+                        aria-expanded="false" aria-label="Mở menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menuChinh">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Main" asp-action="Index">Trang chủ</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Loại hàng</a>
+                            <ul class="dropdown-menu">
+                                @foreach (var l in dsLoai)
+                                {
+                                    <li><a class="dropdown-item" asp-controller="Main" asp-action="Loai" asp-route-id="@l.LoaiId">@l.TenLoai</a></li>
+                                }
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Hãng</a>
+                            <ul class="dropdown-menu">
+                                @foreach (var h in dsHang)
+                                {
+                                    <li><a class="dropdown-item" asp-controller="Main" asp-action="Hang" asp-route-id="@h.NhanHangId">@h.TenNhanHang</a></li>
+                                }
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <form class="d-flex me-3" asp-controller="Main" asp-action="Tim" method="get">
+                        <input class="form-control me-2" type="search" name="tukhoa" value="@tukhoa" placeholder="Tìm sản phẩm..." />
+                        <button class="btn btn-warning" type="submit">Tìm</button>
+                    </form>
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="GioHang" asp-action="Index">Giỏ hàng</a>    
+                        </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-warning" asp-controller="LoaiHangs" asp-action="Index">Quản lý</a>
+                            </li>
+                        }
+                    </ul>
+
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container py-3">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top text-muted py-3 mt-4">
+        <div class="container">&copy; 2026 Android17 - Điện thoại và phụ kiện</div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

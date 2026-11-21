@@ -1,0 +1,151 @@
+wwwroot\css\site.css
+wwwroot\favicon.ico
+wwwroot\images\airpods-pro-2.jpg
+wwwroot\images\cap-anker-usb-c.jpg
+wwwroot\images\cap-baseus-lightning.jpg
+wwwroot\images\cu-sac-anker-20w.jpg
+wwwroot\images\cu-sac-baseus-65w.jpg
+wwwroot\images\galaxy-a55.jpg
+wwwroot\images\galaxy-buds2-pro.jpg
+wwwroot\images\galaxy-s24-ultra.jpg
+wwwroot\images\galaxy-s24.jpg
+wwwroot\images\gia-do-oto-baseus.jpg
+wwwroot\images\iphone-14.jpg
+wwwroot\images\iphone-15-pro-max.jpg
+wwwroot\images\iphone-15.jpg
+wwwroot\images\op-baseus-iphone-15.jpg
+wwwroot\images\op-galaxy-s24-ultra.jpg
+wwwroot\images\op-iphone-15-pro-max.jpg
+wwwroot\images\oppo-a78.jpg
+wwwroot\images\oppo-find-n3-flip.jpg
+wwwroot\images\oppo-reno11.jpg
+wwwroot\images\pin-anker-10000.jpg
+wwwroot\images\pin-baseus-20000.jpg
+wwwroot\images\redmi-13c.jpg
+wwwroot\images\redmi-buds-5.jpg
+wwwroot\images\redmi-note-13-pro.jpg
+wwwroot\images\sac-khong-day-baseus.jpg
+wwwroot\images\xiaomi-14.jpg
+wwwroot\js\site.js
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+wwwroot\lib\bootstrap\LICENSE
+wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
+wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
+wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+wwwroot\lib\jquery-validation\dist\additional-methods.js
+wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+wwwroot\lib\jquery-validation\dist\jquery.validate.js
+wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+wwwroot\lib\jquery-validation\LICENSE.md
+wwwroot\lib\jquery\dist\jquery.js
+wwwroot\lib\jquery\dist\jquery.min.js
+wwwroot\lib\jquery\dist\jquery.min.map
+wwwroot\lib\jquery\dist\jquery.slim.js
+wwwroot\lib\jquery\dist\jquery.slim.min.js
+wwwroot\lib\jquery\dist\jquery.slim.min.map
+wwwroot\lib\jquery\LICENSE.txt
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\css\site.css
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\favicon.ico
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\js\site.js
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\js\bootstrap.js
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\jquery-validation\dist\additional-methods.js
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\jquery-validation\dist\jquery.validate.js
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\jquery-validation\LICENSE.md
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\jquery\dist\jquery.js
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\jquery\dist\jquery.min.js
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\jquery\dist\jquery.min.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\jquery\dist\jquery.slim.js
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\jquery\dist\jquery.slim.min.js
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\jquery\dist\jquery.slim.min.map
+D:\Năm 4\Công nghệ ƯEB và ASP_Vi\demo\Android17\Android17\wwwroot\lib\jquery\LICENSE.txt

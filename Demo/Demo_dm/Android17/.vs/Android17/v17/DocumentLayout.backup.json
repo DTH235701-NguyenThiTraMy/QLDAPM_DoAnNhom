@@ -1,0 +1,383 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\views\\shared\\_layoutmain.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\views\\shared\\_layoutmain.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\controllers\\loaihangscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\controllers\\loaihangscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\controllers\\nhanhangscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\controllers\\nhanhangscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\controllers\\dathangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\controllers\\dathangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\views\\main\\danhsach.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\views\\main\\danhsach.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\views\\main\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\views\\main\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\views\\main\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\views\\main\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\views\\shared\\_sanphampartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\views\\shared\\_sanphampartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\views\\shared\\_thesanpham.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\views\\shared\\_thesanpham.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\controllers\\maincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\controllers\\maincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\models\\sanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\models\\sanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\models\\android17context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\models\\android17context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\controllers\\giohangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\controllers\\giohangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\data\\dataseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\data\\dataseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\SQLQuery1.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SQLQuery1.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|d:\\n\u0103m 4\\c\u00F4ng ngh\u1EC7 \u01B0eb v\u00E0 asp_vi\\demo\\android17\\android17\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{EAE2EEF4-4A49-4FA9-AA2A-1FD5F7F49128}|Android17\\Android17.csproj|solutionrelative:android17\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\SQLQuery1.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SQLQuery1.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\SQLQuery1.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SQLQuery1.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NhanHangsController.cs",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Controllers\\NhanHangsController.cs",
+              "RelativeDocumentMoniker": "Android17\\Controllers\\NhanHangsController.cs",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Controllers\\NhanHangsController.cs",
+              "RelativeToolTip": "Android17\\Controllers\\NhanHangsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-20T11:39:50.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoaiHangsController.cs",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Controllers\\LoaiHangsController.cs",
+              "RelativeDocumentMoniker": "Android17\\Controllers\\LoaiHangsController.cs",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Controllers\\LoaiHangsController.cs",
+              "RelativeToolTip": "Android17\\Controllers\\LoaiHangsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-20T11:38:40.261Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Android17\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Android17\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-20T10:02:27.381Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_LayoutMain.cshtml",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Views\\Shared\\_LayoutMain.cshtml",
+              "RelativeDocumentMoniker": "Android17\\Views\\Shared\\_LayoutMain.cshtml",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Views\\Shared\\_LayoutMain.cshtml",
+              "RelativeToolTip": "Android17\\Views\\Shared\\_LayoutMain.cshtml",
+              "ViewState": "AgIAACwAAACANDMzMzMbwEQAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-20T10:14:28.39Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DatHangController.cs",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Controllers\\DatHangController.cs",
+              "RelativeDocumentMoniker": "Android17\\Controllers\\DatHangController.cs",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Controllers\\DatHangController.cs",
+              "RelativeToolTip": "Android17\\Controllers\\DatHangController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-20T10:02:08.537Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "Android17\\Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "Android17\\Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAABkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-20T10:49:42.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_TheSanPham.cshtml",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Views\\Shared\\_TheSanPham.cshtml",
+              "RelativeDocumentMoniker": "Android17\\Views\\Shared\\_TheSanPham.cshtml",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Views\\Shared\\_TheSanPham.cshtml",
+              "RelativeToolTip": "Android17\\Views\\Shared\\_TheSanPham.cshtml",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAABkAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-20T10:53:56.275Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Views\\Main\\Index.cshtml",
+              "RelativeDocumentMoniker": "Android17\\Views\\Main\\Index.cshtml",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Views\\Main\\Index.cshtml",
+              "RelativeToolTip": "Android17\\Views\\Main\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-20T10:13:16.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "_SanPhamPartial.cshtml",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Views\\Shared\\_SanPhamPartial.cshtml",
+              "RelativeDocumentMoniker": "Android17\\Views\\Shared\\_SanPhamPartial.cshtml",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Views\\Shared\\_SanPhamPartial.cshtml",
+              "RelativeToolTip": "Android17\\Views\\Shared\\_SanPhamPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-20T10:54:31.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DanhSach.cshtml",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Views\\Main\\DanhSach.cshtml",
+              "RelativeDocumentMoniker": "Android17\\Views\\Main\\DanhSach.cshtml",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Views\\Main\\DanhSach.cshtml",
+              "RelativeToolTip": "Android17\\Views\\Main\\DanhSach.cshtml",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAAB8AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-20T11:23:43.747Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Views\\Main\\Details.cshtml",
+              "RelativeDocumentMoniker": "Android17\\Views\\Main\\Details.cshtml",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Views\\Main\\Details.cshtml",
+              "RelativeToolTip": "Android17\\Views\\Main\\Details.cshtml",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAGAAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-20T11:23:16.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MainController.cs",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Controllers\\MainController.cs",
+              "RelativeDocumentMoniker": "Android17\\Controllers\\MainController.cs",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Controllers\\MainController.cs",
+              "RelativeToolTip": "Android17\\Controllers\\MainController.cs",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAAAHYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-20T10:11:19.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Program.cs",
+              "RelativeDocumentMoniker": "Android17\\Program.cs",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Program.cs",
+              "RelativeToolTip": "Android17\\Program.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAAD4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-20T09:24:40.338Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Android17\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Android17\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAUAAACgZWZmZmYkwBMAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-20T09:26:48.645Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "SanPham.cs",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Models\\SanPham.cs",
+              "RelativeDocumentMoniker": "Android17\\Models\\SanPham.cs",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Models\\SanPham.cs",
+              "RelativeToolTip": "Android17\\Models\\SanPham.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAUwD0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-20T10:38:57.573Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Android17Context.cs",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Models\\Android17Context.cs",
+              "RelativeDocumentMoniker": "Android17\\Models\\Android17Context.cs",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Models\\Android17Context.cs",
+              "RelativeToolTip": "Android17\\Models\\Android17Context.cs",
+              "ViewState": "AgIAAAwAAACAzczMzMwFwBUAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-20T09:24:24.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "GioHangController.cs",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Controllers\\GioHangController.cs",
+              "RelativeDocumentMoniker": "Android17\\Controllers\\GioHangController.cs",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Controllers\\GioHangController.cs",
+              "RelativeToolTip": "Android17\\Controllers\\GioHangController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-20T10:01:42.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Android17\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Android17\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-20T09:38:01.536Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "SQLQuery1.sql ",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\SQLQuery1.sql",
+              "RelativeDocumentMoniker": "SQLQuery1.sql",
+              "ToolTip": "SQLQuery1.sql ",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-11-20T09:34:39.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "DataSeeder.cs",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Data\\DataSeeder.cs",
+              "RelativeDocumentMoniker": "Android17\\Data\\DataSeeder.cs",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\Data\\DataSeeder.cs",
+              "RelativeToolTip": "Android17\\Data\\DataSeeder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-20T09:41:02.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\appsettings.json",
+              "RelativeDocumentMoniker": "Android17\\appsettings.json",
+              "ToolTip": "D:\\N\u0103m 4\\C\u00F4ng ngh\u1EC7 \u01AFEB v\u00E0 ASP_Vi\\demo\\Android17\\Android17\\appsettings.json",
+              "RelativeToolTip": "Android17\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-11-20T09:22:41.698Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

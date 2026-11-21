@@ -1,0 +1,32 @@
+﻿@model List<Android17.Models.SanPham>
+@{
+    Layout = "_LayoutMain";
+    string tieude = ViewBag.tieude as string ?? "Danh sách sản phẩm";
+    ViewData["Title"] = tieude;
+}
+
+<div class="row">
+    <div class="col-lg-9">
+        <h5 class="text-warning border-bottom pb-1">@tieude (@Model.Count)</h5>
+
+        @if (Model.Count == 0)
+        {
+            <p class="text-muted mt-3">Không có sản phẩm nào phù hợp.</p>
+        }
+        else
+        {
+            <div class="row row-cols-2 row-cols-md-3 g-3">
+                @foreach (var s in Model)
+                {
+                    <div class="col">
+                        <partial name="_TheSanPham" model="s" />
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="col-lg-3 mt-4 mt-lg-0">
+        <partial name="_SanPhamPartial" />
+    </div>
+</div>

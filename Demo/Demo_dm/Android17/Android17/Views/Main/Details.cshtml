@@ -1,0 +1,97 @@
+﻿@model Android17.Models.SanPham
+@{
+    Layout = "_LayoutMain";
+    ViewData["Title"] = Model.TenSp;
+    var vn = new System.Globalization.CultureInfo("vi-VN");
+    bool giam = Model.GiaGoc.HasValue && Model.GiaGoc > Model.Gia;
+    var spkhac = ViewBag.spkhac as List<Android17.Models.SanPham> ?? new List<Android17.Models.SanPham>();
+    var dongThongSo = (Model.ThongSo ?? "").Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+}
+
+<div class="row">
+    <div class="col-lg-9">
+        <p class="mb-2">
+            <a asp-action="Loai" asp-route-id="@Model.LoaiId" class="text-decoration-none text-warning fw-bold">@Model.Loai.TenLoai</a>
+            <span class="text-muted">/</span>
+            <a asp-action="Hang" asp-route-id="@Model.NhanHangId" class="text-decoration-none text-warning fw-bold">@Model.NhanHang.TenNhanHang</a>
+        </p>
+
+        <div class="row">
+            <div class="col-md-5">
+                <div class="ratio ratio-1x1 bg-light rounded shadow-sm">
+                    <img src="~/images/@Model.Anh" alt="@Model.TenSp" class="object-fit-contain p-3"
+                         onerror="this.style.display='none'" />
+                </div>
+            </div>
+            <div class="col-md-7">
+                <h4 class="text-info">@Model.TenSp</h4>
+                <p class="text-black-50 fst-italic">@Model.MoTaNgan</p>
+
+                <div class="mb-2">
+                    <span class="fs-3 text-danger fw-bold">@Model.Gia.ToString("N0", vn) ₫</span>
+                    @if (giam)
+                    {
+                        <span class="text-decoration-line-through text-muted ms-2">@Model.GiaGoc!.Value.ToString("N0", vn) ₫</span>
+                        <span class="badge bg-danger ms-1">-@((int)Math.Round((1 - Model.Gia / Model.GiaGoc!.Value) * 100))%</span>
+                    }
+                </div>
+
+                <p>
+                    Tình trạng:
+                    @if (Model.TonKho > 0)
+                    {
+                        <span class="text-success fw-bold">Còn hàng (@Model.TonKho)</span>
+                    }
+                    else
+                    {
+                        <span class="text-danger fw-bold">Hết hàng</span>
+                    }
+                </p>
+                @* Nút "Thêm vào giỏ" sẽ bổ sung ở bước giỏ hàng *@
+            </div>
+        </div>
+
+        @if (dongThongSo.Length > 0)
+        {
+            <h5 class="text-warning border-bottom pb-1 mt-4">Thông số kỹ thuật</h5>
+            <table class="table table-striped">
+                <tbody>
+                    @foreach (var dong in dongThongSo)
+                    {
+                        var vt = dong.IndexOf(':');
+                        <tr>
+                            @if (vt > 0)
+                            {
+                                <th class="w-25 fw-normal text-muted">@dong.Substring(0, vt).Trim()</th>
+                                <td>@dong.Substring(vt + 1).Trim()</td>
+                            }
+                            else
+                            {
+                                <td colspan="2">@dong.Trim()</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+        @if (spkhac.Any())
+        {
+            <h5 class="text-warning mt-4">Các sản phẩm khác cùng loại @Model.Loai.TenLoai:</h5>
+            <ul>
+                @foreach (var i in spkhac)
+                {
+                    <li>
+                        <a asp-action="Details" asp-route-id="@i.Spid" class="text-decoration-none">
+                            @i.TenSp <span class="text-black-50 fst-italic">(@i.Gia.ToString("N0", vn) ₫)</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+
+    <div class="col-lg-3 mt-4 mt-lg-0">
+        <partial name="_SanPhamPartial" />
+    </div>
+</div>
