@@ -1,0 +1,46 @@
+﻿@model List<Android17.Models.DonHang>
+@{
+    Layout = "_LayoutMain";
+    ViewData["Title"] = "Đơn hàng của tôi";
+    var vn = new System.Globalization.CultureInfo("vi-VN");
+}
+
+<h4 class="text-warning border-bottom pb-1">Đơn hàng của tôi</h4>
+
+@if (Model.Count == 0)
+{
+    <p class="text-muted mt-3">Bạn chưa có đơn hàng nào.</p>
+    <a asp-controller="Main" asp-action="Index" class="btn btn-warning">Đi mua sắm</a>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead>
+                <tr>
+                    <th>Mã đơn</th>
+                    <th>Ngày đặt</th>
+                    <th>Thanh toán</th>
+                    <th class="text-end">Tổng tiền</th>
+                    <th>Trạng thái</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var d in Model)
+                {
+                    <tr>
+                        <td>#@d.Dhid</td>
+                        <td>@d.NgayTaoDon.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@d.PthucThanhToan</td>
+                        <td class="text-end">@d.ThanhTien.ToString("N0", vn) ₫</td>
+                        <td><partial name="_TrangThaiDon" model="d.TrangThai" /></td>
+                        <td class="text-end">
+                            <a asp-action="HoaDon" asp-route-id="@d.Dhid">Xem hóa đơn</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

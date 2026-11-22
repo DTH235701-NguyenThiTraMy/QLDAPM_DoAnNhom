@@ -97,8 +97,14 @@ else
         <a asp-controller="Main" asp-action="Index" class="btn btn-outline-secondary">&larr; Tiếp tục mua hàng</a>
         <div class="text-end">
             <div class="fs-5">Tạm tính: <span class="text-danger fw-bold">@tong.ToString("N0", vn) ₫</span></div>
-            @* Nút Đặt hàng sẽ nối vào DatHangController ở bước sau *@
-            <button type="button" class="btn btn-success mt-2" disabled>Đặt hàng (sắp có)</button>
+            @if (tong > 0)
+            {
+                <a asp-controller="DatHang" asp-action="ThanhToan" class="btn btn-success mt-2">Tiến hành đặt hàng</a>
+            }
+            else
+            {
+                <button type="button" class="btn btn-success mt-2" disabled>Tiến hành đặt hàng</button>
+            }
         </div>
     </div>
 }
