@@ -47,7 +47,23 @@
                         <span class="text-danger fw-bold">Hết hàng</span>
                     }
                 </p>
-                @* Nút "Thêm vào giỏ" sẽ bổ sung ở bước giỏ hàng *@
+                @if (Model.TonKho > 0)
+                {
+                    if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <form asp-controller="GioHang" asp-action="Them" method="post" class="d-flex align-items-center gap-2">
+                            <input type="hidden" name="spid" value="@Model.Spid" />
+                            <input type="number" name="sluong" value="1" min="1" max="@Model.TonKho" class="form-control" style="width:90px" />
+                            <button type="submit" class="btn btn-warning fw-bold">Thêm vào giỏ</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <a asp-area="Identity" asp-page="/Account/Login"
+                           asp-route-returnUrl="@Url.Action("Details", "Main", new { id = Model.Spid })"
+                           class="btn btn-warning fw-bold">Đăng nhập để mua hàng</a>
+                    }
+                }
             </div>
         </div>
 

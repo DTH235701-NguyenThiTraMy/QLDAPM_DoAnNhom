@@ -1,9 +1,18 @@
 ﻿@using Android17.Models
+@using Microsoft.AspNetCore.Identity
+@inject Android17Context Db
+@inject UserManager<IdentityUser> UserManager
 @{
-    // Lấy dữ liệu do MainController nạp sẵn (nếu trang khác không có thì dùng danh sách rỗng)
-    var dsLoai = ViewBag.loaihang as List<LoaiHang> ?? new List<LoaiHang>();
-    var dsHang = ViewBag.nhanhang as List<NhanHang> ?? new List<NhanHang>();
+    var dsLoai = Db.LoaiHangs.OrderBy(l => l.LoaiId).ToList();
+    var dsHang = Db.NhanHangs.OrderBy(n => n.TenNhanHang).ToList();
     string? tukhoa = ViewBag.tukhoa as string;
+
+    int soGio = 0;
+    if (User.Identity?.IsAuthenticated == true)
+    {
+        var uid = UserManager.GetUserId(User);
+        soGio = Db.GioHangs.Where(g => g.Nd.IdentityUserId == uid).Sum(g => (int?)g.Sluong) ?? 0;
+    }
 }
 <!DOCTYPE html>
 <html lang="vi">
@@ -59,7 +68,13 @@
 
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="GioHang" asp-action="Index">Giỏ hàng</a>    
+                            <a class="nav-link" asp-controller="GioHang" asp-action="Index">
+                                Giỏ hàng
+                                @if (soGio > 0)
+                                {
+                                    <span class="badge bg-warning text-dark">@soGio</span>
+                                }
+                            </a>
                         </li>
                         @if (User.IsInRole("Admin"))
                         {
