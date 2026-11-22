@@ -1,0 +1,89 @@
+﻿@model IEnumerable<PET.Models.ChatLog>
+@{
+    ViewData["Title"] = "AI Care Assistant";
+}
+<style>
+    .ai-markdown-content p:last-child,
+    .ai-markdown-content ul:last-child {
+        margin-bottom: 0;
+    }
+</style>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">🐾 AI Care Assistant - Trợ lý Chăm sóc Thú cưng</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Form đặt câu hỏi -->
+                    <form asp-action="Ask" method="post" class="mb-4">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Chọn thú cưng cần tư vấn (tùy chọn):</label>
+                            <select name="petId" class="form-select" asp-items="ViewBag.Pets">
+                                <option value="">-- Hỏi chung (Không chọn thú cưng cụ thể) --</option>
+                            </select>
+                            <small class="text-muted">Chọn thú cưng giúp AI đọc được giống, cân nặng và tiền sử bệnh để tư vấn chính xác hơn.</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Câu hỏi của bạn:</label>
+                            <textarea name="question" class="form-control" rows="3" required
+                                      placeholder="Ví dụ: Bé nhà mình dạo này biếng ăn và hay gãi tai thì nên chăm sóc như thế nào?"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">
+                            Gửi câu hỏi cho AI
+                        </button>
+                    </form>
+
+                    <hr />
+                    <h6 class="text-muted mb-3">Lịch sử tư vấn gần đây:</h6>
+
+                    <!-- Hiển thị danh sách hội thoại -->
+                    @if (!Model.Any())
+                    {
+                        <p class="text-center text-muted my-4">Chưa có cuộc trò chuyện nào. Hãy đặt câu hỏi đầu tiên cho AI nhé!</p>
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+                            <div class="border rounded p-3 mb-3 bg-light">
+                                <div class="d-flex justify-content-between text-muted small mb-1">
+                                    <span>
+                                        <strong>Bạn</strong>
+                                        @if (item.Pet != null)
+                                        {
+                                            <span class="badge bg-info text-dark ms-1">Bé: @item.Pet.Name</span>
+                                        }
+                                    </span>
+                                    <span>@item.CreatedAt.ToString("dd/MM/yyyy HH:mm")</span>
+                                </div>
+                                <p class="fw-bold text-dark mb-2">@item.Question</p>
+
+                                <div class="bg-white p-3 rounded border-start border-4 border-primary">
+                                    <strong class="text-primary d-block mb-1">🤖 AI Care Assistant:</strong>
+                                    <div class="ai-markdown-content">@item.Answer</div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <!-- Nhúng thư viện marked.js từ CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Tìm tất cả các khung câu trả lời của AI và chuyển đổi Markdown thành HTML
+            document.querySelectorAll('.ai-markdown-content').forEach(function (el) {
+                const rawMarkdown = el.textContent.trim();
+                el.innerHTML = marked.parse(rawMarkdown);
+            });
+        });
+    </script>
+}
