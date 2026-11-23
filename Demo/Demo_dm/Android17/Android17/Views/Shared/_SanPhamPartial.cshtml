@@ -1,0 +1,23 @@
+﻿@using Android17.Models
+@{
+    var vn = new System.Globalization.CultureInfo("vi-VN");
+    var dsMoi = ViewBag.spmoi as List<SanPham> ?? new List<SanPham>();
+}
+<h5 class="text-center text-warning fw-bold">SẢN PHẨM MỚI</h5>
+@foreach (var s in dsMoi)
+{
+    <a asp-controller="Main" asp-action="Details" asp-route-id="@s.Spid" class="text-decoration-none">
+        <div class="row g-0 p-1 mt-3 bg-light shadow align-items-center">
+            <div class="col-4">
+                <div class="ratio ratio-1x1">
+                    <img src="~/images/@s.Anh" alt="@s.TenSp" class="object-fit-contain"
+                         onerror="this.style.display='none'" />
+                </div>
+            </div>
+            <div class="col-8 ps-2">
+                <p class="mb-0 small">@s.TenSp</p>
+                <span class="text-danger fw-bold small">@s.Gia.ToString("N0", vn) ₫</span>
+            </div>
+        </div>
+    </a>
+}

@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Quản lý Android17</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom mb-3">
+            <div class="container">
+                <a class="navbar-brand fw-bold" asp-controller="Main" asp-action="Index">Android17</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#menuQuanLy" aria-controls="menuQuanLy"
+                        aria-expanded="false" aria-label="Mở menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menuQuanLy">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Main" asp-action="Index">Trang cửa hàng</a>
+                        </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="SanPhams" asp-action="Index">QL sản phẩm</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="LoaiHangs" asp-action="Index">QL loại hàng</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="NhanHangs" asp-action="Index">QL nhãn hàng</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="DonHangs" asp-action="Index">QL đơn hàng</a>
+                            </li>
+                        }
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            <h2 class="text-center text-uppercase fw-light my-3">Trang quản lý</h2>
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top text-muted py-3">
+        <div class="container">&copy; 2026 Android17 - Trang quản lý</div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

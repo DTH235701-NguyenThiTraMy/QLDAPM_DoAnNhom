@@ -1,0 +1,108 @@
+﻿@model Android17.Models.DonHang
+@{
+    ViewData["Title"] = "Đơn hàng #" + Model.Dhid;
+    var vn = new System.Globalization.CultureInfo("vi-VN");
+}
+
+@if (TempData["ThongBao"] != null)
+{
+    <div class="alert alert-success">@TempData["ThongBao"]</div>
+}
+@if (TempData["Loi"] != null)
+{
+    <div class="alert alert-danger">@TempData["Loi"]</div>
+}
+
+<div class="d-flex justify-content-between align-items-center border-bottom pb-1 mb-3">
+    <h4 class="mb-0">Đơn hàng #@Model.Dhid</h4>
+    <partial name="_TrangThaiDon" model="Model.TrangThai" />
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-6">
+        <p class="mb-1"><span class="text-muted">Ngày đặt:</span> @Model.NgayTaoDon.ToString("dd/MM/yyyy HH:mm")</p>
+        <p class="mb-1"><span class="text-muted">Thanh toán:</span> @Model.PthucThanhToan</p>
+        @if (Model.TgXacNhan.HasValue)
+        {
+            <p class="mb-1"><span class="text-muted">Xác nhận lúc:</span> @Model.TgXacNhan.Value.ToString("dd/MM/yyyy HH:mm:ss")</p>
+        }
+        @if (Model.NgayGiaoDuKien.HasValue && Model.TrangThai != 4)
+        {
+            <p class="mb-1">
+                <span class="text-muted">@(Model.TrangThai == 3 ? "Đã giao:" : "Dự kiến giao:")</span>
+                @Model.NgayGiaoDuKien.Value.ToString("dd/MM/yyyy HH:mm:ss")
+            </p>
+        }
+    </div>
+    <div class="col-md-6">
+        <p class="mb-1"><span class="text-muted">Người nhận:</span> @Model.NguoiNhan</p>
+        <p class="mb-1"><span class="text-muted">Điện thoại:</span> @Model.SdtnguoiNhan</p>
+        <p class="mb-1"><span class="text-muted">Địa chỉ:</span> @Model.Dchi</p>
+        @if (!string.IsNullOrEmpty(Model.GhiChu))
+        {
+            <p class="mb-1"><span class="text-muted">Ghi chú:</span> @Model.GhiChu</p>
+        }
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table align-middle">
+        <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th class="text-end">Đơn giá</th>
+                <th class="text-center">SL</th>
+                <th class="text-end">Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in Model.DonHangChiTiets)
+            {
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center gap-2">
+                            <img src="~/images/@c.Sp.Anh" alt="" style="width:48px;height:48px;object-fit:contain"
+                                 onerror="this.style.visibility='hidden'" />
+                            <span>@c.Sp.TenSp</span>
+                        </div>
+                    </td>
+                    <td class="text-end">@c.GiaLucDat.ToString("N0", vn) ₫</td>
+                    <td class="text-center">@c.Sluong</td>
+                    <td class="text-end">@((c.Sluong * c.GiaLucDat).ToString("N0", vn)) ₫</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-end">Tiền hàng</td>
+                <td class="text-end">@Model.TongTienSp.ToString("N0", vn) ₫</td>
+            </tr>
+            <tr>
+                <td colspan="3" class="text-end">Phí vận chuyển</td>
+                <td class="text-end">@(Model.PhiVanChuyen == 0 ? "Miễn phí" : Model.PhiVanChuyen.ToString("N0", vn) + " ₫")</td>
+            </tr>
+            <tr class="fw-bold">
+                <td colspan="3" class="text-end">Tổng thanh toán</td>
+                <td class="text-end text-danger fs-5">@Model.ThanhTien.ToString("N0", vn) ₫</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<div class="d-flex flex-wrap gap-2">
+    <a asp-action="Index" class="btn btn-outline-secondary">&larr; Danh sách đơn</a>
+
+    @if (Model.TrangThai == 0)
+    {
+        <form asp-action="XacNhan" asp-route-id="@Model.Dhid" method="post">
+            <button type="submit" class="btn btn-success">Xác nhận đơn</button>
+        </form>
+    }
+    @if (Model.TrangThai == 0 || Model.TrangThai == 1)
+    {
+        <form asp-action="Huy" asp-route-id="@Model.Dhid" method="post"
+              onsubmit="return confirm('Hủy đơn này và hoàn lại số lượng vào kho?');">
+            <button type="submit" class="btn btn-outline-danger">Hủy đơn</button>
+        </form>
+    }
+</div>

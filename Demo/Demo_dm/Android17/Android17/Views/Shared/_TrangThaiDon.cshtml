@@ -1,0 +1,13 @@
+﻿@model int
+@{
+    var (chu, mau) = Model switch
+    {
+        0 => ("Chờ xác nhận", "bg-warning text-dark"),
+        1 => ("Đã xác nhận", "bg-info text-dark"),
+        2 => ("Đang giao", "bg-primary"),
+        3 => ("Hoàn thành", "bg-success"),
+        4 => ("Đã hủy", "bg-secondary"),
+        _ => ("Không rõ", "bg-light text-dark")
+    };
+}
+<span class="badge @mau">@chu</span>

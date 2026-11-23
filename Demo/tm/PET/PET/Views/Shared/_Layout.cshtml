@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PET</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PET.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PET</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Services" asp-action="Index">Dịch vụ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Products" asp-action="Index">Sản phẩm</a>
+                        </li>
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Pets" asp-action="Index">Thú cưng của tôi</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Appointments" asp-action="Index">Lịch hẹn</a>
+                            </li>
+                        }
+
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2026 - PET - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+@if (User.Identity != null && User.Identity.IsAuthenticated)
+{
+    <!-- Nút bong bóng mở chat ở góc phải dưới -->
+    <button id="aiChatToggleBtn" class="btn btn-primary rounded-circle shadow-lg d-flex align-items-center justify-content-center"
+            style="position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; z-index: 1050; font-size: 26px;"
+            title="Hỏi AI Care Assistant">
+        🤖
+    </button>
+
+    <!-- Cửa sổ khung chat nổi -->
+    <div id="aiChatBox" class="card shadow-lg border-0 d-none"
+         style="position: fixed; bottom: 95px; right: 25px; width: 370px; max-width: 90vw; height: 500px; z-index: 1050; display: flex; flex-direction: column; border-radius: 15px; overflow: hidden;">
+
+        <!-- Header -->
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center py-2 px-3">
+            <div>
+                <strong class="d-block" style="font-size: 15px;">🐾 AI Care Assistant</strong>
+                <small style="font-size: 11px; opacity: 0.9;">Trợ lý chăm sóc thú cưng 24/7</small>
+            </div>
+            <button type="button" id="aiChatCloseBtn" class="btn-close btn-close-white btn-sm" aria-label="Close"></button>
+        </div>
+
+        <!-- Chọn thú cưng -->
+        <div class="bg-light px-3 py-2 border-bottom">
+            <select id="aiWidgetPetSelect" class="form-select form-select-sm">
+                <option value="">-- Tư vấn chung (Chọn thú cưng nếu cần) --</option>
+            </select>
+        </div>
+
+        <!-- Nội dung tin nhắn -->
+        <div id="aiWidgetMessages" class="card-body p-3" style="flex: 1; overflow-y: auto; background-color: #f8f9fa; font-size: 14px;">
+            <div class="text-center text-muted small my-3">Đang tải hội thoại...</div>
+        </div>
+
+        <!-- Khung nhập tin nhắn -->
+        <div class="card-footer bg-white p-2 border-top">
+            <form id="aiWidgetForm" class="d-flex gap-2">
+                <input type="text" id="aiWidgetInput" class="form-control form-control-sm" placeholder="Nhập câu hỏi cho bé..." required autocomplete="off" />
+                <button type="submit" id="aiWidgetSendBtn" class="btn btn-primary btn-sm px-3">Gửi</button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .ai-msg-markdown p:last-child, .ai-msg-markdown ul:last-child {
+            margin-bottom: 0;
+        }
+
+        .ai-msg-markdown ul {
+            padding-left: 18px;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleBtn = document.getElementById("aiChatToggleBtn");
+            const closeBtn = document.getElementById("aiChatCloseBtn");
+            const chatBox = document.getElementById("aiChatBox");
+            const messagesDiv = document.getElementById("aiWidgetMessages");
+            const petSelect = document.getElementById("aiWidgetPetSelect");
+            const chatForm = document.getElementById("aiWidgetForm");
+            const chatInput = document.getElementById("aiWidgetInput");
+            const sendBtn = document.getElementById("aiWidgetSendBtn");
+            let isLoaded = false;
+
+            // Bật / Tắt khung chat
+            toggleBtn.addEventListener("click", () => {
+                chatBox.classList.toggle("d-none");
+                if (!chatBox.classList.contains("d-none") && !isLoaded) {
+                    loadWidgetData();
+                }
+            });
+
+            closeBtn.addEventListener("click", () => chatBox.classList.add("d-none"));
+
+            // Tải danh sách thú cưng & lịch sử chat
+            async function loadWidgetData() {
+                try {
+                    const res = await fetch('/AiAssistant/GetWidgetData');
+                    const data = await res.json();
+
+                    data.pets.forEach(p => {
+                        const opt = document.createElement("option");
+                        opt.value = p.id;
+                        opt.textContent = "Bé: " + p.name;
+                        petSelect.appendChild(opt);
+                    });
+
+                    messagesDiv.innerHTML = "";
+                    if (data.history.length === 0) {
+                        messagesDiv.innerHTML = `<div class="text-center text-muted small my-4">Xin chào! Bạn cần tư vấn gì cho thú cưng hôm nay?</div>`;
+                    } else {
+                        data.history.forEach(item => appendMessage(item.question, item.answer, item.petName, item.time));
+                    }
+                    isLoaded = true;
+                    scrollToBottom();
+                } catch (err) {
+                    messagesDiv.innerHTML = `<div class="text-danger small text-center">Không thể tải dữ liệu chat.</div>`;
+                }
+            }
+
+            // Hiển thị 1 cặp hỏi - đáp ra giao diện
+            function appendMessage(question, answer, petName, time) {
+                const petBadge = petName ? `<span class="badge bg-info text-dark ms-1">${petName}</span>` : "";
+                const html = `
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-end mb-1">
+                            <div class="bg-primary text-white rounded-3 px-3 py-2" style="max-width: 85%;">
+                                <div style="font-size: 11px; opacity: 0.85;">Bạn ${petBadge} • ${time}</div>
+                                <div>${question}</div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-start">
+                            <div class="bg-white border rounded-3 px-3 py-2 shadow-sm ai-msg-markdown" style="max-width: 90%;">
+                                <strong class="text-primary d-block mb-1" style="font-size: 12px;">🤖 AI Assistant</strong>
+                                <div>${marked.parse(answer)}</div>
+                            </div>
+                        </div>
+                    </div>`;
+                messagesDiv.insertAdjacentHTML('beforeend', html);
+                scrollToBottom();
+            }
+
+            function scrollToBottom() {
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }
+
+            // Gửi câu hỏi qua AJAX
+            chatForm.addEventListener("submit", async function (e) {
+                e.preventDefault();
+                const question = chatInput.value.trim();
+                if (!question) return;
+
+                const petId = petSelect.value ? parseInt(petSelect.value) : null;
+                chatInput.value = "";
+                chatInput.disabled = true;
+                sendBtn.disabled = true;
+
+                // Hiện trạng thái đang gõ
+                const loadingId = "loading_" + Date.now();
+                messagesDiv.insertAdjacentHTML('beforeend', `<div id="${loadingId}" class="text-muted small fst-italic mb-2">🤖 AI đang suy nghĩ...</div>`);
+                scrollToBottom();
+
+                try {
+                    const res = await fetch('/AiAssistant/AskAjax', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ question: question, petId: petId })
+                    });
+                    const data = await res.json();
+                    document.getElementById(loadingId)?.remove();
+
+                    if (res.ok) {
+                        appendMessage(data.question, data.answer, data.petName, data.time);
+                    } else {
+                        alert(data.error || "Có lỗi xảy ra.");
+                    }
+                } catch (err) {
+                    document.getElementById(loadingId)?.remove();
+                    alert("Lỗi kết nối máy chủ.");
+                } finally {
+                    chatInput.disabled = false;
+                    sendBtn.disabled = false;
+                    chatInput.focus();
+                }
+            });
+        });
+    </script>
+}

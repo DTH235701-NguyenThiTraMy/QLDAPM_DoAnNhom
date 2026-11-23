@@ -1,0 +1,20 @@
+﻿@model Android17.Models.LoaiHang
+@{
+    ViewData["Title"] = "Xóa loại hàng";
+}
+
+<h4>Xóa loại hàng</h4>
+<h5 class="text-danger">Bạn có chắc muốn xóa loại hàng này?</h5>
+<hr />
+<dl class="row">
+    <dt class="col-sm-2">Tên loại</dt>
+    <dd class="col-sm-10">@Model.TenLoai</dd>
+    <dt class="col-sm-2">Mô tả</dt>
+    <dd class="col-sm-10">@Model.MoTa</dd>
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="LoaiId" />
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-action="Index" class="btn btn-outline-secondary">Quay lại</a>
+</form>

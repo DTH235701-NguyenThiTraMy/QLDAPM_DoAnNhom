@@ -1,0 +1,84 @@
+﻿@model Android17.Models.SanPham
+@{
+    ViewData["Title"] = "Thêm sản phẩm";
+}
+
+<h4>Thêm sản phẩm</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="TenSp" class="form-label">Tên sản phẩm</label>
+                <input asp-for="TenSp" class="form-control" />
+                <span asp-validation-for="TenSp" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="LoaiId" class="form-label">Loại hàng</label>
+                    <select asp-for="LoaiId" class="form-select" asp-items="ViewBag.dsLoai"></select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="NhanHangId" class="form-label">Nhãn hàng</label>
+                    <select asp-for="NhanHangId" class="form-select" asp-items="ViewBag.dsHang"></select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label asp-for="Gia" class="form-label">Giá bán (₫)</label>
+                    <input asp-for="Gia" class="form-control" />
+                    <span asp-validation-for="Gia" class="text-danger"></span>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label asp-for="GiaGoc" class="form-label">Giá gốc (₫, có thể để trống)</label>
+                    <input asp-for="GiaGoc" class="form-control" />
+                    <span asp-validation-for="GiaGoc" class="text-danger"></span>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label asp-for="TonKho" class="form-label">Tồn kho</label>
+                    <input asp-for="TonKho" class="form-control" />
+                    <span asp-validation-for="TonKho" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Ảnh sản phẩm</label>
+                <input type="file" name="anhFile" class="form-control" accept=".jpg,.jpeg,.png,.webp" />
+                <span asp-validation-for="Anh" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="MoTaNgan" class="form-label">Mô tả ngắn</label>
+                <textarea asp-for="MoTaNgan" class="form-control" rows="2"></textarea>
+                <span asp-validation-for="MoTaNgan" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ThongSo" class="form-label">Thông số (mỗi dòng một thông số, dạng <i>Tên: Giá trị</i>)</label>
+                <textarea asp-for="ThongSo" class="form-control" rows="6"></textarea>
+            </div>
+
+            <div class="form-check mb-2">
+                <input asp-for="NoiBat" class="form-check-input" />
+                <label asp-for="NoiBat" class="form-check-label">Hiện ở khu "Sản phẩm nổi bật"</label>
+            </div>
+            <div class="form-check mb-3">
+                <input asp-for="DangBan" class="form-check-input" />
+                <label asp-for="DangBan" class="form-check-label">Đang bán</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Lưu</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Quay lại</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

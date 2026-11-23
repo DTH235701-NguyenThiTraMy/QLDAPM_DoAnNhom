@@ -1,0 +1,37 @@
+﻿@model List<Android17.Models.SanPham>
+@{
+    Layout = "_LayoutMain";
+    ViewData["Title"] = "Trang chủ";
+    var noibat = ViewBag.noibat as List<Android17.Models.SanPham> ?? new List<Android17.Models.SanPham>();
+}
+
+<div class="row">
+    <div class="col-lg-9">
+        @if (noibat.Any())
+        {
+            <h5 class="text-warning border-bottom pb-1">Sản phẩm nổi bật</h5>
+            <div class="row row-cols-2 row-cols-md-3 g-3 mb-4">
+                @foreach (var s in noibat)
+                {
+                    <div class="col">
+                        <partial name="_TheSanPham" model="s" />
+                    </div>
+                }
+            </div>
+        }
+
+        <h5 class="text-warning border-bottom pb-1">Tất cả sản phẩm (@Model.Count)</h5>
+        <div class="row row-cols-2 row-cols-md-3 g-3">
+            @foreach (var s in Model)
+            {
+                <div class="col">
+                    <partial name="_TheSanPham" model="s" />
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-lg-3 mt-4 mt-lg-0">
+        <partial name="_SanPhamPartial" />
+    </div>
+</div>

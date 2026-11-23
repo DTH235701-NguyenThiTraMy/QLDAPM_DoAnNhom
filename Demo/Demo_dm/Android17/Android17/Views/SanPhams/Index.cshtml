@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Android17.Models.SanPham>
+@{
+    ViewData["Title"] = "Quản lý sản phẩm";
+    var vn = new System.Globalization.CultureInfo("vi-VN");
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="mb-0">Quản lý sản phẩm</h4>
+    <a asp-action="Create" class="btn btn-success">+ Thêm sản phẩm</a>
+</div>
+
+@if (TempData["ThongBao"] != null)
+{
+    <div class="alert alert-info">@TempData["ThongBao"]</div>
+}
+
+<div class="table-responsive">
+    <table class="table table-striped align-middle">
+        <thead>
+            <tr>
+                <th>Ảnh</th>
+                <th>Tên sản phẩm</th>
+                <th>Loại</th>
+                <th>Hãng</th>
+                <th class="text-end">Giá</th>
+                <th class="text-end">Tồn</th>
+                <th class="text-center">Nổi bật</th>
+                <th class="text-center">Trạng thái</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model)
+            {
+                <tr>
+                    <td style="width:70px">
+                        <img src="~/images/@s.Anh" alt="" style="width:56px;height:56px;object-fit:contain"
+                             onerror="this.style.visibility='hidden'" />
+                    </td>
+                    <td>@s.TenSp</td>
+                    <td>@s.Loai.TenLoai</td>
+                    <td>@s.NhanHang.TenNhanHang</td>
+                    <td class="text-end">@s.Gia.ToString("N0", vn) ₫</td>
+                    <td class="text-end">@s.TonKho</td>
+                    <td class="text-center">@(s.NoiBat ? "★" : "")</td>
+                    <td class="text-center">
+                        @if (s.DangBan)
+                        {
+                            <span class="badge bg-success">Đang bán</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Đã ẩn</span>
+                        }
+                    </td>
+                    <td class="text-nowrap">
+                        <a asp-action="Edit" asp-route-id="@s.Spid">Sửa</a> |
+                        <a asp-action="Details" asp-route-id="@s.Spid">Chi tiết</a> |
+                        <a asp-action="Delete" asp-route-id="@s.Spid" class="text-danger">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

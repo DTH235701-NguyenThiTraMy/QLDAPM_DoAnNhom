@@ -1,0 +1,110 @@
+﻿@model List<Android17.Models.GioHang>
+@{
+    Layout = "_LayoutMain";
+    ViewData["Title"] = "Giỏ hàng";
+    var vn = new System.Globalization.CultureInfo("vi-VN");
+    // Chỉ tính tiền những sản phẩm còn bán và còn hàng
+    decimal tong = Model.Where(g => g.Sp.DangBan && g.Sp.TonKho > 0).Sum(g => g.Sluong * g.Sp.Gia);
+}
+
+<h4 class="text-warning border-bottom pb-1">Giỏ hàng của bạn</h4>
+
+@if (TempData["ThongBao"] != null)
+{
+    <div class="alert alert-success">@TempData["ThongBao"]</div>
+}
+@if (TempData["Loi"] != null)
+{
+    <div class="alert alert-danger">@TempData["Loi"]</div>
+}
+@if (ViewBag.canhbao != null)
+{
+    <div class="alert alert-warning">@ViewBag.canhbao</div>
+}
+
+@if (Model.Count == 0)
+{
+    <p class="text-muted mt-3">Giỏ hàng đang trống.</p>
+    <a asp-controller="Main" asp-action="Index" class="btn btn-warning">Đi mua sắm</a>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th class="text-end">Đơn giá</th>
+                    <th>Số lượng</th>
+                    <th class="text-end">Thành tiền</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var g in Model)
+                {
+                    bool conHang = g.Sp.DangBan && g.Sp.TonKho > 0;
+                    <tr class="@(conHang ? "" : "table-secondary")">
+                        <td>
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="~/images/@g.Sp.Anh" alt="" style="width:64px;height:64px;object-fit:contain"
+                                     onerror="this.style.visibility='hidden'" />
+                                <a asp-controller="Main" asp-action="Details" asp-route-id="@g.Spid"
+                                   class="text-decoration-none text-dark fw-semibold">@g.Sp.TenSp</a>
+                            </div>
+                        </td>
+                        <td class="text-end">@g.Sp.Gia.ToString("N0", vn) ₫</td>
+                        <td style="width:190px">
+                            @if (conHang)
+                            {
+                                <form asp-action="CapNhat" method="post" class="d-flex gap-1">
+                                    <input type="hidden" name="gioId" value="@g.GioId" />
+                                    <input type="number" name="sluong" value="@g.Sluong" min="1" max="@g.Sp.TonKho"
+                                           class="form-control form-control-sm" />
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary text-nowrap">Cập nhật</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Hết hàng / ngừng bán</span>
+                            }
+                        </td>
+                        <td class="text-end fw-bold">
+                            @if (conHang)
+                            {
+                                @((g.Sluong * g.Sp.Gia).ToString("N0", vn))
+                    
+                                <text> ₫</text>
+                            }
+                            else
+                            {
+                                <span>—</span>
+                            }
+                        </td>
+                        <td class="text-end">
+                            <form asp-action="Xoa" method="post">
+                                <input type="hidden" name="gioId" value="@g.GioId" />
+                                <button type="submit" class="btn btn-sm btn-outline-danger">Xóa</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mt-3">
+        <a asp-controller="Main" asp-action="Index" class="btn btn-outline-secondary">&larr; Tiếp tục mua hàng</a>
+        <div class="text-end">
+            <div class="fs-5">Tạm tính: <span class="text-danger fw-bold">@tong.ToString("N0", vn) ₫</span></div>
+            @if (tong > 0)
+            {
+                <a asp-controller="DatHang" asp-action="ThanhToan" class="btn btn-success mt-2">Tiến hành đặt hàng</a>
+            }
+            else
+            {
+                <button type="button" class="btn btn-success mt-2" disabled>Tiến hành đặt hàng</button>
+            }
+        </div>
+    </div>
+}
