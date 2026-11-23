@@ -1,0 +1,86 @@
+﻿@model PMPetCare.Models.ViewModels.CreateUserViewModel
+
+@{
+    ViewData["Title"] = "Thêm tài khoản";
+}
+
+<div class="container mt-4">
+    <h2>Thêm tài khoản mới</h2>
+    <p>Tạo tài khoản nhân viên hoặc khách hàng cho hệ thống Pet Care.</p>
+
+    <div class="card shadow-sm mt-4">
+        <div class="card-body">
+            <form asp-action="CreateUser" method="post">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="FullName" class="form-label">Họ và tên</label>
+                    <input asp-for="FullName" class="form-control"
+                           placeholder="Nhập họ và tên" />
+                    <span asp-validation-for="FullName"
+                          class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input asp-for="Email" class="form-control"
+                           placeholder="Nhập email" />
+                    <span asp-validation-for="Email"
+                          class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label">Mật khẩu</label>
+                    <input asp-for="Password" class="form-control"
+                           placeholder="Nhập mật khẩu" />
+                    <span asp-validation-for="Password"
+                          class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PhoneNumber" class="form-label">
+                        Số điện thoại
+                    </label>
+                    <input asp-for="PhoneNumber" class="form-control"
+                           placeholder="Nhập số điện thoại" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Address" class="form-label">Địa chỉ</label>
+                    <input asp-for="Address" class="form-control"
+                           placeholder="Nhập địa chỉ" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Role" class="form-label">Vai trò</label>
+                    <select asp-for="Role" class="form-select">
+                        <option value="">-- Chọn vai trò --</option>
+                        <option value="Staff">Nhân viên (Staff)</option>
+                        <option value="Customer">Khách hàng (Customer)</option>
+                    </select>
+                    <span asp-validation-for="Role"
+                          class="text-danger"></span>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        Tạo tài khoản
+                    </button>
+
+                    <a asp-action="Users" class="btn btn-secondary">
+                        Quay lại
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

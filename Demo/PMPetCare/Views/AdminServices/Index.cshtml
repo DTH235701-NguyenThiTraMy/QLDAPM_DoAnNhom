@@ -1,0 +1,86 @@
+﻿@model IEnumerable<PMPetCare.Models.Service>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Thêm dịch vụ</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th class ="text-center">
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.ServiceName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Description)
+            </td>
+            <td>
+                    @item.Price.ToString("N0", new System.Globalization.CultureInfo("vi-VN")) ₫
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.IsActive)
+            </td>
+
+
+                <td class="text-nowrap">
+                    <a asp-action="Edit"
+                       asp-route-id="@item.ServiceId"
+                       class="btn btn-sm btn-primary">
+                        Sửa
+                    </a>
+
+                    <a asp-action="Details"
+                       asp-route-id="@item.ServiceId"
+                       class="btn btn-sm btn-info">
+                        Chi tiết
+                    </a>
+
+                    <form asp-action="ToggleActive"
+                          method="post"
+                          class="d-inline">
+                        @Html.AntiForgeryToken()
+
+                        <input type="hidden"
+                               name="serviceId"
+                               value="@item.ServiceId" />
+
+                        <button type="submit"
+                                class="btn btn-sm @(item.IsActive ? "btn-danger" : "btn-success")">
+                            @(item.IsActive ? "Tắt dịch vụ" : "Mở dịch vụ")
+                        </button>
+                    </form>
+                </td>
+
+        </tr>
+}
+    </tbody>
+</table>

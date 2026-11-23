@@ -1,0 +1,83 @@
+@model IEnumerable<PMPetCare.Models.CareNote>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PetId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Staff)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReminderDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.PetId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Pet)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.AppointmentId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Appointment)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.StaffId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Staff)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ReminderDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CareNoteId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CareNoteId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CareNoteId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

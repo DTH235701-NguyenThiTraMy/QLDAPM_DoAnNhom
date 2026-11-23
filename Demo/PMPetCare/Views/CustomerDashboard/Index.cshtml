@@ -1,0 +1,265 @@
+﻿@model IEnumerable<PMPetCare.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Tổng quan khách hàng";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+
+    var careNotes = ViewBag.RecentCareNotes
+        as IEnumerable<PMPetCare.Models.CareNote>;
+}
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light">
+    <div class="container">
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+            <span class="flaticon-pawprint-1 mr-2"></span> PMPetCare
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#customer-nav">
+            <span class="fa fa-bars"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="customer-nav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" asp-controller="CustomerDashboard" asp-action="Index">Tổng quan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Pets" asp-action="Index">Thú cưng</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Appointments" asp-action="Index">Lịch hẹn</a>
+                </li>
+            </ul>
+
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav>
+
+<section class="ftco-section bg-light">
+    <div class="container">
+
+        <!-- Lời chào -->
+        <div class="mb-4">
+            <h2>Xin chào, @ViewBag.CustomerName!</h2>
+            <p class="text-muted">
+                Chào mừng bạn đến với khu vực quản lý thú cưng của PMPetCare.
+            </p>
+        </div>
+
+        <!-- Các thẻ thống kê -->
+        <div class="row">
+
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="bg-white p-4 shadow-sm rounded h-100">
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-paw fa-2x text-primary mr-3"></i>
+                        <div>
+                            <p class="text-muted mb-1">Thú cưng của tôi</p>
+                            <h3 class="mb-0">@ViewBag.PetCount</h3>
+                        </div>
+                    </div>
+                    <a asp-controller="Pets" asp-action="Index"
+                       class="btn btn-outline-primary btn-sm mt-3">
+                        Quản lý thú cưng
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="bg-white p-4 shadow-sm rounded h-100">
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-calendar fa-2x text-primary mr-3"></i>
+                        <div>
+                            <p class="text-muted mb-1">Tổng lịch hẹn</p>
+                            <h3 class="mb-0">@ViewBag.AppointmentCount</h3>
+                        </div>
+                    </div>
+                    <a asp-controller="Appointments" asp-action="Index"
+                       class="btn btn-outline-primary btn-sm mt-3">
+                        Xem lịch hẹn
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="bg-white p-4 shadow-sm rounded h-100">
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-clock-o fa-2x text-warning mr-3"></i>
+                        <div>
+                            <p class="text-muted mb-1">Đang chờ xác nhận</p>
+                            <h3 class="mb-0">@ViewBag.PendingCount</h3>
+                        </div>
+                    </div>
+                    <a asp-controller="Appointments" asp-action="Index"
+                       class="btn btn-outline-primary btn-sm mt-3">
+                        Theo dõi
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="bg-white p-4 shadow-sm rounded h-100">
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-check-circle fa-2x text-success mr-3"></i>
+                        <div>
+                            <p class="text-muted mb-1">Đã hoàn thành</p>
+                            <h3 class="mb-0">@ViewBag.CompletedCount</h3>
+                        </div>
+                    </div>
+                    <a asp-controller="Appointments" asp-action="Index"
+                       class="btn btn-outline-primary btn-sm mt-3">
+                        Xem lịch sử
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Truy cập nhanh -->
+        <div class="bg-white p-4 shadow-sm rounded mb-4">
+            <h4 class="mb-3">Truy cập nhanh</h4>
+
+            <div class="row">
+                <div class="col-md-4 mb-2">
+                    <a asp-controller="Pets" asp-action="Create"
+                       class="btn btn-primary btn-block">
+                        <i class="fa fa-plus mr-2"></i> Thêm thú cưng
+                    </a>
+                </div>
+
+                <div class="col-md-4 mb-2">
+                    <a asp-controller="Appointments" asp-action="Create"
+                       class="btn btn-primary btn-block">
+                        <i class="fa fa-calendar-plus-o mr-2"></i> Đặt lịch chăm sóc
+                    </a>
+                </div>
+
+                <div class="col-md-4 mb-2">
+                    <a asp-controller="Appointments" asp-action="Index"
+                       class="btn btn-outline-primary btn-block">
+                        <i class="fa fa-list mr-2"></i> Lịch sử lịch hẹn
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lịch chăm sóc sắp tới -->
+        <div class="bg-white p-4 shadow-sm rounded mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="mb-0">Lịch chăm sóc sắp tới</h4>
+                <a asp-controller="Appointments" asp-action="Index">
+                    Xem tất cả
+                </a>
+            </div>
+
+            @if (Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Thú cưng</th>
+                                <th>Dịch vụ</th>
+                                <th>Thời gian</th>
+                                <th>Trạng thái</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                var statusText = item.Status switch
+                                {
+                                    "Pending" => "Chờ xác nhận",
+                                    "Assigned" => "Đã phân công",
+                                    "InProgress" => "Đang thực hiện",
+                                    "Completed" => "Đã hoàn thành",
+                                    "Cancelled" => "Đã hủy",
+                                    _ => item.Status
+                                };
+
+                                <tr>
+                                    <td>@item.Pet?.PetName</td>
+                                    <td>@item.Service?.ServiceName</td>
+                                    <td>@item.AppointmentDate.ToString("dd/MM/yyyy HH:mm")</td>
+                                    <td>@statusText</td>
+                                    <td>
+                                        <a asp-controller="Appointments"
+                                           asp-action="Details"
+                                           asp-route-id="@item.AppointmentId"
+                                           class="btn btn-outline-primary btn-sm">
+                                            Chi tiết
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="text-center py-4">
+                    <i class="fa fa-calendar-o fa-3x text-muted mb-3"></i>
+                    <p class="text-muted">Bạn chưa có lịch chăm sóc sắp tới.</p>
+                    <a asp-controller="Appointments" asp-action="Create"
+                       class="btn btn-primary">
+                        Đặt lịch ngay
+                    </a>
+                </div>
+            }
+        </div>
+
+        <!-- Ghi chú chăm sóc gần đây -->
+        <div class="bg-white p-4 shadow-sm rounded">
+            <h4 class="mb-3">Ghi chú chăm sóc gần đây</h4>
+
+            @if (careNotes != null && careNotes.Any())
+            {
+                @foreach (var note in careNotes)
+                {
+                    <div class="border-bottom py-3">
+                        <div class="d-flex justify-content-between flex-wrap">
+                            <strong>
+                                <i class="fa fa-paw text-primary mr-1"></i>
+                                @note.Pet?.PetName
+                            </strong>
+                            <small class="text-muted">
+                                @note.CreatedAt.ToString("dd/MM/yyyy HH:mm")
+                            </small>
+                        </div>
+
+                        <p class="mb-1 mt-2">@note.Content</p>
+
+                        <small class="text-muted">
+                            Nhân viên: @(note.Staff?.FullName ?? "Nhân viên PMPetCare")
+                        </small>
+
+                        @if (note.ReminderDate.HasValue)
+                        {
+                            <div class="mt-2">
+                                <span class="text-primary">
+                                    <i class="fa fa-bell mr-1"></i>
+                                    Nhắc lịch:
+                                    @note.ReminderDate.Value.ToString("dd/MM/yyyy HH:mm")
+                                </span>
+                            </div>
+                        }
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="text-muted mb-0">
+                    Chưa có ghi chú chăm sóc nào dành cho thú cưng của bạn.
+                </p>
+            }
+        </div>
+
+    </div>
+</section>

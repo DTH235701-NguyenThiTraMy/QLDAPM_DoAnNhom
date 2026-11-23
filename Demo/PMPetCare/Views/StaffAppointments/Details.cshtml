@@ -1,0 +1,131 @@
+﻿@model PMPetCare.Models.Appointment
+
+@{
+    ViewData["Title"] = "Chi tiết lịch hẹn";
+}
+
+<div class="container py-4">
+    <h2 class="mb-4">Chi tiết lịch hẹn #@Model.AppointmentId</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+            <h5 class="mb-3">Thông tin lịch hẹn</h5>
+
+            <dl class="row">
+                <dt class="col-sm-3">Khách hàng</dt>
+                <dd class="col-sm-9">
+                    @(Model.Customer?.FullName ?? "Không có dữ liệu")
+                </dd>
+
+                <dt class="col-sm-3">Thú cưng</dt>
+                <dd class="col-sm-9">
+                    @(Model.Pet?.PetName ?? "Không có dữ liệu")
+                </dd>
+
+                <dt class="col-sm-3">Dịch vụ</dt>
+                <dd class="col-sm-9">
+                    @(Model.Service?.ServiceName ?? "Không có dữ liệu")
+                </dd>
+
+                <dt class="col-sm-3">Ngày giờ hẹn</dt>
+                <dd class="col-sm-9">
+                    @Model.AppointmentDate.ToString("dd/MM/yyyy HH:mm")
+                </dd>
+
+                <dt class="col-sm-3">Thời lượng</dt>
+                <dd class="col-sm-9">
+                    @(Model.Service?.Duration.ToString() ?? "Không có") phút
+                </dd>
+
+                <dt class="col-sm-3">Ghi chú của khách</dt>
+                <dd class="col-sm-9">
+                    @(string.IsNullOrWhiteSpace(Model.Note)
+                                        ? "Không có ghi chú"
+                                        : Model.Note)
+                </dd>
+
+                <dt class="col-sm-3">Trạng thái</dt>
+                <dd class="col-sm-9">
+                    @Model.Status
+                </dd>
+            </dl>
+
+            <hr />
+
+            <h5 class="mb-3">Cập nhật trạng thái</h5>
+
+            @if (Model.Status == "Assigned")
+            {
+                <form asp-action="UpdateStatus" method="post" class="d-inline">
+                    <input type="hidden" name="id" value="@Model.AppointmentId" />
+                    <input type="hidden" name="status" value="InProgress" />
+                    <button type="submit" class="btn btn-primary">
+                        Bắt đầu thực hiện
+                    </button>
+                </form>
+
+                <form asp-action="UpdateStatus" method="post" class="d-inline">
+                    <input type="hidden" name="id" value="@Model.AppointmentId" />
+                    <input type="hidden" name="status" value="Cancelled" />
+                    <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('Bạn có chắc muốn hủy lịch này?')">
+                        Hủy lịch
+                    </button>
+                </form>
+            }
+            else if (Model.Status == "InProgress")
+            {
+                <form asp-action="UpdateStatus" method="post" class="d-inline">
+                    <input type="hidden" name="id" value="@Model.AppointmentId" />
+                    <input type="hidden" name="status" value="Completed" />
+                    <button type="submit" class="btn btn-success">
+                        Hoàn thành
+                    </button>
+                </form>
+
+                <form asp-action="UpdateStatus" method="post" class="d-inline">
+                    <input type="hidden" name="id" value="@Model.AppointmentId" />
+                    <input type="hidden" name="status" value="Cancelled" />
+                    <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('Bạn có chắc muốn hủy lịch này?')">
+                        Hủy lịch
+                    </button>
+                </form>
+            }
+            else
+            {
+                <p class="text-muted">
+                    Lịch hẹn đã kết thúc hoặc không thể cập nhật thêm.
+                </p>
+            }
+
+            <hr />
+            @if (Model.Status == "InProgress" || Model.Status == "Completed")
+            {
+                <a asp-controller="CareNotes"
+                   asp-action="Create"
+                   asp-route-id="@Model.AppointmentId"
+                   class="btn btn-success">
+                    Ghi nhận chăm sóc
+                </a>
+            }
+            <a asp-action="Index" class="btn btn-secondary">
+                Quay lại danh sách
+            </a>
+        </div>
+    </div>
+</div>

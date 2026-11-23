@@ -1,0 +1,70 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using PMPetCare.Models
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<ul class="navbar-nav ml-auto align-items-center">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        var currentUser = await UserManager.GetUserAsync(User);
+
+        <li class="nav-item">
+            <span class="nav-link text-dark">
+                <i class="bi bi-person-circle"></i>
+                @(currentUser?.FullName ?? User.Identity?.Name)
+            </span>
+        </li>
+
+        <li class="nav-item">
+            <span class="nav-link text-primary">
+                @if (User.IsInRole("Admin"))
+                {
+                    <i class="bi bi-shield-lock"></i>
+                    <span>Quản trị viên</span>
+                }
+                else if (User.IsInRole("Staff"))
+                {
+                    <i class="bi bi-person-workspace"></i>
+                    <span>Nhân viên</span>
+                }
+                else if (User.IsInRole("Customer"))
+                {
+                    <i class="bi bi-person"></i>
+                    <span>Khách hàng</span>
+                }
+            </span>
+        </li>
+
+        <li class="nav-item">
+            <form asp-area="Identity"
+                  asp-page="/Account/Logout"
+                  asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"
+                  method="post">
+                <button type="submit"
+                        class="nav-link btn btn-link text-danger">
+                    <i class="bi bi-box-arrow-right"></i>
+                    Đăng xuất
+                </button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark"
+               asp-area="Identity"
+               asp-page="/Account/Register">
+                Đăng ký
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-dark"
+               asp-area="Identity"
+               asp-page="/Account/Login">
+                Đăng nhập
+            </a>
+        </li>
+    }
+</ul>

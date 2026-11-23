@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Ghi nhận chăm sóc";
+    var appointment = ViewBag.Appointment as PMPetCare.Models.Appointment;
+}
+
+<div class="container py-4">
+    <h2 class="mb-4">Ghi nhận thông tin chăm sóc</h2>
+
+    @if (appointment != null)
+    {
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5>Lịch hẹn #@appointment.AppointmentId</h5>
+                <p class="mb-1">
+                    <strong>Thú cưng:</strong> @appointment.Pet?.PetName
+                </p>
+                <p class="mb-1">
+                    <strong>Ngày hẹn:</strong>
+                    @appointment.AppointmentDate.ToString("dd/MM/yyyy HH:mm")
+                </p>
+                <p class="mb-0">
+                    <strong>Trạng thái:</strong> @appointment.Status
+                </p>
+            </div>
+        </div>
+    }
+
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+            <form asp-action="Create" method="post">
+                <input type="hidden" name="id"
+                       value="@appointment?.AppointmentId" />
+
+                <div asp-validation-summary="All"
+                     class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nội dung chăm sóc</label>
+                    <textarea name="content"
+                              class="form-control"
+                              rows="5"
+                              placeholder="Ghi lại tình trạng thú cưng, quá trình chăm sóc và lời dặn..."
+                              required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ngày nhắc chăm sóc lại</label>
+                    <input type="date"
+                           name="reminderDate"
+                           class="form-control" />
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Lưu ghi nhận
+                </button>
+
+                <a asp-controller="StaffAppointments"
+                   asp-action="Details"
+                   asp-route-id="@appointment?.AppointmentId"
+                   class="btn btn-secondary">
+                    Quay lại
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

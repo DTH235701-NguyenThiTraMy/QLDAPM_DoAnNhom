@@ -1,0 +1,45 @@
+﻿@model IEnumerable<PMPetCare.Models.User>
+
+@{
+    ViewData["Title"] = "Quản lý tài khoản";
+}
+
+<div class="container mt-4">
+    <h2>Quản lý tài khoản</h2>
+    <div class="mb-3">
+        <a asp-action="CreateUser" class="btn btn-primary">
+            + Thêm tài khoản
+        </a>
+    </div>
+    <p>Danh sách tài khoản trong hệ thống Pet Care.</p>
+
+    <div class="card shadow-sm mt-4">
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Họ và tên</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th>Vai trò</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.FullName</td>
+                            <td>@user.Email</td>
+                            <td>@user.PhoneNumber</td>
+                            <td>@user.Address</td>
+                            <td>
+                                @string.Join(", ", (IList<string>)ViewBag.UserRoles[user.Id])
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,224 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<!-- Thanh điều hướng -->
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+            <span class="flaticon-pawprint-1 mr-2"></span> PMPetCare
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="fa fa-bars"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#home">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">Giới thiệu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">Dịch vụ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Liên hệ</a>
+                </li>
+
+                @if (User.Identity?.IsAuthenticated == true && User.IsInRole("Customer"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           asp-controller="CustomerDashboard"
+                           asp-action="Index">
+                            Tổng quan
+                        </a>
+                    </li>
+                }
+               @if (User.Identity?.IsAuthenticated == true && User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            asp-controller="AdminDashboard"
+                            asp-action="Index">
+                            Tổng quan
+                         </a>
+                    </li>
+                }
+                @if (User.Identity?.IsAuthenticated == true && User.IsInRole("Staff"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           asp-controller="StaffDashboard"
+                           asp-action="Index">
+                            Tổng quan
+                        </a>
+                    </li>
+                }
+            </ul>
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav>
+
+<!-- Banner trang chủ -->
+<div class="hero-wrap js-fullheight" id="home"
+     data-stellar-background-ratio="0.5"
+     style="background-image: url('/Interface/images/bg_1.jpg');">
+    <div class="overlay"></div>
+
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+            <div class="col-md-11 ftco-animate text-center">
+                <h1 class="mb-4">
+                    Chăm sóc thú cưng tận tâm, yêu thương trọn vẹn
+                </h1>
+                <p>
+                    <a href="#services" class="btn btn-primary py-3 px-4">
+                        Khám phá dịch vụ
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Giới thiệu nhanh các dịch vụ -->
+<section class="ftco-section bg-light ftco-no-pt ftco-intro" id="services">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
+                <div class="d-block services active text-center">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <span class="flaticon-blind"></span>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading">Chăm sóc thú cưng</h3>
+                        <p>
+                            Cung cấp các dịch vụ chăm sóc phù hợp với nhu cầu
+                            và tình trạng của từng thú cưng.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
+                <div class="d-block services text-center">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <span class="flaticon-dog-eating"></span>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading">Theo dõi lịch hẹn</h3>
+                        <p>
+                            Dễ dàng đặt lịch sử dụng dịch vụ và theo dõi
+                            trạng thái lịch hẹn trực tuyến.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
+                <div class="d-block services text-center">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <span class="flaticon-grooming"></span>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading">Tư vấn chăm sóc</h3>
+                        <p>
+                            Hỗ trợ cung cấp thông tin và gợi ý chăm sóc
+                            thú cưng thông qua trợ lý AI.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Giới thiệu -->
+<section class="ftco-section ftco-no-pt ftco-no-pb" id="about">
+    <div class="container">
+        <div class="row d-flex no-gutters">
+
+            <div class="col-md-5 d-flex">
+                <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center mb-4 mb-sm-0"
+                     style="background-image: url('/Interface/images/about-1.jpg');">
+                </div>
+            </div>
+
+            <div class="col-md-7 pl-md-5 py-md-5">
+                <div class="heading-section pt-md-5">
+                    <h2 class="mb-4">Vì sao chọn PMPetCare?</h2>
+                    <p>
+                        PMPetCare là website hỗ trợ quản lý dịch vụ chăm sóc
+                        thú cưng, giúp khách hàng thuận tiện trong việc quản lý
+                        thông tin thú cưng và đặt lịch sử dụng dịch vụ.
+                    </p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 services-2 w-100 d-flex">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="flaticon-stethoscope"></span>
+                        </div>
+                        <div class="text pl-3">
+                            <h4>Thông tin rõ ràng</h4>
+                            <p>Quản lý hồ sơ và thông tin của thú cưng.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 services-2 w-100 d-flex">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="flaticon-customer-service"></span>
+                        </div>
+                        <div class="text pl-3">
+                            <h4>Hỗ trợ khách hàng</h4>
+                            <p>Hỗ trợ khách hàng trong quá trình sử dụng dịch vụ.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 services-2 w-100 d-flex">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="flaticon-emergency-call"></span>
+                        </div>
+                        <div class="text pl-3">
+                            <h4>Quản lý lịch hẹn</h4>
+                            <p>Theo dõi và cập nhật trạng thái các lịch hẹn.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 services-2 w-100 d-flex">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="flaticon-veterinarian"></span>
+                        </div>
+                        <div class="text pl-3">
+                            <h4>Trợ lý AI</h4>
+                            <p>Hỗ trợ tư vấn và cung cấp gợi ý chăm sóc thú cưng.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Liên hệ -->
+<section class="ftco-section bg-light" id="contact">
+    <div class="container text-center">
+        <h2 class="mb-3">PMPetCare – Đồng hành cùng thú cưng</h2>
+        <p>
+            Hãy khám phá các dịch vụ và trải nghiệm tiện ích chăm sóc thú cưng
+            trên hệ thống của chúng tôi.
+        </p>
+    </div>
+</section>

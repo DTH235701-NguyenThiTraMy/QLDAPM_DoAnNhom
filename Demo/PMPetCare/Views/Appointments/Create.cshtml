@@ -1,0 +1,78 @@
+﻿@model PMPetCare.Models.Appointment
+
+@{
+    ViewData["Title"] = "Đặt lịch dịch vụ";
+}
+
+<div class="container py-4">
+    <h2 class="mb-4">Đặt lịch dịch vụ</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+
+                    <form asp-action="Create" method="post">
+
+                        <div asp-validation-summary="All"
+                             class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Thú cưng</label>
+                            <select name="PetId"
+                                    class="form-select"
+                                    asp-items="ViewBag.PetId"
+                                    required>
+                                <option value="">-- Chọn thú cưng --</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Dịch vụ</label>
+                            <select name="ServiceId"
+                                    class="form-select"
+                                    asp-items="ViewBag.ServiceId"
+                                    required>
+                                <option value="">-- Chọn dịch vụ --</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Ngày và giờ hẹn</label>
+                            <input type="datetime-local"
+                                   name="AppointmentDate"
+                                   class="form-control"
+                                   required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Ghi chú</label>
+                            <textarea name="Note"
+                                      class="form-control"
+                                      rows="3"
+                                      placeholder="Nhập yêu cầu hoặc lưu ý về thú cưng..."></textarea>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                Xác nhận đặt lịch
+                            </button>
+
+                            <a asp-action="Index"
+                               class="btn btn-secondary">
+                                Quay lại
+                            </a>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

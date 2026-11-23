@@ -1,0 +1,81 @@
+﻿@model PMPetCare.Models.Pet
+
+@{
+    ViewData["Title"] = "Xem chi tiết";
+}
+
+<h1>Thông tin thú cưng</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.PetName)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.PetName)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Species)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Species)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Breed)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Breed)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Age)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Age)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Gender)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt class="col-sm-3">
+                Ảnh thú cưng
+            </dt>
+            <dd class="col-sm-9">
+                @if (!string.IsNullOrEmpty(Model.ImagePath))
+                {
+                    <img src="@Model.ImagePath"
+                         alt="Ảnh thú cưng"
+                         style="width:200px;height:200px;object-fit:cover;border-radius:10px;" />
+                }
+                else
+                {
+                    <span>Chưa có ảnh thú cưng.</span>
+                }
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Edit" asp-route-id="@Model.PetId"
+       class="btn btn-warning">Sửa thông tin</a>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">Quay lại danh sách</a>
+</div>

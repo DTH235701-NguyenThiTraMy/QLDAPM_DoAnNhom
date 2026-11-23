@@ -1,0 +1,82 @@
+﻿@model IEnumerable<PMPetCare.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Lịch chăm sóc được phân công";
+}
+
+<div class="container-fluid py-4">
+    <h2 class="mb-4">Lịch chăm sóc được phân công</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Mã lịch</th>
+                            <th>Khách hàng</th>
+                            <th>Thú cưng</th>
+                            <th>Dịch vụ</th>
+                            <th>Ngày giờ hẹn</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.AppointmentId</td>
+                                    <td>@(item.Customer?.FullName ?? "Không có dữ liệu")</td>
+                                    <td>@(item.Pet?.PetName ?? "Không có dữ liệu")</td>
+                                    <td>@(item.Service?.ServiceName ?? "Không có dữ liệu")</td>
+                                    <td>@item.AppointmentDate.ToString("dd/MM/yyyy HH:mm")</td>
+
+                                    <td>
+                                        @switch (item.Status)
+                                        {
+                                            case "Assigned":
+                                                <span class="badge bg-primary">Đã phân công</span>
+                                                break;
+                                            case "InProgress":
+                                                <span class="badge bg-warning text-dark">Đang thực hiện</span>
+                                                break;
+                                            case "Completed":
+                                                <span class="badge bg-success">Hoàn thành</span>
+                                                break;
+                                            case "Cancelled":
+                                                <span class="badge bg-danger">Đã hủy</span>
+                                                break;
+                                            default:
+                                                <span class="badge bg-secondary">@item.Status</span>
+                                                break;
+                                        }
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="Details"
+                                           asp-route-id="@item.AppointmentId"
+                                           class="btn btn-sm btn-info">
+                                            Chi tiết
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="7" class="text-center py-4">
+                                    Hiện chưa có lịch hẹn nào được phân công cho bạn.
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

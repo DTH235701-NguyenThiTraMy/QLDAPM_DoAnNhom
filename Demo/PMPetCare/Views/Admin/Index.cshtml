@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container-fluid mt-4">
+    <h2>Admin Dashboard</h2>
+    <p>Chào mừng bạn đến với hệ thống quản lý Pet Care!</p>
+
+    <div class="row mt-4">
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow-sm p-3">
+                <h5>Tài khoản</h5>
+                <h2>@ViewBag.TotalUsers</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow-sm p-3">
+                <h5>Thú cưng</h5>
+                <h2>@ViewBag.TotalPets</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow-sm p-3">
+                <h5>Dịch vụ</h5>
+                <h2>@ViewBag.TotalServices</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow-sm p-3">
+                <h5>Tổng lịch hẹn</h5>
+                <h2>@ViewBag.TotalAppointments</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card shadow-sm p-3 mt-3">
+        <h5>Lịch hẹn đang chờ xác nhận</h5>
+        <h2>@ViewBag.PendingAppointments</h2>
+    </div>
+</div>

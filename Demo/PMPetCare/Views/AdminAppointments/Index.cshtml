@@ -1,0 +1,125 @@
+﻿@model IEnumerable<PMPetCare.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Quản lý lịch hẹn";
+}
+
+<div class="container-fluid py-4">
+
+    <h2 class="mb-4">Quản lý lịch hẹn</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover align-middle">
+
+                    <thead class="table-light">
+                        <tr>
+                            <th>Mã lịch</th>
+                            <th>Khách hàng</th>
+                            <th>Thú cưng</th>
+                            <th>Dịch vụ</th>
+                            <th>Ngày giờ hẹn</th>
+                            <th>Nhân viên</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.AppointmentId</td>
+
+                                    <td>
+                                        @(item.Customer?.FullName ?? "Không có dữ liệu")
+                                    </td>
+
+                                    <td>
+                                        @(item.Pet?.PetName ?? "Không có dữ liệu")
+                                    </td>
+
+                                    <td>
+                                        @(item.Service?.ServiceName ?? "Không có dữ liệu")
+                                    </td>
+
+                                    <td>
+                                        @item.AppointmentDate.ToString("dd/MM/yyyy HH:mm")
+                                    </td>
+
+                                    <td>
+                                        @(item.Staff?.FullName ?? "Chưa phân công")
+                                    </td>
+
+                                    <td>
+                                        @if (item.StaffId != null)
+                                        {
+                                            <span class="badge bg-success">Đã phân công</span>
+                                        }
+                                        else if (item.Status == "Pending")
+                                        {
+                                            <span class="badge bg-warning text-dark">Chờ phân công</span>
+                                        }
+                                        else
+                                        {
+                                            @item.Status
+                                        }
+                                    </td>
+
+                                    <td>
+                                        <div class="d-flex gap-1">
+
+                                            <a asp-action="Details"
+                                               asp-route-id="@item.AppointmentId"
+                                               class="btn btn-sm btn-info">
+                                                Chi tiết
+                                            </a>
+
+                                            @if (item.Status == "Pending" && item.StaffId == null)
+                                            {
+                                                <a asp-action="AssignStaff"
+                                                   asp-route-id="@item.AppointmentId"
+                                                   class="btn btn-sm btn-primary">
+                                                    Phân công
+                                                </a>
+                                            }
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="8" class="text-center py-4">
+                                    Chưa có lịch hẹn nào.
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

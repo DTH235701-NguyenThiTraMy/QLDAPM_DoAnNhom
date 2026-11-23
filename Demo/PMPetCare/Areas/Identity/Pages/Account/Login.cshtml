@@ -1,0 +1,268 @@
+﻿@page
+@model PMPetCare.Areas.Identity.Pages.Account.LoginModel
+
+@{
+    ViewData["Title"] = "Đăng nhập";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PMPetCare - Đăng nhập</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #ff8018;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 35px 20px;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 1080px;
+            min-height: 600px;
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 12px 35px rgba(100, 45, 0, .2);
+        }
+
+        .login-form {
+            width: 50%;
+            padding: 50px 55px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .brand {
+            color: #f47b20;
+            font-size: 27px;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        .login-form h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 7px;
+        }
+
+        .form-control {
+            height: 45px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .input-group .form-control {
+            height: 45px;
+        }
+
+        .password-toggle {
+            background: white;
+            border: 1px solid #ced4da;
+            color: #777;
+        }
+
+            .password-toggle:hover {
+                background: #fff3e8;
+                color: #f47b20;
+            }
+
+        .remember {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .login-btn {
+            width: 100%;
+            height: 46px;
+            border: none;
+            border-radius: 25px;
+            background: #ff851b;
+            color: white;
+            font-weight: bold;
+            margin-top: 18px;
+            transition: .2s;
+        }
+
+            .login-btn:hover {
+                background: #e96d08;
+            }
+
+        .register-link {
+            text-align: center;
+            font-size: 13px;
+            color: #888;
+            margin-top: 22px;
+        }
+
+            .register-link a {
+                color: #333;
+                font-weight: bold;
+            }
+
+        .login-image {
+            width: 50%;
+            background: #258eb7;
+            overflow: hidden;
+        }
+
+            .login-image img {
+                width: 100%;
+                height: 100%;
+                min-height: 600px;
+                object-fit: cover;
+            }
+
+        .validation {
+            font-size: 12px;
+        }
+
+        @@media (max-width: 768px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            .login-card {
+                max-width: 480px;
+                min-height: auto;
+            }
+
+            .login-form {
+                width: 100%;
+                padding: 40px 25px;
+            }
+
+            .login-image {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-card">
+
+        <div class="login-form">
+
+            <div class="brand">
+                <i class="bi bi-heart-fill"></i> PMPetCare
+            </div>
+
+            <h2>Chào mừng trở lại!</h2>
+
+            <p class="description">
+                Đăng nhập để tiếp tục chăm sóc thú cưng của bạn.
+            </p>
+
+            <form method="post">
+                @Html.AntiForgeryToken()
+
+                <input type="hidden" asp-for="ReturnUrl" />
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger validation mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Input.Email" class="form-label"></label>
+                    <input asp-for="Input.Email"
+                           class="form-control"
+                           placeholder="example@gmail.com" />
+                    <span asp-validation-for="Input.Email"
+                          class="text-danger validation"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Input.Password" class="form-label"></label>
+
+                    <div class="input-group">
+                        <input asp-for="Input.Password"
+                               class="form-control"
+                               id="password"
+                               placeholder="Nhập mật khẩu" />
+
+                        <button type="button"
+                                class="btn password-toggle"
+                                onclick="togglePassword()">
+                            <i class="bi bi-eye" id="eyePassword"></i>
+                        </button>
+                    </div>
+
+                    <span asp-validation-for="Input.Password"
+                          class="text-danger validation"></span>
+                </div>
+
+                <div class="form-check remember">
+                    <input asp-for="Input.RememberMe"
+                           class="form-check-input" />
+                    <label asp-for="Input.RememberMe"
+                           class="form-check-label"></label>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    ĐĂNG NHẬP
+                </button>
+            </form>
+
+            <div class="register-link">
+                Chưa có tài khoản?
+                <a asp-page="./Register">Đăng ký ngay</a>
+            </div>
+
+        </div>
+
+        <div class="login-image">
+            <img src="~/Interface/images/about-1.jpg"
+                 alt="Chăm sóc thú cưng PMPetCare" />
+        </div>
+
+    </div>
+
+    <script>
+        function togglePassword() {
+            const input = document.getElementById("password");
+            const icon = document.getElementById("eyePassword");
+
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.replace("bi-eye", "bi-eye-slash");
+            } else {
+                input.type = "password";
+                icon.classList.replace("bi-eye-slash", "bi-eye");
+            }
+        }
+    </script>
+</body>
+</html>

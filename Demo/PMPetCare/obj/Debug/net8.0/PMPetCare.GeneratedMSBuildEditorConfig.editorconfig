@@ -1,0 +1,221 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = PMPetCare
+build_property.RootNamespace = PMPetCare
+build_property.ProjectDir = D:\Hoc ki 7\ASP\ĐỒ ÁN ASP\PMPetCare\PMPetCare\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Hoc ki 7\ASP\ĐỒ ÁN ASP\PMPetCare\PMPetCare
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/AdminAppointments/AssignStaff.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5BcHBvaW50bWVudHNcQXNzaWduU3RhZmYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/AdminAppointments/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5BcHBvaW50bWVudHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/AdminAppointments/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5BcHBvaW50bWVudHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/AdminAppointments/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5BcHBvaW50bWVudHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/AdminAppointments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5BcHBvaW50bWVudHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/AdminDashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5EYXNoYm9hcmRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/AdminServices/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TZXJ2aWNlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/AdminServices/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TZXJ2aWNlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/AdminServices/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TZXJ2aWNlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/AdminServices/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TZXJ2aWNlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Admin/CreateUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Admin/Users.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXNlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Appointments/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Appointments/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Appointments/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Appointments/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Appointments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/CareNotes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyZU5vdGVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/CareNotes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyZU5vdGVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/CareNotes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyZU5vdGVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/CareNotes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyZU5vdGVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/CareNotes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyZU5vdGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/CustomerDashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJEYXNoYm9hcmRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Pets/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGV0c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Pets/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGV0c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Pets/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGV0c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Pets/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGV0c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Pets/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGV0c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Shared/_CustomerLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DdXN0b21lckxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/StaffAppointments/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZBcHBvaW50bWVudHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/StaffAppointments/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZBcHBvaW50bWVudHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/StaffAppointments/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZBcHBvaW50bWVudHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/StaffAppointments/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZBcHBvaW50bWVudHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/StaffAppointments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZBcHBvaW50bWVudHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/StaffDashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZEYXNoYm9hcmRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Hoc ki 7/ASP/ĐỒ ÁN ASP/PMPetCare/PMPetCare/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-p2dhshpp6h

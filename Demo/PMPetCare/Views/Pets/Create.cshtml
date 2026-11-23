@@ -1,0 +1,71 @@
+﻿@model PMPetCare.Models.Pet
+
+@{
+    ViewData["Title"] = "Thêm thú cưng";
+}
+
+<h1>Thêm thú cưng</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="PetName" class="control-label"></label>
+                <input asp-for="PetName" class="form-control" />
+                <span asp-validation-for="PetName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Species" class="control-label"></label>
+                <input asp-for="Species" class="form-control" />
+                <span asp-validation-for="Species" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Breed" class="control-label"></label>
+                <input asp-for="Breed" class="form-control" />
+                <span asp-validation-for="Breed" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Gender" class="control-label"></label>
+                <input asp-for="Gender" class="form-control" />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Ảnh thú cưng</label>
+                <input type="file" name="image"
+                       class="form-control"
+                       accept=".jpg,.jpeg,.png,.webp" />
+
+                @Html.ValidationMessage("image", "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Thêm thú cưng " class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Quay lại trang chủ</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+

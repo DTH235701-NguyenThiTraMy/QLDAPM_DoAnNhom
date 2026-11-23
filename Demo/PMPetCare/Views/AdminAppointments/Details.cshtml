@@ -1,0 +1,90 @@
+﻿@model PMPetCare.Models.Appointment
+
+@{
+    ViewData["Title"] = "Chi tiết lịch hẹn";
+}
+
+<div class="container py-4">
+    <h2 class="mb-4">Chi tiết lịch hẹn #@Model.AppointmentId</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+
+            <h5 class="mb-3">Thông tin khách hàng và thú cưng</h5>
+
+            <dl class="row">
+                <dt class="col-sm-3">Khách hàng</dt>
+                <dd class="col-sm-9">
+                    @(Model.Customer?.FullName ?? "Không có dữ liệu")
+                </dd>
+
+                <dt class="col-sm-3">Email</dt>
+                <dd class="col-sm-9">
+                    @(Model.Customer?.Email ?? "Không có dữ liệu")
+                </dd>
+
+                <dt class="col-sm-3">Thú cưng</dt>
+                <dd class="col-sm-9">
+                    @(Model.Pet?.PetName ?? "Không có dữ liệu")
+                </dd>
+
+                <dt class="col-sm-3">Dịch vụ</dt>
+                <dd class="col-sm-9">
+                    @(Model.Service?.ServiceName ?? "Không có dữ liệu")
+                </dd>
+
+                <dt class="col-sm-3">Giá dịch vụ</dt>
+                <dd class="col-sm-9">
+                    @(Model.Service != null
+                                        ? Model.Service.Price.ToString("N0") + " VNĐ"
+                                        : "Không có dữ liệu")
+                </dd>
+            </dl>
+
+            <hr />
+
+            <h5 class="mb-3">Thông tin lịch hẹn</h5>
+
+            <dl class="row">
+                <dt class="col-sm-3">Ngày giờ hẹn</dt>
+                <dd class="col-sm-9">
+                    @Model.AppointmentDate.ToString("dd/MM/yyyy HH:mm")
+                </dd>
+
+                <dt class="col-sm-3">Ghi chú</dt>
+                <dd class="col-sm-9">
+                    @(string.IsNullOrWhiteSpace(Model.Note)
+                                        ? "Không có ghi chú"
+                                        : Model.Note)
+                </dd>
+
+                <dt class="col-sm-3">Nhân viên phụ trách</dt>
+                <dd class="col-sm-9">
+                    @(Model.Staff?.FullName ?? "Chưa phân công")
+                </dd>
+
+                <dt class="col-sm-3">Trạng thái</dt>
+                <dd class="col-sm-9">@Model.Status</dd>
+
+                <dt class="col-sm-3">Ngày tạo</dt>
+                <dd class="col-sm-9">
+                    @Model.CreatedAt.ToString("dd/MM/yyyy HH:mm")
+                </dd>
+            </dl>
+
+            <a asp-action="Index" class="btn btn-secondary">
+                Quay lại danh sách
+            </a>
+
+            @if (Model.Status == "Pending")
+            {
+                <a asp-action="AssignStaff"
+                   asp-route-id="@Model.AppointmentId"
+                   class="btn btn-primary">
+                    Phân công nhân viên
+                </a>
+            }
+
+        </div>
+    </div>
+</div>
