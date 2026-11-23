@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Android17.Services;
 
 namespace Android17.Controllers;
 
@@ -139,8 +140,23 @@ public class DatHangController : Controller
         return View(don);
     }
 
-    // ===== Hàm phụ =====
+    // ===== Khách hủy đơn (chỉ khi đơn còn "Chờ xác nhận") =====
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Huy(int id)
+    {
+        var uid = _userManager.GetUserId(User);
+        bool cuaToi = await _context.DonHangs.AnyAsync(d => d.Dhid == id && d.Nd.IdentityUserId == uid);
+        if (!cuaToi) return NotFound();
 
+        bool ok = await DonHangHelper.HuyDonAsync(_context, id, choPhepDaXacNhan: false);
+        if (ok)
+            TempData["ThongBao"] = "Đã hủy đơn #" + id + ". Số lượng hàng đã được hoàn lại kho.";
+        else
+            TempData["Loi"] = "Không thể hủy đơn #" + id + " vì đơn đã được xác nhận hoặc đã hủy trước đó.";
+
+        return RedirectToAction(nameof(HoaDon), new { id });
+    }
     // Lấy các dòng giỏ có thể đặt (còn bán, còn hàng). Có vấn đề thì trả về thông báo lỗi.
     private async Task<(List<GioHang> ds, string? loi)> LayGioDeDat(int ndid)
     {
