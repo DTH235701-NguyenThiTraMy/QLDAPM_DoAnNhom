@@ -1,20 +1,31 @@
-﻿@model Android17.Models.LoaiHang
+﻿@model Android17.Models.NhanHang
 @{
-    ViewData["Title"] = "Xóa loại hàng";
+    ViewData["Title"] = "Xóa nhãn hàng";
+    int soSp = Model.SanPhams.Count;
 }
 
-<h4>Xóa loại hàng</h4>
-<h5 class="text-danger">Bạn có chắc muốn xóa loại hàng này?</h5>
+<h4>Xóa nhãn hàng</h4>
 <hr />
 <dl class="row">
-    <dt class="col-sm-2">Tên loại</dt>
-    <dd class="col-sm-10">@Model.TenLoai</dd>
-    <dt class="col-sm-2">Mô tả</dt>
-    <dd class="col-sm-10">@Model.MoTa</dd>
+    <dt class="col-sm-2">Tên nhãn hàng</dt>
+    <dd class="col-sm-10">@Model.TenNhanHang</dd>
+    <dt class="col-sm-2">Số sản phẩm</dt>
+    <dd class="col-sm-10">@soSp</dd>
 </dl>
 
-<form asp-action="Delete">
-    <input type="hidden" asp-for="LoaiId" />
-    <button type="submit" class="btn btn-danger">Xóa</button>
+@if (soSp > 0)
+{
+    <div class="alert alert-warning">
+        Không thể xóa vì nhãn này còn <strong>@soSp</strong> sản phẩm (kể cả sản phẩm đã ẩn).
+        Hãy chuyển các sản phẩm sang nhãn khác (hoặc xóa chúng) trước.
+    </div>
     <a asp-action="Index" class="btn btn-outline-secondary">Quay lại</a>
-</form>
+}
+else
+{
+    <h5 class="text-danger">Bạn có chắc muốn xóa nhãn hàng này?</h5>
+    <form asp-action="Delete" asp-route-id="@Model.NhanHangId" method="post">
+        <button type="submit" class="btn btn-danger">Xóa</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Quay lại</a>
+    </form>
+}

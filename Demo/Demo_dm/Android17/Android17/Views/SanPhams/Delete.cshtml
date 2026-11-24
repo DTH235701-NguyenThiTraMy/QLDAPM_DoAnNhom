@@ -1,138 +1,36 @@
-@model Android17.Models.SanPham
-
+﻿@model Android17.Models.SanPham
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Xóa sản phẩm";
+    var vn = new System.Globalization.CultureInfo("vi-VN");
 }
 
-<h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Android17.Models.SanPham</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TenSp)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TenSp)
-        </dd>
-    </dl>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LoaiId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LoaiId)
-        </dd>
-    </dl>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NhanHangId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NhanHangId)
-        </dd>
-    </dl>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Gia)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Gia)
-        </dd>
-    </dl>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GiaGoc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GiaGoc)
-        </dd>
-    </dl>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TonKho)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TonKho)
-        </dd>
-    </dl>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Anh)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Anh)
-        </dd>
-    </dl>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MoTaNgan)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MoTaNgan)
-        </dd>
-    </dl>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ThongSo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ThongSo)
-        </dd>
-    </dl>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NoiBat)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NoiBat)
-        </dd>
-    </dl>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DangBan)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DangBan)
-        </dd>
-    </dl>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DonHangChiTiets)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DonHangChiTiets)
-        </dd>
-    </dl>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GioHangs)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GioHangs)
-        </dd>
-    </dl>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Loai)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Loai)
-        </dd>
-    </dl>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NhanHang)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NhanHang)
-        </dd>
-    </dl>
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Spid" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+<h4>Xóa sản phẩm</h4>
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        <img src="~/images/@Model.Anh" alt="" class="img-fluid" onerror="this.style.display='none'" />
+    </div>
+    <div class="col-md-9">
+        <dl class="row">
+            <dt class="col-sm-3">Tên sản phẩm</dt>
+            <dd class="col-sm-9">@Model.TenSp</dd>
+            <dt class="col-sm-3">Loại / Hãng</dt>
+            <dd class="col-sm-9">@Model.Loai.TenLoai / @Model.NhanHang.TenNhanHang</dd>
+            <dt class="col-sm-3">Giá bán</dt>
+            <dd class="col-sm-9">@Model.Gia.ToString("N0", vn) ₫</dd>
+            <dt class="col-sm-3">Tồn kho</dt>
+            <dd class="col-sm-9">@Model.TonKho</dd>
+        </dl>
+    </div>
 </div>
+
+<div class="alert alert-info">
+    Sản phẩm chưa có trong đơn hàng nào sẽ bị <strong>xóa hẳn</strong> (và gỡ khỏi giỏ hàng của khách).
+    Sản phẩm đã có trong đơn hàng thì không thể xóa, hệ thống sẽ chuyển sang trạng thái <strong>Đã ẩn</strong>.
+</div>
+
+<h5 class="text-danger">Bạn có chắc muốn tiếp tục?</h5>
+<form asp-action="Delete" asp-route-id="@Model.Spid" method="post">
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-action="Index" class="btn btn-outline-secondary">Quay lại</a>
+</form>

@@ -1,41 +1,41 @@
-@model IEnumerable<Android17.Models.NhanHang>
-
+﻿@model IEnumerable<Android17.Models.NhanHang>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Quản lý nhãn hàng";
 }
 
-<h1>Index</h1>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="mb-0">Quản lý nhãn hàng</h4>
+    <a asp-action="Create" class="btn btn-success">+ Thêm nhãn hàng</a>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+@if (TempData["ThongBao"] != null)
+{
+    <div class="alert alert-success">@TempData["ThongBao"]</div>
+}
+@if (TempData["Loi"] != null)
+{
+    <div class="alert alert-danger">@TempData["Loi"]</div>
+}
+
+<table class="table table-striped align-middle">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TenNhanHang)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SanPhams)
-            </th>
+            <th>Tên nhãn hàng</th>
+            <th class="text-center">Số sản phẩm</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(model => item.TenNhanHang)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.SanPhams)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.NhanHangId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.NhanHangId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.NhanHangId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TenNhanHang</td>
+                <td class="text-center">@item.SanPhams.Count</td>
+                <td class="text-nowrap">
+                    <a asp-action="Edit" asp-route-id="@item.NhanHangId">Sửa</a> |
+                    <a asp-action="Delete" asp-route-id="@item.NhanHangId" class="text-danger">Xóa</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

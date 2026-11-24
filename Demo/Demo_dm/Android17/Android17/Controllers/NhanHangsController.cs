@@ -1,7 +1,9 @@
+﻿using Android17.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Android17.Models;
+
+namespace Android17.Controllers;
 
 [Authorize(Roles = "Admin")]
 public class NhanHangsController : Controller
@@ -13,138 +15,98 @@ public class NhanHangsController : Controller
         _context = context;
     }
 
-    // GET: NHANHANGS
-    public async Task<IActionResult> Index()    
+    public async Task<IActionResult> Index()
     {
-        return View(await _context.NhanHangs.ToListAsync());
+        var ds = await _context.NhanHangs
+            .Include(n => n.SanPhams)
+            .OrderBy(n => n.TenNhanHang)
+            .ToListAsync();
+        return View(ds);
     }
 
-    // GET: NHANHANGS/Details/5
-    public async Task<IActionResult> Details(int? nhanhangid)
-    {
-        if (nhanhangid == null)
-        {
-            return NotFound();
-        }
+    public IActionResult Create() => View(new NhanHang());
 
-        var nhanhang = await _context.NhanHangs
-            .FirstOrDefaultAsync(m => m.NhanHangId == nhanhangid);
-        if (nhanhang == null)
-        {
-            return NotFound();
-        }
-
-        return View(nhanhang);
-    }
-
-    // GET: NHANHANGS/Create
-    public IActionResult Create()
-    {
-        return View();
-    }
-
-    // POST: NHANHANGS/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("NhanHangId,TenNhanHang,SanPhams")] NhanHang nhanhang)
+    public async Task<IActionResult> Create([Bind("TenNhanHang")] NhanHang nhan)
     {
-        if (ModelState.IsValid)
-        {
-            _context.Add(nhanhang);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-        return View(nhanhang);
-    }
+        await KiemTra(nhan, 0);
+        if (!ModelState.IsValid) return View(nhan);
 
-    // GET: NHANHANGS/Edit/5
-    public async Task<IActionResult> Edit(int? nhanhangid)
-    {
-        if (nhanhangid == null)
-        {
-            return NotFound();
-        }
-
-        var nhanhang = await _context.NhanHangs.FindAsync(nhanhangid);
-        if (nhanhang == null)
-        {
-            return NotFound();
-        }
-        return View(nhanhang);
-    }
-
-    // POST: NHANHANGS/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int? nhanhangid, [Bind("NhanHangId,TenNhanHang,SanPhams")] NhanHang nhanhang)
-    {
-        if (nhanhangid != nhanhang.NhanHangId)
-        {
-            return NotFound();
-        }
-
-        if (ModelState.IsValid)
-        {
-            try
-            {
-                _context.Update(nhanhang);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!NhanHangExists(nhanhang.NhanHangId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return RedirectToAction(nameof(Index));
-        }
-        return View(nhanhang);
-    }
-
-    // GET: NHANHANGS/Delete/5
-    public async Task<IActionResult> Delete(int? nhanhangid)
-    {
-        if (nhanhangid == null)
-        {
-            return NotFound();
-        }
-
-        var nhanhang = await _context.NhanHangs
-            .FirstOrDefaultAsync(m => m.NhanHangId == nhanhangid);
-        if (nhanhang == null)
-        {
-            return NotFound();
-        }
-
-        return View(nhanhang);
-    }
-
-    // POST: NHANHANGS/Delete/5
-    [HttpPost, ActionName("Delete")]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int? nhanhangid)
-    {
-        var nhanhang = await _context.NhanHangs.FindAsync(nhanhangid);
-        if (nhanhang != null)
-        {
-            _context.NhanHangs.Remove(nhanhang);
-        }
-
+        _context.Add(nhan);
         await _context.SaveChangesAsync();
+        TempData["ThongBao"] = "Đã thêm nhãn hàng \"" + nhan.TenNhanHang + "\".";
         return RedirectToAction(nameof(Index));
     }
 
-    private bool NhanHangExists(int? nhanhangid)
+    public async Task<IActionResult> Edit(int? id)
     {
-        return _context.NhanHangs.Any(e => e.NhanHangId == nhanhangid);
+        if (id == null) return NotFound();
+        var nhan = await _context.NhanHangs.FindAsync(id);
+        if (nhan == null) return NotFound();
+        return View(nhan);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(int id, [Bind("NhanHangId,TenNhanHang")] NhanHang nhan)
+    {
+        if (id != nhan.NhanHangId) return NotFound();
+        var goc = await _context.NhanHangs.FindAsync(id);
+        if (goc == null) return NotFound();
+
+        await KiemTra(nhan, id);
+        if (!ModelState.IsValid) return View(nhan);
+
+        goc.TenNhanHang = nhan.TenNhanHang;
+        await _context.SaveChangesAsync();
+        TempData["ThongBao"] = "Đã cập nhật nhãn hàng \"" + goc.TenNhanHang + "\".";
+        return RedirectToAction(nameof(Index));
+    }
+
+    public async Task<IActionResult> Delete(int? id)
+    {
+        if (id == null) return NotFound();
+        var nhan = await _context.NhanHangs
+            .Include(n => n.SanPhams)
+            .FirstOrDefaultAsync(n => n.NhanHangId == id);
+        if (nhan == null) return NotFound();
+        return View(nhan);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        var nhan = await _context.NhanHangs
+            .Include(n => n.SanPhams)
+            .FirstOrDefaultAsync(n => n.NhanHangId == id);
+        if (nhan == null) return RedirectToAction(nameof(Index));
+
+        if (nhan.SanPhams.Count > 0)
+        {
+            TempData["Loi"] = "Không thể xóa nhãn hàng \"" + nhan.TenNhanHang + "\" vì còn " + nhan.SanPhams.Count + " sản phẩm thuộc nhãn này.";
+            return RedirectToAction(nameof(Index));
+        }
+
+        _context.NhanHangs.Remove(nhan);
+        await _context.SaveChangesAsync();
+        TempData["ThongBao"] = "Đã xóa nhãn hàng \"" + nhan.TenNhanHang + "\".";
+        return RedirectToAction(nameof(Index));
+    }
+
+    private async Task KiemTra(NhanHang n, int idHienTai)
+    {
+        ModelState.Remove(nameof(NhanHang.TenNhanHang));
+
+        var ten = (n.TenNhanHang ?? "").Trim();
+        n.TenNhanHang = ten;
+
+        if (ten.Length == 0)
+            ModelState.AddModelError(nameof(NhanHang.TenNhanHang), "Vui lòng nhập tên nhãn hàng.");
+        else if (ten.Length > 100)
+            ModelState.AddModelError(nameof(NhanHang.TenNhanHang), "Tên nhãn hàng tối đa 100 ký tự.");
+        else if (await _context.NhanHangs.AnyAsync(x => x.TenNhanHang == ten && x.NhanHangId != idHienTai))
+            ModelState.AddModelError(nameof(NhanHang.TenNhanHang), "Đã có nhãn hàng tên \"" + ten + "\".");
     }
 }

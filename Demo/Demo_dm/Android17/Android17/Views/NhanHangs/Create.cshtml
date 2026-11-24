@@ -1,36 +1,21 @@
-@model Android17.Models.NhanHang
-
+﻿@model Android17.Models.NhanHang
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Thêm nhãn hàng";
 }
 
-<h1>Create</h1>
-
-<h4>NhanHang</h4>
+<h4>Thêm nhãn hàng</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="form-group">
-                <label asp-for="TenNhanHang" class="control-label"></label>
-                <input asp-for="TenNhanHang" class="form-control" />
+            <div class="mb-3">
+                <label asp-for="TenNhanHang" class="form-label">Tên nhãn hàng</label>
+                <input asp-for="TenNhanHang" class="form-control" maxlength="100" />
                 <span asp-validation-for="TenNhanHang" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="SanPhams" class="control-label"></label>
-                <input asp-for="SanPhams" class="form-control" />
-                <span asp-validation-for="SanPhams" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+            <button type="submit" class="btn btn-primary">Lưu</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Quay lại</a>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>

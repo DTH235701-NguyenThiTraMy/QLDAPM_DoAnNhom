@@ -10,7 +10,11 @@
 
 @if (TempData["ThongBao"] != null)
 {
-    <div class="alert alert-info">@TempData["ThongBao"]</div>
+    <div class="alert alert-success">@TempData["ThongBao"]</div>
+}
+@if (TempData["Loi"] != null)
+{
+    <div class="alert alert-danger">@TempData["Loi"]</div>
 }
 
 <table class="table table-striped align-middle">
@@ -18,6 +22,7 @@
         <tr>
             <th>Tên loại</th>
             <th>Mô tả</th>
+            <th class="text-center">Số sản phẩm</th>
             <th></th>
         </tr>
     </thead>
@@ -27,6 +32,7 @@
             <tr>
                 <td>@item.TenLoai</td>
                 <td>@item.MoTa</td>
+                <td class="text-center">@item.SanPhams.Count</td>
                 <td class="text-nowrap">
                     <a asp-action="Edit" asp-route-id="@item.LoaiId">Sửa</a> |
                     <a asp-action="Delete" asp-route-id="@item.LoaiId" class="text-danger">Xóa</a>

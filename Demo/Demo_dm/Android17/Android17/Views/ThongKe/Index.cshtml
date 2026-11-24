@@ -1,0 +1,181 @@
+﻿@model Android17.ViewModels.ThongKeVM
+@{
+    ViewData["Title"] = "Thống kê";
+    var vn = new System.Globalization.CultureInfo("vi-VN");
+    string[] ten = { "Chờ xác nhận", "Đã xác nhận", "Đang giao", "Hoàn thành", "Đã hủy" };
+    int maxDon = Math.Max(1, Model.SoDonTheoTrangThai.Max());
+    decimal maxNgay = Model.DoanhThuNgay.Any() ? Model.DoanhThuNgay.Max(x => x.DoanhThu) : 0;
+}
+
+<h4 class="mb-3">Thống kê</h4>
+
+<form method="get" asp-action="Index" class="row g-2 align-items-end mb-4">
+    <div class="col-auto">
+        <label class="form-label mb-0">Từ ngày</label>
+        <input type="date" name="tuNgay" value="@(Model.TuNgay?.ToString("yyyy-MM-dd"))" class="form-control" />
+    </div>
+    <div class="col-auto">
+        <label class="form-label mb-0">Đến ngày</label>
+        <input type="date" name="denNgay" value="@(Model.DenNgay?.ToString("yyyy-MM-dd"))" class="form-control" />
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Xem</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Tất cả</a>
+    </div>
+    <div class="col-12 form-text">Để trống cả hai ô là thống kê tất cả đơn hàng.</div>
+</form>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="card border-success h-100">
+            <div class="card-body">
+                <div class="text-muted small">Doanh thu (đơn hoàn thành)</div>
+                <div class="fs-4 fw-bold text-success">@Model.DoanhThu.ToString("N0", vn) ₫</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-warning h-100">
+            <div class="card-body">
+                <div class="text-muted small">Đơn đang xử lý</div>
+                <div class="fs-4 fw-bold text-warning">@Model.DangXuLy.ToString("N0", vn) ₫</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="text-muted small">Tổng số đơn</div>
+                <div class="fs-4 fw-bold">@Model.TongDon</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="text-muted small">Khách đã đặt hàng</div>
+                <div class="fs-4 fw-bold">@Model.SoKhachDatHang</div>
+                <div class="text-muted small">@Model.SoSanPhamDangBan sản phẩm đang bán</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-6">
+        <h5 class="text-warning border-bottom pb-1">Số đơn theo trạng thái</h5>
+        <table class="table align-middle">
+            <tbody>
+                @for (int i = 0; i < ten.Length; i++)
+                {
+                    int pct = Model.SoDonTheoTrangThai[i] * 100 / maxDon;
+                    <tr>
+                        <td style="width:140px"><partial name="_TrangThaiDon" model="i" /></td>
+                        <td>
+                            <div class="progress" style="height:10px">
+                                <div class="progress-bar bg-secondary" style="width:@(pct)%"></div>
+                            </div>
+                        </td>
+                        <td class="text-end fw-bold" style="width:50px">@Model.SoDonTheoTrangThai[i]</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-lg-6">
+        <h5 class="text-warning border-bottom pb-1">Doanh thu theo ngày (10 ngày gần nhất)</h5>
+        @if (Model.DoanhThuNgay.Count == 0)
+        {
+            <p class="text-muted">Chưa có đơn hoàn thành nào trong khoảng này.</p>
+        }
+        else
+        {
+            <table class="table align-middle">
+                <tbody>
+                    @foreach (var n in Model.DoanhThuNgay)
+                    {
+                        int pct = maxNgay > 0 ? (int)(n.DoanhThu * 100 / maxNgay) : 0;
+                        <tr>
+                            <td class="text-nowrap" style="width:100px">@n.Ngay.ToString("dd/MM/yyyy")</td>
+                            <td>
+                                <div class="progress" style="height:10px">
+                                    <div class="progress-bar bg-success" style="width:@(pct)%"></div>
+                                </div>
+                            </td>
+                            <td class="text-end text-nowrap">@n.DoanhThu.ToString("N0", vn) ₫ <small class="text-muted">(@n.SoDon đơn)</small></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+
+    <div class="col-lg-6">
+        <h5 class="text-warning border-bottom pb-1">Top 5 sản phẩm bán chạy</h5>
+        @if (Model.BanChay.Count == 0)
+        {
+            <p class="text-muted">Chưa có đơn hàng nào trong khoảng này.</p>
+        }
+        else
+        {
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th class="text-center">Đã bán</th>
+                        <th class="text-end">Doanh số</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var b in Model.BanChay)
+                    {
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <img src="~/images/@b.Anh" alt="" style="width:40px;height:40px;object-fit:contain"
+                                         onerror="this.style.visibility='hidden'" />
+                                    <span>@b.TenSp</span>
+                                </div>
+                            </td>
+                            <td class="text-center fw-bold">@b.SoLuong</td>
+                            <td class="text-end">@b.DoanhThu.ToString("N0", vn) ₫</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+
+    <div class="col-lg-6">
+        <h5 class="text-warning border-bottom pb-1">Sắp hết hàng (tồn từ @Model.NguongSapHet trở xuống)</h5>
+        @if (Model.SapHet.Count == 0)
+        {
+            <p class="text-muted">Không có sản phẩm nào sắp hết hàng.</p>
+        }
+        else
+        {
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th class="text-center">Tồn kho</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var s in Model.SapHet)
+                    {
+                        <tr>
+                            <td>@s.TenSp</td>
+                            <td class="text-center">
+                                <span class="badge @(s.TonKho == 0 ? "bg-danger" : "bg-warning text-dark")">@s.TonKho</span>
+                            </td>
+                            <td class="text-end"><a asp-controller="SanPhams" asp-action="Edit" asp-route-id="@s.Spid">Nhập thêm</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
