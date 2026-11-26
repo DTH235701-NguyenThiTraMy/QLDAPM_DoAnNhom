@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PMPetCare")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a6122a69e61ba93bd8e644e92dbad58a294ce593")]
 [assembly: System.Reflection.AssemblyProductAttribute("PMPetCare")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PMPetCare")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,996 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\models\\pet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\models\\pet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\models\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\models\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\models\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\models\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\models\\carenote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\models\\carenote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\admindashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\admindashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\customerdashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\customerdashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\shared\\_customerlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\shared\\_customerlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\controllers\\admindashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\controllers\\admindashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\staffdashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\staffdashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\controllers\\staffdashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\controllers\\staffdashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\controllers\\customerdashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\controllers\\customerdashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\controllers\\staffappointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\controllers\\staffappointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\staffappointments\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\staffappointments\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\carenotes\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\carenotes\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\carenotes\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\carenotes\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\controllers\\carenotescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\controllers\\carenotescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\staffappointments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\staffappointments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\controllers\\adminappointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\controllers\\adminappointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\adminappointments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\adminappointments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\controllers\\adminservicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\controllers\\adminservicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\controllers\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\controllers\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\adminappointments\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\adminappointments\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\adminappointments\\assignstaff.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\adminappointments\\assignstaff.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\appointments\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\appointments\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\pets\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\pets\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\adminservices\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\adminservices\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\adminservices\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\adminservices\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\areas\\identity\\pages\\account\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\areas\\identity\\pages\\account\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\areas\\identity\\pages\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\areas\\identity\\pages\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\pmpetcare.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\pmpetcare.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\pets\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\pets\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\pets\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\pets\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\pets\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\pets\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\pets\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\pets\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\controllers\\petscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\controllers\\petscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\data\\migrations\\20261121172447_petqr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\data\\migrations\\20261121172447_petqr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\adminservices\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\adminservices\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\adminservices\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\adminservices\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\admin\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\admin\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\views\\admin\\createuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\views\\admin\\createuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\data\\migrations\\20261121084111_211126.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\data\\migrations\\20261121084111_211126.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|d:\\hoc ki 7\\qldapm\\qldapm_doannhom\\demo\\pmpetcare\\pmpetcare\\models\\viewmodels\\createuserviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD7E124-8ED1-4CDD-855D-A6F141721A5D}|PMPetCare\\PMPetCare.csproj|solutionrelative:pmpetcare\\models\\viewmodels\\createuserviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ADMIN\\AppData\\Roaming\\Microsoft\\UserSecrets\\aspnet-PMPetCare-d607c5cc-58f5-47d4-afcf-8272bdb065bd\\secrets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Hoc ki 7\\ASP\\\u0110\u1ED2 \u00C1N\\PMPetCare\\PMPetCare\\Data\\Migrations\\20261117153207_PetDBbbbbbb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CareNote.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Models\\CareNote.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Models\\CareNote.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Models\\CareNote.cs",
+              "RelativeToolTip": "PMPetCare\\Models\\CareNote.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-17T15:17:21.601Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Appointment.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Models\\Appointment.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Models\\Appointment.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Models\\Appointment.cs",
+              "RelativeToolTip": "PMPetCare\\Models\\Appointment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-17T15:16:41.407Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Models\\User.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Models\\User.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Models\\User.cs",
+              "RelativeToolTip": "PMPetCare\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-17T15:12:43.372Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Service.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Models\\Service.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Models\\Service.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Models\\Service.cs",
+              "RelativeToolTip": "PMPetCare\\Models\\Service.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-17T15:16:04.597Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Review.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Models\\Review.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Models\\Review.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Models\\Review.cs",
+              "RelativeToolTip": "PMPetCare\\Models\\Review.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-17T15:19:09.224Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Pet.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Models\\Pet.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Models\\Pet.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Models\\Pet.cs",
+              "RelativeToolTip": "PMPetCare\\Models\\Pet.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAmwCgAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-17T15:15:05.038Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\AdminDashboard\\Index.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\AdminDashboard\\Index.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\AdminDashboard\\Index.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\AdminDashboard\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-23T19:41:31.125Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAACoAAAAAAAAAAAAowDwAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-19T16:39:31.902Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\CustomerDashboard\\Index.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\CustomerDashboard\\Index.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\CustomerDashboard\\Index.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\CustomerDashboard\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-23T19:30:47.007Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAowE0AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-19T16:38:42.536Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "StaffDashboardController.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\StaffDashboardController.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Controllers\\StaffDashboardController.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\StaffDashboardController.cs",
+              "RelativeToolTip": "PMPetCare\\Controllers\\StaffDashboardController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAwwD4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-23T19:39:32.096Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Program.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Program.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Program.cs",
+              "RelativeToolTip": "PMPetCare\\Program.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAAsAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-17T15:22:45.762Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_CustomerLayout.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Shared\\_CustomerLayout.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\Shared\\_CustomerLayout.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Shared\\_CustomerLayout.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\Shared\\_CustomerLayout.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAACgAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-19T16:35:01.195Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AgIAACgAAAAAAAAAAAAqwDkAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-18T07:26:26.92Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "_Layout.cshtml.css",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\Shared\\_Layout.cshtml.css",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeToolTip": "PMPetCare\\Views\\Shared\\_Layout.cshtml.css",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAABAAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-11-23T19:48:42.103Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\StaffDashboard\\Index.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\StaffDashboard\\Index.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\StaffDashboard\\Index.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\StaffDashboard\\Index.cshtml",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAwwF8AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-23T19:40:01.06Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AdminDashboardController.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\AdminDashboardController.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Controllers\\AdminDashboardController.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\AdminDashboardController.cs",
+              "RelativeToolTip": "PMPetCare\\Controllers\\AdminDashboardController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAwwDAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-23T19:40:27.022Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "CustomerDashboardController.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\CustomerDashboardController.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Controllers\\CustomerDashboardController.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\CustomerDashboardController.cs",
+              "RelativeToolTip": "PMPetCare\\Controllers\\CustomerDashboardController.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAowEUAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-23T19:28:54.809Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "StaffAppointmentsController.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\StaffAppointmentsController.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Controllers\\StaffAppointmentsController.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\StaffAppointmentsController.cs",
+              "RelativeToolTip": "PMPetCare\\Controllers\\StaffAppointmentsController.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAowF4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-23T19:00:33.336Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\CareNotes\\Create.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\CareNotes\\Create.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\CareNotes\\Create.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\CareNotes\\Create.cshtml",
+              "ViewState": "AgIAADAAAAAAAAAAAAAowEIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-23T19:11:24.453Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "CareNotesController.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\CareNotesController.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Controllers\\CareNotesController.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\CareNotesController.cs",
+              "RelativeToolTip": "PMPetCare\\Controllers\\CareNotesController.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAwwFkAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-23T19:10:59.494Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\StaffAppointments\\Index.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\StaffAppointments\\Index.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\StaffAppointments\\Index.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\StaffAppointments\\Index.cshtml",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAowE8AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-23T19:03:25.465Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\StaffAppointments\\Details.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\StaffAppointments\\Details.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\StaffAppointments\\Details.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\StaffAppointments\\Details.cshtml",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAowHkAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-23T19:02:59.675Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\CareNotes\\Details.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\CareNotes\\Details.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\CareNotes\\Details.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\CareNotes\\Details.cshtml",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAFAAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-23T19:12:46.815Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "AdminAppointmentsController.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\AdminAppointmentsController.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Controllers\\AdminAppointmentsController.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\AdminAppointmentsController.cs",
+              "RelativeToolTip": "PMPetCare\\Controllers\\AdminAppointmentsController.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAqwJ0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-23T18:42:17.449Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "PMPetCare\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-18T07:49:04.827Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "AdminServicesController.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\AdminServicesController.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Controllers\\AdminServicesController.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\AdminServicesController.cs",
+              "RelativeToolTip": "PMPetCare\\Controllers\\AdminServicesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-21T11:50:03.509Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\AdminAppointments\\Index.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\AdminAppointments\\Index.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\AdminAppointments\\Index.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\AdminAppointments\\Index.cshtml",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAqwGEAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-23T18:44:29.419Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "AppointmentsController.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\AppointmentsController.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Controllers\\AppointmentsController.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\AppointmentsController.cs",
+              "RelativeToolTip": "PMPetCare\\Controllers\\AppointmentsController.cs",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAwwJsAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-23T18:25:37.881Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\AdminServices\\Index.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\AdminServices\\Index.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\AdminServices\\Index.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\AdminServices\\Index.cshtml",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-21T12:00:38.283Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\AdminAppointments\\Details.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\AdminAppointments\\Details.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\AdminAppointments\\Details.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\AdminAppointments\\Details.cshtml",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAowFIAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-23T18:46:53.795Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeToolTip": "PMPetCare\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ViewState": "AgIAAAEBAAAAAAAAAAAwwBMBAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-23T17:29:27.303Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Appointments\\Create.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\Appointments\\Create.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Appointments\\Create.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\Appointments\\Create.cshtml",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAwwEAAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-23T18:30:33.579Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "AssignStaff.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\AdminAppointments\\AssignStaff.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\AdminAppointments\\AssignStaff.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\AdminAppointments\\AssignStaff.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\AdminAppointments\\AssignStaff.cshtml",
+              "ViewState": "AgIAACcAAAAAAAAAAAAowDMAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-23T18:46:03.293Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\AdminServices\\Edit.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\AdminServices\\Edit.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\AdminServices\\Edit.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\AdminServices\\Edit.cshtml",
+              "ViewState": "AgIAACUAAAAAAAAAAAAiwDEAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-21T16:21:12.01Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Register.cshtml.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeToolTip": "PMPetCare\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAwwGAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-23T17:28:24.452Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Pets\\Create.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\Pets\\Create.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Pets\\Create.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\Pets\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-22T17:56:57.516Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeToolTip": "PMPetCare\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ViewState": "AgIAAPoAAAAAAAAAAAAowAEBAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-23T18:00:29.892Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "Login.cshtml.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "RelativeToolTip": "PMPetCare\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAA1wDAAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-23T17:56:52.118Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+              "RelativeToolTip": "PMPetCare\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-23T17:43:31.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Pets\\Edit.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\Pets\\Edit.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Pets\\Edit.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\Pets\\Edit.cshtml",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAwwFoAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-22T15:28:38.066Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Pets\\Details.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\Pets\\Details.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Pets\\Details.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\Pets\\Details.cshtml",
+              "ViewState": "AgIAADMAAAAAAAAAAAAqwEQAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-22T18:02:07.165Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "PMPetCare.csproj",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\PMPetCare.csproj",
+              "RelativeDocumentMoniker": "PMPetCare\\PMPetCare.csproj",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\PMPetCare.csproj",
+              "RelativeToolTip": "PMPetCare\\PMPetCare.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-11-18T07:40:53.573Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "PetsController.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\PetsController.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Controllers\\PetsController.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\PetsController.cs",
+              "RelativeToolTip": "PMPetCare\\Controllers\\PetsController.cs",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAkwHkAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-21T11:48:25.967Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Pets\\Delete.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\Pets\\Delete.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Pets\\Delete.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\Pets\\Delete.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAwwC8AAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-22T17:34:20.23Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Pets\\Index.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\Pets\\Index.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Pets\\Index.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\Pets\\Index.cshtml",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAowDcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-22T18:03:07.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Models\\ErrorViewModel.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "PMPetCare\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-17T15:39:04.81Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "20261121172447_PetQr.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Data\\Migrations\\20261121172447_PetQr.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Data\\Migrations\\20261121172447_PetQr.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Data\\Migrations\\20261121172447_PetQr.cs",
+              "RelativeToolTip": "PMPetCare\\Data\\Migrations\\20261121172447_PetQr.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-21T17:24:47.621Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "PMPetCare\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-21T09:50:53.459Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\AdminServices\\Create.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\AdminServices\\Create.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\AdminServices\\Create.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\AdminServices\\Create.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAIBJwBUAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-21T16:12:09.575Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "PMPetCare\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAA5wB4AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-21T09:50:36.981Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\AdminServices\\Details.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\AdminServices\\Details.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\AdminServices\\Details.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\AdminServices\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-21T16:50:27.005Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "Users.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Admin\\Users.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\Admin\\Users.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Admin\\Users.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\Admin\\Users.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-18T07:57:46.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Admin\\Index.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\Admin\\Index.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Admin\\Index.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\Admin\\Index.cshtml",
+              "ViewState": "AgIAABEAAAAAAAAAAAAowCEAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-18T07:51:18.453Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\appsettings.json",
+              "RelativeDocumentMoniker": "PMPetCare\\appsettings.json",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\appsettings.json",
+              "RelativeToolTip": "PMPetCare\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-11-17T15:21:13.139Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "CreateUser.cshtml",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Admin\\CreateUser.cshtml",
+              "RelativeDocumentMoniker": "PMPetCare\\Views\\Admin\\CreateUser.cshtml",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Views\\Admin\\CreateUser.cshtml",
+              "RelativeToolTip": "PMPetCare\\Views\\Admin\\CreateUser.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-18T08:35:18.24Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "20261121084111_211126.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Data\\Migrations\\20261121084111_211126.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Data\\Migrations\\20261121084111_211126.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Data\\Migrations\\20261121084111_211126.cs",
+              "RelativeToolTip": "PMPetCare\\Data\\Migrations\\20261121084111_211126.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-21T08:41:11.921Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "CreateUserViewModel.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Models\\ViewModels\\CreateUserViewModel.cs",
+              "RelativeDocumentMoniker": "PMPetCare\\Models\\ViewModels\\CreateUserViewModel.cs",
+              "ToolTip": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\Models\\ViewModels\\CreateUserViewModel.cs",
+              "RelativeToolTip": "PMPetCare\\Models\\ViewModels\\CreateUserViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-18T08:30:06.713Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "20261117153207_PetDBbbbbbb.cs",
+              "DocumentMoniker": "D:\\Hoc ki 7\\ASP\\\u0110\u1ED2 \u00C1N\\PMPetCare\\PMPetCare\\Data\\Migrations\\20261117153207_PetDBbbbbbb.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\ASP\\\u0110\u1ED2 \u00C1N\\PMPetCare\\PMPetCare\\Data\\Migrations\\20261117153207_PetDBbbbbbb.cs",
+              "ToolTip": "D:\\Hoc ki 7\\ASP\\\u0110\u1ED2 \u00C1N\\PMPetCare\\PMPetCare\\Data\\Migrations\\20261117153207_PetDBbbbbbb.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\ASP\\\u0110\u1ED2 \u00C1N\\PMPetCare\\PMPetCare\\Data\\Migrations\\20261117153207_PetDBbbbbbb.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-17T15:32:07.908Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "secrets.json",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Roaming\\Microsoft\\UserSecrets\\aspnet-PMPetCare-d607c5cc-58f5-47d4-afcf-8272bdb065bd\\secrets.json",
+              "ToolTip": "C:\\Users\\ADMIN\\AppData\\Roaming\\Microsoft\\UserSecrets\\aspnet-PMPetCare-d607c5cc-58f5-47d4-afcf-8272bdb065bd\\secrets.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-11-18T07:40:59.973Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

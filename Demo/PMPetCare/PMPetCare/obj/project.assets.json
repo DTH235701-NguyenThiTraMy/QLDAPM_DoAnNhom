@@ -7803,11 +7803,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Hoc ki 7\\ASP\\ĐỒ ÁN ASP\\PMPetCare\\PMPetCare\\PMPetCare.csproj",
+      "projectUniqueName": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\PMPetCare.csproj",
       "projectName": "PMPetCare",
-      "projectPath": "D:\\Hoc ki 7\\ASP\\ĐỒ ÁN ASP\\PMPetCare\\PMPetCare\\PMPetCare.csproj",
+      "projectPath": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\PMPetCare.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "D:\\Hoc ki 7\\ASP\\ĐỒ ÁN ASP\\PMPetCare\\PMPetCare\\obj\\",
+      "outputPath": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4CpA7vSHTlw=",
+  "dgSpecHash": "ujpLoeq+tnc=",
   "success": true,
-  "projectFilePath": "D:\\Hoc ki 7\\ASP\\ĐỒ ÁN ASP\\PMPetCare\\PMPetCare\\PMPetCare.csproj",
+  "projectFilePath": "D:\\Hoc ki 7\\QLDAPM\\QLDAPM_DoAnNhom\\Demo\\PMPetCare\\PMPetCare\\PMPetCare.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
