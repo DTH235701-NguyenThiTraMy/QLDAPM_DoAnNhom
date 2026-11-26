@@ -1,69 +1,68 @@
 ﻿@model PET.Models.Product
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Xóa sản phẩm " + Model.Name;
 }
 
-<h1>Delete</h1>
+<section class="section bg-paper" style="padding-top: 120px; padding-bottom: 80px; min-height: 85vh;">
+    <div class="container container-x">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <!-- Nút quay lại -->
+                <div class="mb-3">
+                    <a asp-action="Index" class="text-decoration-none fw-bold text-muted">
+                        ← Quay lại cửa hàng sản phẩm
+                    </a>
+                </div>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StockQuantity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StockQuantity)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
-</div>
+                <!-- Card Xác nhận xóa -->
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                    <div class="card-header bg-danger text-white p-4">
+                        <div class="d-flex align-items-center gap-2 mb-1">
+                            <span style="font-size: 22px;">⚠️</span>
+                            <h1 class="h4 fw-bold mb-0">Xác nhận xóa sản phẩm</h1>
+                        </div>
+                        <p class="small mb-0 opacity-90">Hành động này không thể hoàn tác. Sản phẩm sẽ bị gỡ bỏ vĩnh viễn khỏi hệ thống cửa hàng.</p>
+                    </div>
+
+                    <div class="card-body p-4 p-md-5 bg-white">
+                        <!-- Thẻ tóm tắt thông tin sản phẩm sắp xóa -->
+                        <div class="d-flex flex-column flex-sm-row align-items-center gap-4 p-3 rounded-4 bg-light border mb-4">
+                            <img src="@(string.IsNullOrEmpty(Model.ImageUrl) ? Url.Content("~/img/product-1.jpg") : Model.ImageUrl)"
+                                 alt="@Model.Name"
+                                 class="rounded-4 shadow-sm"
+                                 style="width: 110px; height: 110px; object-fit: cover;" />
+
+                            <div class="text-center text-sm-start flex-grow-1">
+                                <div class="d-flex flex-wrap justify-content-center justify-content-sm-start align-items-center gap-2 mb-1">
+                                    <h3 class="h4 fw-bold mb-0">@Model.Name</h3>
+                                    @if (!string.IsNullOrEmpty(Model.Category))
+                                    {
+                                        <span class="badge bg-warning text-dark rounded-pill">@Model.Category</span>
+                                    }
+                                    <span class="badge bg-primary rounded-pill">@Model.Price.ToString("N0")đ</span>
+                                </div>
+                                <p class="text-muted small mb-1">
+                                    <strong>Tồn kho:</strong> @Model.StockQuantity sản phẩm •
+                                    <strong>Trạng thái:</strong> @(Model.IsActive ? "Đang mở bán" : "Ngừng kinh doanh")
+                                </p>
+                                <p class="text-muted small mb-0">
+                                    <strong>Mô tả:</strong> @(string.IsNullOrEmpty(Model.Description) ? "Sản phẩm chăm sóc thú cưng." : Model.Description)
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Form xác nhận -->
+                        <form asp-action="Delete" class="d-flex justify-content-end gap-2 pt-3 border-top">
+                            <input type="hidden" asp-for="Id" />
+                            <a asp-action="Index" class="btn btn-ghost">Hủy, giữ lại sản phẩm</a>
+                            <button type="submit" class="btn btn-danger rounded-pill px-4 fw-bold">
+                                🗑️ Xác nhận xóa vĩnh viễn
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

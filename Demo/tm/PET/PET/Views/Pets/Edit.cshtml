@@ -1,74 +1,147 @@
 ﻿@model PET.Models.Pet
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Chỉnh sửa hồ sơ " + Model.Name;
 }
 
-<h1>Edit</h1>
+<section class="section bg-paper" style="padding-top: 120px; padding-bottom: 80px; min-height: 85vh;">
+    <div class="container container-x">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Nút quay lại -->
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <a asp-action="Index" class="text-decoration-none fw-bold text-muted">
+                        ← Quay lại danh sách thú cưng
+                    </a>
+                    <a asp-action="Details" asp-route-id="@Model.Id" class="text-decoration-none fw-bold text-primary">
+                        Xem thẻ hồ sơ & QR →
+                    </a>
+                </div>
 
-<h4>Pet</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <!-- Card Form -->
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                    <div class="card-header bg-white border-bottom p-4 d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="kicker is-yellow mb-2">
+                                <svg class="paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg>
+                                Cập nhật thông tin
+                            </span>
+                            <h1 class="h3 fw-bold mb-1">Chỉnh sửa hồ sơ: @Model.Name</h1>
+                            <p class="text-muted small mb-0">Cập nhật cân nặng, ảnh đại diện hoặc tình trạng sức khỏe mới nhất cho bé.</p>
+                        </div>
+
+                        @if (!string.IsNullOrEmpty(Model.QRCodePath))
+                        {
+                            <div class="bg-light p-2 rounded-3 border text-center d-none d-sm-block" title="Mã QR định danh">
+                                <img src="@Model.QRCodePath" alt="QR @Model.Name" style="width: 55px; height: 55px;" />
+                            </div>
+                        }
+                    </div>
+
+                    <div class="card-body p-4 p-md-5 bg-white">
+                        <!-- Bắt buộc có enctype="multipart/form-data" để upload ảnh -->
+                        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="alert alert-danger rounded-3" role="alert"></div>
+
+                            <!-- Giữ nguyên các trường hệ thống & đường dẫn ảnh cũ -->
+                            <input type="hidden" asp-for="Id" />
+                            <input type="hidden" asp-for="QRCodePath" />
+                            <input type="hidden" asp-for="UserId" />
+                            <input type="hidden" asp-for="ImageUrl" />
+
+                            <div class="row g-3">
+                                <!-- Tên thú cưng -->
+                                <div class="col-md-6">
+                                    <label asp-for="Name" class="form-label fw-bold">Tên thú cưng <span class="text-danger">*</span></label>
+                                    <input asp-for="Name" class="form-control rounded-3" placeholder="VD: Mochi, Bailey..." />
+                                    <span asp-validation-for="Name" class="text-danger small"></span>
+                                </div>
+
+                                <!-- Loài -->
+                                <div class="col-md-6">
+                                    <label asp-for="Species" class="form-label fw-bold">Loài <span class="text-danger">*</span></label>
+                                    <select asp-for="Species" class="form-select rounded-3">
+                                        <option value="">-- Chọn loài --</option>
+                                        <option value="Chó">🐶 Chó</option>
+                                        <option value="Mèo">🐱 Mèo</option>
+                                        <option value="Thỏ">🐰 Thỏ</option>
+                                        <option value="Hamster">🐹 Hamster</option>
+                                        <option value="Khác">🐾 Khác</option>
+                                    </select>
+                                    <span asp-validation-for="Species" class="text-danger small"></span>
+                                </div>
+
+                                <!-- Giống -->
+                                <div class="col-md-6">
+                                    <label asp-for="Breed" class="form-label fw-bold">Giống</label>
+                                    <input asp-for="Breed" class="form-control rounded-3" placeholder="VD: Poodle, Corgi, Anh lông ngắn..." />
+                                    <span asp-validation-for="Breed" class="text-danger small"></span>
+                                </div>
+
+                                <!-- Ngày sinh -->
+                                <div class="col-md-3">
+                                    <label asp-for="BirthDate" class="form-label fw-bold">Ngày sinh</label>
+                                    <input asp-for="BirthDate" type="date" class="form-control rounded-3" />
+                                    <span asp-validation-for="BirthDate" class="text-danger small"></span>
+                                </div>
+
+                                <!-- Cân nặng -->
+                                <div class="col-md-3">
+                                    <label asp-for="Weight" class="form-label fw-bold">Cân nặng (kg)</label>
+                                    <input asp-for="Weight" type="number" step="0.1" class="form-control rounded-3" />
+                                    <span asp-validation-for="Weight" class="text-danger small"></span>
+                                </div>
+
+                                <!-- Chọn file ảnh mới từ thiết bị + Xem trước -->
+                                <div class="col-12">
+                                    <label for="imageFile" class="form-label fw-bold">Đổi ảnh đại diện của bé</label>
+                                    <div class="d-flex align-items-center gap-3 p-3 bg-light rounded-3 border">
+                                        <img id="imagePreview"
+                                             src="@(string.IsNullOrEmpty(Model.ImageUrl) ? Url.Content("~/img/pet-1.jpg") : Model.ImageUrl)"
+                                             alt="Xem trước ảnh"
+                                             class="rounded-3 shadow-sm border bg-white"
+                                             style="width: 72px; height: 72px; object-fit: cover;" />
+                                        <div class="flex-grow-1">
+                                            <input type="file" name="imageFile" id="imageFile" accept="image/*" class="form-control rounded-3" onchange="previewPetImage(event)" />
+                                            <div class="form-text mb-0">Chọn ảnh mới (.jpg, .png, .webp) nếu muốn thay đổi, hoặc để trống để giữ nguyên ảnh hiện tại.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tiền sử bệnh / Lưu ý -->
+                                <div class="col-12">
+                                    <label asp-for="MedicalHistory" class="form-label fw-bold">Tiền sử bệnh lý / Lưu ý chăm sóc</label>
+                                    <textarea asp-for="MedicalHistory" rows="3" class="form-control rounded-3" placeholder="VD: Đã tiêm đủ vắc-xin, dị ứng thức ăn..."></textarea>
+                                    <span asp-validation-for="MedicalHistory" class="text-danger small"></span>
+                                </div>
+                            </div>
+
+                            <!-- Nút hành động -->
+                            <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+                                <a asp-action="Index" class="btn btn-ghost">Hủy bỏ</a>
+                                <button type="submit" class="btn btn-paw btn-icon px-4">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" /><polyline points="17 21 17 13 7 13 7 21" /><polyline points="7 3 7 8 15 8" /></svg>
+                                    Lưu thay đổi
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Species" class="control-label"></label>
-                <input asp-for="Species" class="form-control" />
-                <span asp-validation-for="Species" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Breed" class="control-label"></label>
-                <input asp-for="Breed" class="form-control" />
-                <span asp-validation-for="Breed" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BirthDate" class="control-label"></label>
-                <input asp-for="BirthDate" class="form-control" />
-                <span asp-validation-for="BirthDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Weight" class="control-label"></label>
-                <input asp-for="Weight" class="form-control" />
-                <span asp-validation-for="Weight" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MedicalHistory" class="control-label"></label>
-                <input asp-for="MedicalHistory" class="form-control" />
-                <span asp-validation-for="MedicalHistory" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="QRCodePath" class="control-label"></label>
-                <input asp-for="QRCodePath" class="form-control" />
-                <span asp-validation-for="QRCodePath" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
-                <span asp-validation-for="UserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</section>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function previewPetImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                document.getElementById('imagePreview').src = URL.createObjectURL(file);
+            }
+        }
+    </script>
 }

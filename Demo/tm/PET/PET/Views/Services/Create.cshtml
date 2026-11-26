@@ -1,53 +1,113 @@
 ﻿@model PET.Models.Service
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Thêm dịch vụ mới";
 }
 
-<h1>Create</h1>
+<section class="section bg-paper" style="padding-top: 120px; padding-bottom: 80px; min-height: 85vh;">
+    <div class="container container-x">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Nút quay lại -->
+                <div class="mb-3">
+                    <a asp-action="Index" class="text-decoration-none fw-bold text-muted">
+                        ← Quay lại danh sách dịch vụ
+                    </a>
+                </div>
 
-<h4>Service</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <!-- Card Form -->
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                    <div class="card-header bg-white border-bottom p-4">
+                        <span class="kicker mb-2">
+                            <svg class="paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg>
+                            Quản lý dịch vụ
+                        </span>
+                        <h1 class="h3 fw-bold mb-1">Thêm dịch vụ Spa mới</h1>
+                        <p class="text-muted small mb-0">Tạo gói chăm sóc, tắm gội hoặc cắt tỉa mới để khách hàng có thể đặt lịch.</p>
+                    </div>
+
+                    <div class="card-body p-4 p-md-5 bg-white">
+                        <form asp-action="Create" method="post" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="alert alert-danger rounded-3" role="alert"></div>
+
+                            <div class="row g-3">
+                                <!-- Tên dịch vụ -->
+                                <div class="col-12">
+                                    <label asp-for="Name" class="form-label fw-bold">Tên dịch vụ <span class="text-danger">*</span></label>
+                                    <input asp-for="Name" class="form-control rounded-3" placeholder="VD: Tắm gội thảo mộc, Cắt tỉa tạo kiểu Poodle..." />
+                                    <span asp-validation-for="Name" class="text-danger small"></span>
+                                </div>
+
+                                <!-- Giá tiền -->
+                                <div class="col-md-6">
+                                    <label asp-for="Price" class="form-label fw-bold">Giá dịch vụ (VNĐ) <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <input asp-for="Price" type="number" step="1000" class="form-control rounded-start-3" placeholder="VD: 250000" />
+                                        <span class="input-group-text rounded-end-3 bg-light fw-bold">đ</span>
+                                    </div>
+                                    <span asp-validation-for="Price" class="text-danger small"></span>
+                                </div>
+
+                                <!-- Thời lượng -->
+                                <div class="col-md-6">
+                                    <label asp-for="DurationMinutes" class="form-label fw-bold">Thời lượng thực hiện <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <input asp-for="DurationMinutes" type="number" step="5" class="form-control rounded-start-3" placeholder="VD: 60" />
+                                        <span class="input-group-text rounded-end-3 bg-light fw-bold">phút</span>
+                                    </div>
+                                    <span asp-validation-for="DurationMinutes" class="text-danger small"></span>
+                                </div>
+
+                                <!-- Chọn file hình ảnh từ máy tính + Xem trước -->
+                                <div class="col-12">
+                                    <label for="imageFile" class="form-label fw-bold">Hình ảnh minh họa dịch vụ</label>
+                                    <div class="d-flex align-items-center gap-3 p-3 bg-light rounded-3 border">
+                                        <img id="imagePreview"
+                                             src="@Url.Content("~/img/service-1.jpg")"
+                                             alt="Xem trước ảnh"
+                                             class="rounded-3 shadow-sm border bg-white"
+                                             style="width: 72px; height: 72px; object-fit: cover;" />
+                                        <div class="flex-grow-1">
+                                            <input type="file" name="imageFile" id="imageFile" accept="image/*" class="form-control rounded-3" onchange="previewServiceImage(event)" />
+                                            <div class="form-text mb-0">Chọn file ảnh (.jpg, .png, .webp) từ máy tính của bạn hoặc để trống để dùng ảnh mặc định.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Mô tả chi tiết -->
+                                <div class="col-12">
+                                    <label asp-for="Description" class="form-label fw-bold">Mô tả chi tiết gói dịch vụ</label>
+                                    <textarea asp-for="Description" rows="4" class="form-control rounded-3" placeholder="Mô tả các bước chăm sóc trong gói (VD: Tắm nước ấm, sấy khô, chải mượt, vệ sinh tai, cắt móng...)"></textarea>
+                                    <span asp-validation-for="Description" class="text-danger small"></span>
+                                </div>
+                            </div>
+
+                            <!-- Nút hành động -->
+                            <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+                                <a asp-action="Index" class="btn btn-ghost">Hủy bỏ</a>
+                                <button type="submit" class="btn btn-paw btn-icon px-4">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" /><polyline points="17 21 17 13 7 13 7 21" /><polyline points="7 3 7 8 15 8" /></svg>
+                                    Lưu dịch vụ
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DurationMinutes" class="control-label"></label>
-                <input asp-for="DurationMinutes" class="form-control" />
-                <span asp-validation-for="DurationMinutes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</section>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function previewServiceImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                document.getElementById('imagePreview').src = URL.createObjectURL(file);
+            }
+        }
+    </script>
 }

@@ -1,233 +1,348 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@using System.Text.Json
+@using PET.Models
+
+<!DOCTYPE html>
+<html lang="vi">
 <head>
+    <script>document.documentElement.classList.add('js')</script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - PET</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>@ViewData["Title"] - Fetch Pet Care</title>
+
+    <!-- Google Fonts & CSS của Template Fetch -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+
+    <!-- CSS tùy chỉnh của Project -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/PET.styles.css" asp-append-version="true" />
 </head>
 <body>
+    @{
+        int cartCount = 0;
+        var cartJson = Context.Session.GetString("FETCH_PET_CART");
+        if (!string.IsNullOrEmpty(cartJson))
+        {
+            var cartItems = JsonSerializer.Deserialize<List<CartItem>>(cartJson);
+            if (cartItems != null)
+            {
+                cartCount = cartItems.Sum(x => x.Quantity);
+            }
+        }
+    }
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ============================================================= NAVBAR -->
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PET</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+        <nav class="site-nav navbar navbar-expand-lg fixed-top" aria-label="Main navigation">
+            <div class="container container-x">
+                <a class="brand" asp-controller="Home" asp-action="Index" aria-label="Fetch Grooming Co. home">
+                    <span class="brand-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg>
+                    </span>
+                    Fetch<em>.</em>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                            <a class="nav-link text-nowrap px-2" asp-controller="Home" asp-action="Index">Trang chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Services" asp-action="Index">Dịch vụ</a>
+                            <a class="nav-link text-nowrap px-2" asp-controller="Services" asp-action="Index">Dịch vụ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Products" asp-action="Index">Sản phẩm</a>
+                            <a class="nav-link text-nowrap px-2" asp-controller="Products" asp-action="Index">Sản phẩm</a>
                         </li>
                         @if (User.Identity != null && User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Pets" asp-action="Index">Thú cưng của tôi</a>
+                                <a class="nav-link text-nowrap px-2" asp-controller="Pets" asp-action="Index">Thú cưng</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Appointments" asp-action="Index">Lịch hẹn</a>
+                                <a class="nav-link text-nowrap px-2" asp-controller="Appointments" asp-action="Index">Lịch hẹn</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-nowrap px-2" asp-controller="Cart" asp-action="MyOrders">
+                                    @(User.IsInRole("Admin") ? "Đơn hàng" : "Đơn mua")
+                                </a>
+                            </li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-nowrap px-2 fw-bold text-primary" asp-controller="Admin" asp-action="Dashboard">📊 Thống kê</a>
+                                </li>
+                            }
                         }
-
+                        <li class="nav-item">
+                            <a class="nav-link text-nowrap px-2 position-relative d-inline-flex align-items-center" asp-controller="Cart" asp-action="Index" title="Giỏ hàng">
+                                <span style="font-size: 1.15rem;">🛒</span>
+                                @if (cartCount > 0)
+                                {
+                                    <span class="badge rounded-pill bg-danger ms-1" style="font-size: 0.7rem;">@cartCount</span>
+                                }
+                            </a>
+                        </li>
                     </ul>
-                    <partial name="_LoginPartial" />
+
+                    <!-- Nút Đặt lịch nổi bật của template -->
+                    <div class="nav-cta-wrap ms-lg-3 me-lg-2">
+                        <a class="btn btn-paw btn-icon" asp-controller="Appointments" asp-action="Create">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="3" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
+                            Đặt lịch ngay
+                        </a>
+                    </div>
+
+                    <!-- Khu vực Đăng nhập / Đăng ký / Tài khoản -->
+                    <div class="ms-lg-2">
+                        <partial name="_LoginPartial" />
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - PET - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <!-- ============================================================= MAIN CONTENT -->
+    <main id="main" role="main">
+        @RenderBody()
+    </main>
+
+    <!-- ============================================================= FOOTER -->
+    <footer class="site-footer">
+        <div class="container container-x">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <a class="brand mb-3" asp-controller="Home" asp-action="Index">
+                        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg></span>
+                        Fetch<em>.</em>
+                    </a>
+                    <p style="max-width:22rem">A friendly neighbourhood grooming salon where every pet leaves clean, calm, and cuddle-ready. Certified groomers, natural products, and a whole lot of love.</p>
+                    <div class="foot-social">
+                        <a href="#" aria-label="Fetch on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="4" /><path d="M17.5 6.5h.01" /></svg></a>
+                        <a href="#" aria-label="Fetch on Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg></a>
+                        <a href="#" aria-label="Fetch on TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4c.5 2 2 3.5 4 4" /></svg></a>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h4>Khám phá</h4>
+                    <ul class="foot-links">
+                        <li><a asp-controller="Services" asp-action="Index">Dịch vụ</a></li>
+                        <li><a asp-controller="Products" asp-action="Index">Sản phẩm</a></li>
+                        <li><a asp-controller="Pets" asp-action="Index">Hồ sơ thú cưng</a></li>
+                        <li><a asp-controller="Appointments" asp-action="Create">Đặt lịch hẹn</a></li>
+                        <li><a asp-controller="Cart" asp-action="Index">Giỏ hàng</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h4>Liên hệ</h4>
+                    <ul class="foot-links">
+                        <li><a href="#visit">Giờ mở cửa</a></li>
+                        <li><a href="https://maps.google.com/?q=Fetch+Grooming+Co" target="_blank" rel="noopener">Bản đồ</a></li>
+                        <li><a href="tel:+15550142020">(555) 014-2020</a></li>
+                        <li><a href="mailto:hello@fetchgrooming.co">Email hỗ trợ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h4>Nhận bản tin chăm sóc</h4>
+                    <p style="max-width:20rem">Mẹo chăm sóc thú cưng, lịch tiêm phòng và ưu đãi dịch vụ hàng tháng.</p>
+                    <form class="foot-newsletter" data-newsletter novalidate>
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="you@email.com" aria-label="Email address" required>
+                            <button class="btn btn-paw" type="submit">Đăng ký</button>
+                        </div>
+                        <small class="d-block mt-2" data-note style="color:#8fb0b2">Không spam — hủy đăng ký bất cứ lúc nào.</small>
+                    </form>
+                </div>
+            </div>
+            <div class="foot-bottom d-md-flex justify-content-between align-items-center">
+                <p class="mb-2 mb-md-0">© 2026 Fetch Grooming Co. Made with <span class="foot-paw"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9A5.6 5.6 0 0 1 12 6a5.6 5.6 0 0 1 10 6c-2.5 4.4-10 9-10 9z" /></svg></span> for good pets.</p>
+                <ul class="foot-links d-flex gap-3 mb-0">
+                    <li><a asp-controller="Home" asp-action="Privacy">Chính sách bảo mật</a></li>
+                    <li><a href="#">Điều khoản</a></li>
+                </ul>
+            </div>
         </div>
     </footer>
+
+    <!-- ============================================================= LIGHTBOX -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" aria-hidden="true">
+        <button class="lb-btn lb-close" type="button" aria-label="Close viewer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12" /></svg></button>
+        <button class="lb-btn lb-prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6" /></svg></button>
+        <img class="lb-img" src="" alt="">
+        <button class="lb-btn lb-next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg></button>
+        <p class="lb-cap"></p>
+    </div>
+
+    <!-- ============================================================= AI CARE ASSISTANT WIDGET -->
+    @if (User.Identity != null && User.Identity.IsAuthenticated)
+    {
+        <button id="aiChatToggleBtn" class="btn btn-primary rounded-circle shadow-lg d-flex align-items-center justify-content-center"
+                style="position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; z-index: 1050; font-size: 26px;"
+                title="Hỏi AI Care Assistant">
+            🤖
+        </button>
+
+        <div id="aiChatBox" class="card shadow-lg border-0 d-none"
+             style="position: fixed; bottom: 95px; right: 25px; width: 370px; max-width: 90vw; height: 500px; z-index: 1050; display: flex; flex-direction: column; border-radius: 15px; overflow: hidden;">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center py-2 px-3">
+                <div>
+                    <strong class="d-block" style="font-size: 15px;">🐾 AI Care Assistant</strong>
+                    <small style="font-size: 11px; opacity: 0.9;">Trợ lý chăm sóc thú cưng 24/7</small>
+                </div>
+                <button type="button" id="aiChatCloseBtn" class="btn-close btn-close-white btn-sm" aria-label="Close"></button>
+            </div>
+            <div class="bg-light px-3 py-2 border-bottom">
+                <select id="aiWidgetPetSelect" class="form-select form-select-sm">
+                    <option value="">-- Tư vấn chung (Chọn thú cưng nếu cần) --</option>
+                </select>
+            </div>
+            <div id="aiWidgetMessages" class="card-body p-3" style="flex: 1; overflow-y: auto; background-color: #f8f9fa; font-size: 14px;">
+                <div class="text-center text-muted small my-3">Đang tải hội thoại...</div>
+            </div>
+            <div class="card-footer bg-white p-2 border-top">
+                <form id="aiWidgetForm" class="d-flex gap-2">
+                    <input type="text" id="aiWidgetInput" class="form-control form-control-sm" placeholder="Nhập câu hỏi cho bé..." required autocomplete="off" />
+                    <button type="submit" id="aiWidgetSendBtn" class="btn btn-primary btn-sm px-3">Gửi</button>
+                </form>
+            </div>
+        </div>
+
+        <style>
+            .ai-msg-markdown p:last-child, .ai-msg-markdown ul:last-child {
+                margin-bottom: 0;
+            }
+
+            .ai-msg-markdown ul {
+                padding-left: 18px;
+            }
+        </style>
+
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const toggleBtn = document.getElementById("aiChatToggleBtn");
+                const closeBtn = document.getElementById("aiChatCloseBtn");
+                const chatBox = document.getElementById("aiChatBox");
+                const messagesDiv = document.getElementById("aiWidgetMessages");
+                const petSelect = document.getElementById("aiWidgetPetSelect");
+                const chatForm = document.getElementById("aiWidgetForm");
+                const chatInput = document.getElementById("aiWidgetInput");
+                const sendBtn = document.getElementById("aiWidgetSendBtn");
+                let isLoaded = false;
+
+                toggleBtn.addEventListener("click", () => {
+                    chatBox.classList.toggle("d-none");
+                    if (!chatBox.classList.contains("d-none") && !isLoaded) {
+                        loadWidgetData();
+                    }
+                });
+
+                closeBtn.addEventListener("click", () => chatBox.classList.add("d-none"));
+
+                async function loadWidgetData() {
+                    try {
+                        const res = await fetch('/AiAssistant/GetWidgetData');
+                        const data = await res.json();
+
+                        data.pets.forEach(p => {
+                            const opt = document.createElement("option");
+                            opt.value = p.id;
+                            opt.textContent = "Bé: " + p.name;
+                            petSelect.appendChild(opt);
+                        });
+
+                        messagesDiv.innerHTML = "";
+                        if (data.history.length === 0) {
+                            messagesDiv.innerHTML = `<div class="text-center text-muted small my-4">Xin chào! Bạn cần tư vấn gì cho thú cưng hôm nay?</div>`;
+                        } else {
+                            data.history.forEach(item => appendMessage(item.question, item.answer, item.petName, item.time));
+                        }
+                        isLoaded = true;
+                        scrollToBottom();
+                    } catch (err) {
+                        messagesDiv.innerHTML = `<div class="text-danger small text-center">Không thể tải dữ liệu chat.</div>`;
+                    }
+                }
+
+                function appendMessage(question, answer, petName, time) {
+                    const petBadge = petName ? `<span class="badge bg-info text-dark ms-1">${petName}</span>` : "";
+                    const html = `
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-end mb-1">
+                                <div class="bg-primary text-white rounded-3 px-3 py-2" style="max-width: 85%;">
+                                    <div style="font-size: 11px; opacity: 0.85;">Bạn ${petBadge} • ${time}</div>
+                                    <div>${question}</div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-start">
+                                <div class="bg-white border rounded-3 px-3 py-2 shadow-sm ai-msg-markdown" style="max-width: 90%;">
+                                    <strong class="text-primary d-block mb-1" style="font-size: 12px;">🤖 AI Assistant</strong>
+                                    <div>${marked.parse(answer)}</div>
+                                </div>
+                            </div>
+                        </div>`;
+                    messagesDiv.insertAdjacentHTML('beforeend', html);
+                    scrollToBottom();
+                }
+
+                function scrollToBottom() {
+                    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                }
+
+                chatForm.addEventListener("submit", async function (e) {
+                    e.preventDefault();
+                    const question = chatInput.value.trim();
+                    if (!question) return;
+
+                    const petId = petSelect.value ? parseInt(petSelect.value) : null;
+                    chatInput.value = "";
+                    chatInput.disabled = true;
+                    sendBtn.disabled = true;
+
+                    const loadingId = "loading_" + Date.now();
+                    messagesDiv.insertAdjacentHTML('beforeend', `<div id="${loadingId}" class="text-muted small fst-italic mb-2">🤖 AI đang suy nghĩ...</div>`);
+                    scrollToBottom();
+
+                    try {
+                        const res = await fetch('/AiAssistant/AskAjax', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ question: question, petId: petId })
+                        });
+                        const data = await res.json();
+                        document.getElementById(loadingId)?.remove();
+
+                        if (res.ok) {
+                            appendMessage(data.question, data.answer, data.petName, data.time);
+                        } else {
+                            alert(data.error || "Có lỗi xảy ra.");
+                        }
+                    } catch (err) {
+                        document.getElementById(loadingId)?.remove();
+                        alert("Lỗi kết nối máy chủ.");
+                    } finally {
+                        chatInput.disabled = false;
+                        sendBtn.disabled = false;
+                        chatInput.focus();
+                    }
+                });
+            });
+        </script>
+    }
+
+    <!-- ============================================================= SCRIPTS -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="~/js/main.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-@if (User.Identity != null && User.Identity.IsAuthenticated)
-{
-    <!-- Nút bong bóng mở chat ở góc phải dưới -->
-    <button id="aiChatToggleBtn" class="btn btn-primary rounded-circle shadow-lg d-flex align-items-center justify-content-center"
-            style="position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; z-index: 1050; font-size: 26px;"
-            title="Hỏi AI Care Assistant">
-        🤖
-    </button>
-
-    <!-- Cửa sổ khung chat nổi -->
-    <div id="aiChatBox" class="card shadow-lg border-0 d-none"
-         style="position: fixed; bottom: 95px; right: 25px; width: 370px; max-width: 90vw; height: 500px; z-index: 1050; display: flex; flex-direction: column; border-radius: 15px; overflow: hidden;">
-
-        <!-- Header -->
-        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center py-2 px-3">
-            <div>
-                <strong class="d-block" style="font-size: 15px;">🐾 AI Care Assistant</strong>
-                <small style="font-size: 11px; opacity: 0.9;">Trợ lý chăm sóc thú cưng 24/7</small>
-            </div>
-            <button type="button" id="aiChatCloseBtn" class="btn-close btn-close-white btn-sm" aria-label="Close"></button>
-        </div>
-
-        <!-- Chọn thú cưng -->
-        <div class="bg-light px-3 py-2 border-bottom">
-            <select id="aiWidgetPetSelect" class="form-select form-select-sm">
-                <option value="">-- Tư vấn chung (Chọn thú cưng nếu cần) --</option>
-            </select>
-        </div>
-
-        <!-- Nội dung tin nhắn -->
-        <div id="aiWidgetMessages" class="card-body p-3" style="flex: 1; overflow-y: auto; background-color: #f8f9fa; font-size: 14px;">
-            <div class="text-center text-muted small my-3">Đang tải hội thoại...</div>
-        </div>
-
-        <!-- Khung nhập tin nhắn -->
-        <div class="card-footer bg-white p-2 border-top">
-            <form id="aiWidgetForm" class="d-flex gap-2">
-                <input type="text" id="aiWidgetInput" class="form-control form-control-sm" placeholder="Nhập câu hỏi cho bé..." required autocomplete="off" />
-                <button type="submit" id="aiWidgetSendBtn" class="btn btn-primary btn-sm px-3">Gửi</button>
-            </form>
-        </div>
-    </div>
-
-    <style>
-        .ai-msg-markdown p:last-child, .ai-msg-markdown ul:last-child {
-            margin-bottom: 0;
-        }
-
-        .ai-msg-markdown ul {
-            padding-left: 18px;
-        }
-    </style>
-
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const toggleBtn = document.getElementById("aiChatToggleBtn");
-            const closeBtn = document.getElementById("aiChatCloseBtn");
-            const chatBox = document.getElementById("aiChatBox");
-            const messagesDiv = document.getElementById("aiWidgetMessages");
-            const petSelect = document.getElementById("aiWidgetPetSelect");
-            const chatForm = document.getElementById("aiWidgetForm");
-            const chatInput = document.getElementById("aiWidgetInput");
-            const sendBtn = document.getElementById("aiWidgetSendBtn");
-            let isLoaded = false;
-
-            // Bật / Tắt khung chat
-            toggleBtn.addEventListener("click", () => {
-                chatBox.classList.toggle("d-none");
-                if (!chatBox.classList.contains("d-none") && !isLoaded) {
-                    loadWidgetData();
-                }
-            });
-
-            closeBtn.addEventListener("click", () => chatBox.classList.add("d-none"));
-
-            // Tải danh sách thú cưng & lịch sử chat
-            async function loadWidgetData() {
-                try {
-                    const res = await fetch('/AiAssistant/GetWidgetData');
-                    const data = await res.json();
-
-                    data.pets.forEach(p => {
-                        const opt = document.createElement("option");
-                        opt.value = p.id;
-                        opt.textContent = "Bé: " + p.name;
-                        petSelect.appendChild(opt);
-                    });
-
-                    messagesDiv.innerHTML = "";
-                    if (data.history.length === 0) {
-                        messagesDiv.innerHTML = `<div class="text-center text-muted small my-4">Xin chào! Bạn cần tư vấn gì cho thú cưng hôm nay?</div>`;
-                    } else {
-                        data.history.forEach(item => appendMessage(item.question, item.answer, item.petName, item.time));
-                    }
-                    isLoaded = true;
-                    scrollToBottom();
-                } catch (err) {
-                    messagesDiv.innerHTML = `<div class="text-danger small text-center">Không thể tải dữ liệu chat.</div>`;
-                }
-            }
-
-            // Hiển thị 1 cặp hỏi - đáp ra giao diện
-            function appendMessage(question, answer, petName, time) {
-                const petBadge = petName ? `<span class="badge bg-info text-dark ms-1">${petName}</span>` : "";
-                const html = `
-                    <div class="mb-3">
-                        <div class="d-flex justify-content-end mb-1">
-                            <div class="bg-primary text-white rounded-3 px-3 py-2" style="max-width: 85%;">
-                                <div style="font-size: 11px; opacity: 0.85;">Bạn ${petBadge} • ${time}</div>
-                                <div>${question}</div>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-start">
-                            <div class="bg-white border rounded-3 px-3 py-2 shadow-sm ai-msg-markdown" style="max-width: 90%;">
-                                <strong class="text-primary d-block mb-1" style="font-size: 12px;">🤖 AI Assistant</strong>
-                                <div>${marked.parse(answer)}</div>
-                            </div>
-                        </div>
-                    </div>`;
-                messagesDiv.insertAdjacentHTML('beforeend', html);
-                scrollToBottom();
-            }
-
-            function scrollToBottom() {
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
-            }
-
-            // Gửi câu hỏi qua AJAX
-            chatForm.addEventListener("submit", async function (e) {
-                e.preventDefault();
-                const question = chatInput.value.trim();
-                if (!question) return;
-
-                const petId = petSelect.value ? parseInt(petSelect.value) : null;
-                chatInput.value = "";
-                chatInput.disabled = true;
-                sendBtn.disabled = true;
-
-                // Hiện trạng thái đang gõ
-                const loadingId = "loading_" + Date.now();
-                messagesDiv.insertAdjacentHTML('beforeend', `<div id="${loadingId}" class="text-muted small fst-italic mb-2">🤖 AI đang suy nghĩ...</div>`);
-                scrollToBottom();
-
-                try {
-                    const res = await fetch('/AiAssistant/AskAjax', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ question: question, petId: petId })
-                    });
-                    const data = await res.json();
-                    document.getElementById(loadingId)?.remove();
-
-                    if (res.ok) {
-                        appendMessage(data.question, data.answer, data.petName, data.time);
-                    } else {
-                        alert(data.error || "Có lỗi xảy ra.");
-                    }
-                } catch (err) {
-                    document.getElementById(loadingId)?.remove();
-                    alert("Lỗi kết nối máy chủ.");
-                } finally {
-                    chatInput.disabled = false;
-                    sendBtn.disabled = false;
-                    chatInput.focus();
-                }
-            });
-        });
-    </script>
-}

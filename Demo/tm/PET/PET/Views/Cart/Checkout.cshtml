@@ -1,0 +1,89 @@
+﻿@model PET.Models.Order
+
+@{
+    ViewData["Title"] = "Thanh toán đơn hàng";
+    var cart = ViewBag.Cart as List<PET.Models.CartItem> ?? new List<PET.Models.CartItem>();
+    decimal grandTotal = ViewBag.GrandTotal ?? 0m;
+}
+
+<section class="section bg-paper" style="padding-top: 120px; padding-bottom: 80px; min-height: 85vh;">
+    <div class="container container-x">
+        <div class="mb-3">
+            <a asp-action="Index" class="text-decoration-none fw-bold text-muted">← Quay lại giỏ hàng</a>
+        </div>
+
+        <div class="row g-4">
+            <!-- Form thông tin nhận hàng -->
+            <div class="col-lg-7">
+                <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white">
+                    <span class="kicker is-yellow mb-2">
+                        <svg class="paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg>
+                        Thông tin giao hàng
+                    </span>
+                    <h1 class="h3 fw-bold mb-1">Xác nhận đặt hàng</h1>
+                    <p class="text-muted small mb-4">Thanh toán tiền mặt khi nhận hàng (COD) hoặc chuyển khoản khi giao.</p>
+
+                    <form asp-action="Checkout" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger rounded-3"></div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Tài khoản đặt hàng</label>
+                            <input type="text" class="form-control rounded-3 bg-light" value="@User.Identity?.Name" readonly />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PhoneNumber" class="form-label fw-bold">Số điện thoại nhận hàng <span class="text-danger">*</span></label>
+                            <input asp-for="PhoneNumber" class="form-control rounded-3" placeholder="VD: 0912 345 678" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="ShippingAddress" class="form-label fw-bold">Địa chỉ giao hàng chi tiết <span class="text-danger">*</span></label>
+                            <textarea asp-for="ShippingAddress" rows="3" class="form-control rounded-3" placeholder="Số nhà, tên đường, phường/xã, quận/huyện, tỉnh/thành phố..."></textarea>
+                            <span asp-validation-for="ShippingAddress" class="text-danger small"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-paw w-100 py-3 fw-bold justify-content-center">
+                            🐾 Hoàn tất đặt hàng (@grandTotal.ToString("N0") đ)
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Cột chi tiết sản phẩm đặt mua -->
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+                    <h4 class="h5 fw-bold mb-3 pb-3 border-bottom">Chi tiết đơn hàng (@cart.Sum(x => x.Quantity) món)</h4>
+
+                    <div class="d-flex flex-column gap-3 mb-3 pb-3 border-bottom">
+                        @foreach (var item in cart)
+                        {
+                            <div class="d-flex align-items-center justify-content-between gap-2">
+                                <div class="d-flex align-items-center gap-2">
+                                    <img src="@(string.IsNullOrEmpty(item.ImageUrl) ? Url.Content("~/img/product-1.jpg") : item.ImageUrl)"
+                                         class="rounded-2 border" style="width: 48px; height: 48px; object-fit: cover;" />
+                                    <div>
+                                        <div class="fw-bold small">@item.ProductName</div>
+                                        <div class="text-muted small">SL: @item.Quantity × @item.Price.ToString("N0") đ</div>
+                                    </div>
+                                </div>
+                                <span class="fw-bold small">@item.Total.ToString("N0") đ</span>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold fs-5">Tổng thanh toán:</span>
+                        <span class="fw-bold fs-4 text-danger">@grandTotal.ToString("N0") đ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,69 +1,155 @@
 ﻿@model PET.Models.Product
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Chỉnh sửa sản phẩm " + Model.Name;
 }
 
-<h1>Edit</h1>
+<section class="section bg-paper" style="padding-top: 120px; padding-bottom: 80px; min-height: 85vh;">
+    <div class="container container-x">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Điều hướng quay lại -->
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <a asp-action="Index" class="text-decoration-none fw-bold text-muted">
+                        ← Quay lại cửa hàng sản phẩm
+                    </a>
+                    <a asp-action="Details" asp-route-id="@Model.Id" class="text-decoration-none fw-bold text-primary">
+                        Xem chi tiết sản phẩm →
+                    </a>
+                </div>
 
-<h4>Product</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <!-- Card Form -->
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                    <div class="card-header bg-white border-bottom p-4 d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="kicker is-yellow mb-2">
+                                <svg class="paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg>
+                                Cập nhật kho hàng
+                            </span>
+                            <h1 class="h3 fw-bold mb-1">Chỉnh sửa: @Model.Name</h1>
+                            <p class="text-muted small mb-0">Cập nhật giá bán, số lượng tồn kho hoặc trạng thái kinh doanh.</p>
+                        </div>
+
+                        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                        {
+                            <div class="bg-light p-1 rounded-3 border d-none d-sm-block" title="Ảnh sản phẩm hiện tại">
+                                <img src="@Model.ImageUrl" alt="@Model.Name" class="rounded-2" style="width: 60px; height: 60px; object-fit: cover;" />
+                            </div>
+                        }
+                    </div>
+
+                    <div class="card-body p-4 p-md-5 bg-white">
+                        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="alert alert-danger rounded-3" role="alert"></div>
+
+                            <!-- Giữ nguyên các trường hệ thống & đường dẫn ảnh cũ -->
+                            <input type="hidden" asp-for="Id" />
+                            <input type="hidden" asp-for="CreatedAt" />
+                            <input type="hidden" asp-for="ImageUrl" />
+
+                            <div class="row g-3">
+                                <!-- Tên sản phẩm -->
+                                <div class="col-md-7">
+                                    <label asp-for="Name" class="form-label fw-bold">Tên sản phẩm <span class="text-danger">*</span></label>
+                                    <input asp-for="Name" class="form-control rounded-3" placeholder="VD: Sữa tắm yến mạch, Hạt dinh dưỡng..." />
+                                    <span asp-validation-for="Name" class="text-danger small"></span>
+                                </div>
+
+                                <!-- Danh mục -->
+                                <div class="col-md-5">
+                                    <label asp-for="Category" class="form-label fw-bold">Danh mục <span class="text-danger">*</span></label>
+                                    <select asp-for="Category" class="form-select rounded-3">
+                                        <option value="">-- Chọn danh mục --</option>
+                                        <option value="Thức ăn & Dinh dưỡng">🍖 Thức ăn & Dinh dưỡng</option>
+                                        <option value="Sữa tắm & Chăm sóc">🧴 Sữa tắm & Chăm sóc</option>
+                                        <option value="Phụ kiện & Đồ chơi">🧸 Phụ kiện & Đồ chơi</option>
+                                        <option value="Vệ sinh & Y tế">🩺 Vệ sinh & Y tế</option>
+                                        <option value="Khác">🐾 Khác</option>
+                                    </select>
+                                    <span asp-validation-for="Category" class="text-danger small"></span>
+                                </div>
+
+                                <!-- Giá bán -->
+                                <div class="col-md-6">
+                                    <label asp-for="Price" class="form-label fw-bold">Giá bán (VNĐ) <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <input asp-for="Price" type="number" step="1000" class="form-control rounded-start-3" />
+                                        <span class="input-group-text rounded-end-3 bg-light fw-bold">đ</span>
+                                    </div>
+                                    <span asp-validation-for="Price" class="text-danger small"></span>
+                                </div>
+
+                                <!-- Số lượng tồn kho -->
+                                <div class="col-md-6">
+                                    <label asp-for="StockQuantity" class="form-label fw-bold">Số lượng tồn kho <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <input asp-for="StockQuantity" type="number" min="0" class="form-control rounded-start-3" />
+                                        <span class="input-group-text rounded-end-3 bg-light fw-bold">sản phẩm</span>
+                                    </div>
+                                    <span asp-validation-for="StockQuantity" class="text-danger small"></span>
+                                </div>
+
+                                <!-- Chọn file ảnh mới từ máy tính + Xem trước -->
+                                <div class="col-12">
+                                    <label for="imageFile" class="form-label fw-bold">Đổi hình ảnh sản phẩm</label>
+                                    <div class="d-flex align-items-center gap-3 p-3 bg-light rounded-3 border">
+                                        <img id="imagePreview"
+                                             src="@(string.IsNullOrEmpty(Model.ImageUrl) ? Url.Content("~/img/product-1.jpg") : Model.ImageUrl)"
+                                             alt="Xem trước ảnh"
+                                             class="rounded-3 shadow-sm border bg-white"
+                                             style="width: 72px; height: 72px; object-fit: cover;" />
+                                        <div class="flex-grow-1">
+                                            <input type="file" name="imageFile" id="imageFile" accept="image/*" class="form-control rounded-3" onchange="previewProductImage(event)" />
+                                            <div class="form-text mb-0">Chọn ảnh mới (.jpg, .png, .webp) nếu muốn thay đổi, hoặc để trống để giữ nguyên ảnh hiện tại.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Mô tả sản phẩm -->
+                                <div class="col-12">
+                                    <label asp-for="Description" class="form-label fw-bold">Mô tả chi tiết sản phẩm</label>
+                                    <textarea asp-for="Description" rows="4" class="form-control rounded-3" placeholder="Thành phần, công dụng, hướng dẫn sử dụng..."></textarea>
+                                    <span asp-validation-for="Description" class="text-danger small"></span>
+                                </div>
+
+                                <!-- Trạng thái mở bán -->
+                                <div class="col-12">
+                                    <div class="form-check form-switch p-3 ps-5 bg-light rounded-3 border">
+                                        <input class="form-check-input" type="checkbox" role="switch" asp-for="IsActive" />
+                                        <label class="form-check-label fw-bold" asp-for="IsActive">
+                                            Mở bán công khai trên cửa hàng
+                                        </label>
+                                        <div class="small text-muted">Tắt tùy chọn này nếu tạm ngừng kinh doanh sản phẩm.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Nút hành động -->
+                            <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+                                <a asp-action="Index" class="btn btn-ghost">Hủy bỏ</a>
+                                <button type="submit" class="btn btn-paw btn-icon px-4">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" /><polyline points="17 21 17 13 7 13 7 21" /><polyline points="7 3 7 8 15 8" /></svg>
+                                    Lưu thay đổi
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
-                <input asp-for="Category" class="form-control" />
-                <span asp-validation-for="Category" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StockQuantity" class="control-label"></label>
-                <input asp-for="StockQuantity" class="form-control" />
-                <span asp-validation-for="StockQuantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedAt" class="control-label"></label>
-                <input asp-for="CreatedAt" class="form-control" />
-                <span asp-validation-for="CreatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</section>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function previewProductImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                document.getElementById('imagePreview').src = URL.createObjectURL(file);
+            }
+        }
+    </script>
 }

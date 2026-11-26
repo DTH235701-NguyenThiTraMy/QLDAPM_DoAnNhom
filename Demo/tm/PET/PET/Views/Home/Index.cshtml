@@ -1,8 +1,546 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Trang chủ";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- ============================================================= HERO -->
+<section class="hero" id="home">
+    <div class="paw-scatter" aria-hidden="true">
+        <svg class="paw" style="top:14%;left:6%;width:46px" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg>
+        <svg class="paw" style="bottom:12%;left:40%;width:34px" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg>
+    </div>
+    <div class="container container-x position-relative">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 reveal">
+                <span class="hero-tag"><span class="dot"></span> Đồng hành cùng thú cưng từ 2014</span>
+                <h1>Thú cưng vui khỏe, <span class="swoosh">sạch sẽ & mượt mà</span> mỗi ngày.</h1>
+                <p class="hero-lead">Fetch là trung tâm chăm sóc thú cưng tận tâm, nơi các bé cún thư giãn, các bé mèo thoải mái và mỗi bộ lông đều được chăm chút mềm mượt.</p>
+                <div class="hero-cta">
+                    <a class="btn btn-paw btn-lg btn-icon" asp-controller="Appointments" asp-action="Create">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="3" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
+                        Đặt lịch Spa ngay
+                    </a>
+                    <a class="btn btn-ghost btn-lg" asp-controller="Services" asp-action="Index">Xem dịch vụ</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="num"><span data-count="12000" data-suffix="+">0</span></div>
+                        <div class="lbl">Lượt chăm sóc</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="num"><span data-count="4.9">0</span>★</div>
+                        <div class="lbl">Đánh giá từ 800+ chủ nuôi</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="num"><span data-count="9">0</span></div>
+                        <div class="lbl">Chuyên viên chứng chỉ</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 reveal d2">
+                <div class="hero-media">
+                    <svg class="hero-blob" viewBox="0 0 200 200" fill="currentColor" aria-hidden="true"><path d="M42.7,-63.8C55.9,-56.5,67.2,-45,72.8,-31.1C78.4,-17.2,78.3,-0.9,74.3,14.2C70.3,29.2,62.4,43,50.9,53.4C39.4,63.9,24.3,71,7.9,73.5C-8.6,76.1,-26.3,74.1,-40.6,66.1C-54.9,58.1,-65.7,44.2,-71.7,28.7C-77.6,13.1,-78.6,-4.1,-73.9,-19.3C-69.2,-34.6,-58.8,-47.9,-45.7,-55.3C-32.6,-62.7,-16.3,-64.2,-0.3,-63.8C15.8,-63.4,31.5,-71.1,42.7,-63.8Z" transform="translate(100 100)" /></svg>
+                    <img class="hero-photo" src="~/img/hero-grooming.jpg" alt="Chú chó Golden Retriever đang được tắm gội nhẹ nhàng" width="640" height="704" fetchpriority="high">
+                    <div class="hero-badge b1">
+                        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z" /></svg></span>
+                        <div><span>Không căng thẳng</span><small>nâng niu nhẹ nhàng</small></div>
+                    </div>
+                    <div class="hero-badge b2">
+                        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8a7 7 0 0 1-7 10z" /><path d="M8 20a4 4 0 0 0-1-8" /></svg></span>
+                        <div><span>Tự nhiên</span><small>sản phẩm thảo mộc</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path fill="#ffffff" d="M0,40 C240,72 480,72 720,48 C960,24 1200,8 1440,36 L1440,70 L0,70 Z" /></svg>
+    </div>
+</section>
+
+<!-- ============================================================= TRUST STRIP -->
+<div class="trust-strip">
+    <div class="container container-x">
+        <div class="row row-cols-2 row-cols-md-4 g-3 text-center text-md-start justify-content-between">
+            <div class="col"><span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6v6c0 5 3.8 8.4 9 10 5.2-1.6 9-5 9-10V6z" /><path d="m9 12 2 2 4-4" /></svg> Chứng nhận Fear-Free</span></div>
+            <div class="col"><span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z" /></svg> Mọi giống chó & mèo</span></div>
+            <div class="col"><span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8a7 7 0 0 1-7 10z" /></svg> Sản phẩm thiên nhiên</span></div>
+            <div class="col"><span class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3" /><path d="M16 2v4M8 2v4M3 10h18" /></svg> Đặt lịch online dễ dàng</span></div>
+        </div>
+    </div>
 </div>
+
+<!-- ============================================================= SERVICES -->
+@{
+    var homeServices = ViewBag.Services as List<PET.Models.Service> ?? new List<PET.Models.Service>();
+}
+<section class="section bg-paper" id="services">
+    <div class="container container-x">
+        <div class="section-head center reveal mb-5">
+            <span class="kicker"><svg class="paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg> Danh mục dịch vụ</span>
+            <h2 class="section-title">Dịch vụ & bảng giá bé yêu thích</h2>
+            <p class="section-sub">Giá tham khảo áp dụng cho thú cưng cỡ nhỏ. Xem chi tiết đầy đủ các gói dịch vụ trong hệ thống của chúng tôi.</p>
+        </div>
+
+        @if (homeServices.Any())
+        {
+            <div class="row g-4">
+                @for (int i = 0; i < homeServices.Count; i++)
+                {
+                    var svc = homeServices[i];
+                    string tintClass = (i % 3) switch
+                    {
+                        1 => "tint-coral",
+                        2 => "tint-yellow",
+                        _ => ""
+                    };
+                    string delayClass = (i % 3) switch
+                    {
+                        1 => "d1",
+                        2 => "d2",
+                        _ => ""
+                    };
+
+                    <div class="col-md-6 col-lg-4 reveal @delayClass">
+                        <article class="svc-card @tintClass">
+                            <div class="svc-ic">
+                                @if (!string.IsNullOrEmpty(svc.ImageUrl))
+                                {
+                                    <img src="@svc.ImageUrl" alt="@svc.Name" class="rounded-circle" style="width: 44px; height: 44px; object-fit: cover;" />
+                                }
+                                else
+                                {
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a2.12 2.12 0 0 0-3 3L6 9" /><path d="M2 15h20a2 2 0 0 1-2 2v1a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-1a2 2 0 0 1-2-2Z" /><path d="M9 12V6" /></svg>
+                                }
+                            </div>
+                            <h3>
+                                <a asp-controller="Services" asp-action="Details" asp-route-id="@svc.Id" class="text-decoration-none text-dark">
+                                    @svc.Name
+                                </a>
+                            </h3>
+                            <p class="svc-desc">@(string.IsNullOrEmpty(svc.Description) ? "Gói chăm sóc toàn diện, nhẹ nhàng chuẩn Fear-Free dành cho thú cưng." : svc.Description)</p>
+                            <div class="svc-foot">
+                                <div>
+                                    <span class="svc-meta"><span class="from">từ</span> <span class="price">@svc.Price.ToString("N0")đ</span></span><br>
+                                    <span class="svc-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg> @svc.DurationMinutes phút</span>
+                                </div>
+                                <a class="btn btn-ghost" asp-controller="Appointments" asp-action="Create" asp-route-serviceId="@svc.Id">Đặt lịch</a>
+                            </div>
+                        </article>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="text-center text-muted py-4">Chưa có dịch vụ nào được tạo trong hệ thống.</div>
+        }
+
+        <div class="text-center mt-5 reveal">
+            <a class="btn btn-paw btn-lg btn-icon" asp-controller="Services" asp-action="Index">
+                Xem tất cả dịch vụ
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================= BEFORE / AFTER -->
+<section class="section bg-wash" id="results">
+    <div class="container container-x">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-5 reveal">
+                <span class="kicker is-coral">Lột xác ngoạn mục</span>
+                <h2 class="section-title">Kéo thanh trượt để xem sự khác biệt</h2>
+                <p class="section-sub mb-4">Mỗi buổi chăm sóc đều kết thúc với bộ lông bồng bềnh và thơm mát. Hãy kéo nút giữa để xem hình ảnh thực tế trước và sau khi làm đẹp.</p>
+                <ul class="list-check">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5" /></svg> Gỡ rối mượt mà, phục hồi độ bóng khỏe của lông</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5" /></svg> Cắt tỉa gọn gàng chuẩn form từng giống</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5" /></svg> Thơm tho, sạch sẽ, sẵn sàng ôm ấp</li>
+                </ul>
+            </div>
+            <div class="col-lg-7 reveal d2">
+                <div class="ba-slider" aria-label="Before and after grooming comparison">
+                    <img src="~/img/ba-before-1.jpg" alt="Thú cưng trước khi cắt tỉa" width="1200" height="800" loading="lazy">
+                    <span class="ba-tag before">Trước</span>
+                    <div class="ba-after-wrap">
+                        <img src="~/img/ba-after-1.jpg" alt="Thú cưng sau khi cắt tỉa gọn gàng" width="1200" height="800" loading="lazy">
+                    </div>
+                    <span class="ba-tag after">Sau</span>
+                    <button type="button" class="ba-handle" role="slider" aria-label="Reveal amount" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-orientation="horizontal">
+                        <span class="knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 7-5 5 5 5M15 7l5 5-5 5" /></svg></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================= GROOMERS -->
+<section class="section bg-paper" id="team">
+    <div class="container container-x">
+        <div class="section-head center reveal mb-5">
+            <span class="kicker">Đội ngũ chuyên viên</span>
+            <h2 class="section-title">Gặp gỡ các Groomer của Fetch</h2>
+            <p class="section-sub">Được đào tạo bài bản, kiên nhẫn và yêu thương động vật hết mực.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-6 col-lg-3 reveal">
+                <div class="groomer-card">
+                    <div class="groomer-photo-wrap">
+                        <img class="groomer-photo" src="~/img/groomer-1.jpg" alt="Maya Ortiz" width="240" height="240" loading="lazy">
+                        <span class="groomer-badge">Trưởng nhóm</span>
+                    </div>
+                    <h3>Maya Ortiz</h3>
+                    <p class="spec">Tạo kiểu Poodle & Cắt kéo</p>
+                    <p class="line">“Không gì vui hơn khi thấy các bé ngủ gật ngon lành lúc sấy lông.”</p>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3 reveal d1">
+                <div class="groomer-card">
+                    <div class="groomer-photo-wrap">
+                        <img class="groomer-photo" src="~/img/groomer-2.jpg" alt="Daniel Reeves" width="240" height="240" loading="lazy">
+                        <span class="groomer-badge">Chuyên gia Mèo</span>
+                    </div>
+                    <h3>Daniel Reeves</h3>
+                    <p class="spec">Chăm sóc Mèo & Bé nhút nhát</p>
+                    <p class="line">“Phòng yên tĩnh, thao tác chậm rãi và nghỉ ngơi hợp lý là bí quyết.”</p>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3 reveal d2">
+                <div class="groomer-card">
+                    <div class="groomer-photo-wrap">
+                        <img class="groomer-photo" src="~/img/groomer-3.jpg" alt="Priya Nair" width="240" height="240" loading="lazy">
+                        <span class="groomer-badge">Chuyên gia Lông dày</span>
+                    </div>
+                    <h3>Priya Nair</h3>
+                    <p class="spec">Giống chó lớn & Lông kép</p>
+                    <p class="line">“Tôi thích khoảnh khắc chủ nuôi ngạc nhiên vì bộ lông mềm mượt của bé.”</p>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3 reveal d3">
+                <div class="groomer-card">
+                    <div class="groomer-photo-wrap">
+                        <img class="groomer-photo" src="~/img/groomer-4.jpg" alt="Tom Becker" width="240" height="240" loading="lazy">
+                        <span class="groomer-badge">Chăm sóc Cún con</span>
+                    </div>
+                    <h3>Tom Becker</h3>
+                    <p class="spec">Cún con & Lần đầu đi Spa</p>
+                    <p class="line">“Lần đầu luôn đầy bánh thưởng và lời khen để tạo niềm tin cho bé.”</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================= WHY US -->
+<section class="section bg-cream">
+    <div class="container container-x">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 reveal">
+                <img class="why-photo" src="~/img/why-grooming.jpg" alt="Chuyên viên đang chải lông nhẹ nhàng cho cún" width="560" height="620" loading="lazy">
+            </div>
+            <div class="col-lg-6 reveal d2">
+                <span class="kicker is-yellow">Tại sao chọn Fetch</span>
+                <h2 class="section-title mb-4">Sự chăm sóc bé yêu có thể cảm nhận</h2>
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <div class="why-item c1">
+                            <span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6v6c0 5 3.8 8.4 9 10 5.2-1.6 9-5 9-10V6z" /><path d="m9 12 2 2 4-4" /></svg></span>
+                            <div><h3>Chuyên viên chứng chỉ</h3><p>100% nhân viên được đào tạo bài bản và có chứng chỉ chăm sóc không căng thẳng.</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="why-item c2">
+                            <span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z" /></svg></span>
+                            <div><h3>Thao tác nhẹ nhàng</h3><p>Bàn chống trượt, máy sấy êm ái và luôn cho bé nghỉ ngơi khi cần.</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="why-item c3">
+                            <span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V12a8 8 0 0 1 16 0v10" /><path d="M4 15c3 0 4-2 8-2s5 2 8 2" /></svg></span>
+                            <div><h3>Đón tiếp mọi giống loài</h3><p>Từ các bé cún tí hon đến chó lớn lông xù và mèo cưng đều được phục vụ chu đáo.</p></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="why-item c4">
+                            <span class="why-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8a7 7 0 0 1-7 10z" /><path d="M8 20a4 4 0 0 0-1-8" /></svg></span>
+                            <div><h3>Sản phẩm thiên nhiên</h3><p>Sữa tắm chiết xuất thực vật dịu nhẹ, an toàn cho da nhạy cảm và không cay mắt.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================= HAPPY CLIENTS GALLERY -->
+<section class="section bg-paper">
+    <div class="container container-x">
+        <div class="section-head center reveal mb-5">
+            <span class="kicker is-coral"><svg class="paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg> Khách hàng thân thiết</span>
+            <h2 class="section-title">Khoảnh khắc đáng yêu tại Fetch</h2>
+            <p class="section-sub">Những vị khách bốn chân rạng rỡ sau khi trải nghiệm dịch vụ. Bấm vào ảnh để phóng to.</p>
+        </div>
+        <div class="pet-grid reveal">
+            <button class="g-item" data-lightbox="@Url.Content("~/img/pet-1.jpg")" data-caption="Bé Bailey sau khi tắm và chải lông" aria-label="Phóng to ảnh Bailey">
+                <img src="~/img/pet-1.jpg" alt="Bé Golden Retriever Bailey" width="360" height="360" loading="lazy">
+                <span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3M11 8v6M8 11h6" /></svg></span>
+            </button>
+            <button class="g-item" data-lightbox="@Url.Content("~/img/pet-2.jpg")" data-caption="Bé Mochi với kiểu cắt Teddy đáng yêu" aria-label="Phóng to ảnh Mochi">
+                <img src="~/img/pet-2.jpg" alt="Bé Poodle Mochi" width="360" height="360" loading="lazy">
+                <span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3M11 8v6M8 11h6" /></svg></span>
+            </button>
+            <button class="g-item g-wide" data-lightbox="@Url.Content("~/img/pet-3.jpg")" data-caption="Bé Luna sau gói chăm sóc giảm rụng lông" aria-label="Phóng to ảnh Luna">
+                <img src="~/img/pet-3.jpg" alt="Bé Husky Luna" width="720" height="360" loading="lazy">
+                <span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3M11 8v6M8 11h6" /></svg></span>
+            </button>
+            <button class="g-item" data-lightbox="@Url.Content("~/img/pet-4.jpg")" data-caption="Hoàng thượng Oliver sau buổi chải mượt" aria-label="Phóng to ảnh Oliver">
+                <img src="~/img/pet-4.jpg" alt="Mèo mướp Oliver" width="360" height="360" loading="lazy">
+                <span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3M11 8v6M8 11h6" /></svg></span>
+            </button>
+            <button class="g-item" data-lightbox="@Url.Content("~/img/pet-5.jpg")" data-caption="Bé Pepper với đường cắt sắc nét" aria-label="Phóng to ảnh Pepper">
+                <img src="~/img/pet-5.jpg" alt="Bé Schnauzer Pepper" width="360" height="360" loading="lazy">
+                <span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3M11 8v6M8 11h6" /></svg></span>
+            </button>
+            <button class="g-item" data-lightbox="@Url.Content("~/img/pet-6.jpg")" data-caption="Bé Biscuit bồng bềnh cùng khăn bandana" aria-label="Phóng to ảnh Biscuit">
+                <img src="~/img/pet-6.jpg" alt="Bé Corgi Biscuit" width="360" height="360" loading="lazy">
+                <span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3M11 8v6M8 11h6" /></svg></span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================= RETAIL / ADD-ONS -->
+@{
+    var homeProducts = ViewBag.Products as List<PET.Models.Product> ?? new List<PET.Models.Product>();
+}
+<section class="section bg-cream">
+    <div class="container container-x">
+        <div class="d-md-flex align-items-end justify-content-between mb-5 reveal">
+            <div class="section-head">
+                <span class="kicker is-yellow">Cửa hàng phụ kiện & dinh dưỡng</span>
+                <h2 class="section-title">Sản phẩm chăm sóc tại nhà</h2>
+                <p class="section-sub mb-0">Các dòng sữa tắm, bánh thưởng và dụng cụ chải lông chuẩn Salon dành cho bé.</p>
+            </div>
+            <a class="btn btn-ghost mt-3 mt-md-0" asp-controller="Products" asp-action="Index">Xem tất cả sản phẩm</a>
+        </div>
+
+        @if (homeProducts.Any())
+        {
+            <div class="row g-4">
+                @for (int i = 0; i < homeProducts.Count; i++)
+                {
+                    var prod = homeProducts[i];
+                    string delayClass = i > 0 ? $"d{i}" : "";
+
+                    <div class="col-6 col-lg-3 reveal @delayClass">
+                        <div class="shop-card">
+                            <div class="shop-thumb">
+                                <a asp-controller="Products" asp-action="Details" asp-route-id="@prod.Id">
+                                    <img src="@(string.IsNullOrEmpty(prod.ImageUrl) ? Url.Content("~/img/product-1.jpg") : prod.ImageUrl)"
+                                         alt="@prod.Name" width="300" height="300" loading="lazy">
+                                </a>
+                                @if (prod.StockQuantity <= 0)
+                                {
+                                    <span class="shop-flag bg-secondary text-white">Hết hàng</span>
+                                }
+                                else if (i == 0)
+                                {
+                                    <span class="shop-flag">Mới</span>
+                                }
+                            </div>
+                            <div class="shop-body">
+                                <span class="cat">@prod.Category</span>
+                                <h3>
+                                    <a asp-controller="Products" asp-action="Details" asp-route-id="@prod.Id" class="text-decoration-none text-dark">
+                                        @prod.Name
+                                    </a>
+                                </h3>
+                                <div class="shop-foot">
+                                    <span class="shop-price">@prod.Price.ToString("N0")đ</span>
+                                    @if (prod.StockQuantity > 0)
+                                    {
+                                        <form asp-controller="Cart" asp-action="AddToCart" method="post" class="d-inline">
+                                            <input type="hidden" name="productId" value="@prod.Id" />
+                                            <input type="hidden" name="quantity" value="1" />
+                                            <button type="submit" class="shop-add d-flex align-items-center justify-content-center border-0" title="Thêm vào giỏ hàng" aria-label="Thêm vào giỏ hàng">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>
+                                            </button>
+                                        </form>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="text-center text-muted py-4">Chưa có sản phẩm nào được mở bán trên cửa hàng.</div>
+        }
+    </div>
+</section>
+
+<!-- ============================================================= LOYALTY BAND -->
+<section class="section-tight bg-paper">
+    <div class="container container-x">
+        <div class="loyalty reveal">
+            <svg class="paw-bg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg>
+            <div class="row align-items-center g-4 position-relative">
+                <div class="col-lg-7">
+                    <span class="kicker is-coral">Khách hàng thân thiết</span>
+                    <h2>Miễn phí mỗi lần Spa thứ 6</h2>
+                    <p class="mb-0 fw-bold">Tích lũy dấu chân sau mỗi lần sử dụng dịch vụ — nhận ngay 1 gói chăm sóc miễn phí ở lần thứ 6 cùng ưu đãi 10% khi mua sản phẩm.</p>
+                    <div class="stamp-row" aria-hidden="true">
+                        <span class="stamp filled"><svg viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg></span>
+                        <span class="stamp filled"><svg viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg></span>
+                        <span class="stamp filled"><svg viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg></span>
+                        <span class="stamp"></span><span class="stamp"></span>
+                        <span class="stamp free">FREE</span>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-lg-end">
+                    <a class="btn btn-white btn-lg" asp-controller="Appointments" asp-action="Create">Đặt lịch tích điểm ngay</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================= TESTIMONIALS -->
+<section class="section bg-wash" id="reviews">
+    <div class="container container-x">
+        <div class="section-head center reveal mb-5">
+            <span class="kicker">Cảm nhận khách hàng</span>
+            <h2 class="section-title">Được tin yêu bởi cộng đồng nuôi thú cưng</h2>
+            <p class="section-sub">Chia sẻ thực tế từ những khách hàng thường xuyên của Fetch.</p>
+        </div>
+
+        <div data-tst class="reveal">
+            <div class="tst-viewport">
+                <div class="tst-track">
+                    <div class="tst-slide">
+                        <div class="tst-card">
+                            <div class="tst-stars" aria-label="5 out of 5 stars">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg>
+                            </div>
+                            <p class="tst-quote">“Bé cún nhà mình trước đây rất sợ đi tiệm, nhưng đến Fetch lại quấn quýt anh Tom. Về nhà lông mềm mượt và thơm cực kỳ.”</p>
+                            <div class="tst-who"><img src="~/img/client-1.jpg" alt="Sarah M." width="50" height="50" loading="lazy"><div><div class="n">Sarah M.</div><div class="p">Chủ của bé Cooper</div></div></div>
+                        </div>
+                    </div>
+                    <div class="tst-slide">
+                        <div class="tst-card">
+                            <div class="tst-stars" aria-label="5 out of 5 stars">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg>
+                            </div>
+                            <p class="tst-quote">“Chị Priya xử lý lớp lông rụng cho bé Husky quá đỉnh, sofa nhà mình sạch hẳn. Đặt lịch trên web chỉ mất 30 giây.”</p>
+                            <div class="tst-who"><img src="~/img/client-2.jpg" alt="James & Elena" width="50" height="50" loading="lazy"><div><div class="n">James & Elena</div><div class="p">Chủ của bé Luna</div></div></div>
+                        </div>
+                    </div>
+                    <div class="tst-slide">
+                        <div class="tst-card">
+                            <div class="tst-stars" aria-label="5 out of 5 stars">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg>
+                            </div>
+                            <p class="tst-quote">“Mình chưa từng yên tâm giao bé mèo cho ai cho đến khi gặp Daniel. Rất nhẹ nhàng, kiên nhẫn, bé Oliver nằm yên ngoan ngoãn.”</p>
+                            <div class="tst-who"><img src="~/img/client-3.jpg" alt="Amara K." width="50" height="50" loading="lazy"><div><div class="n">Amara K.</div><div class="p">Chủ của bé Oliver</div></div></div>
+                        </div>
+                    </div>
+                    <div class="tst-slide">
+                        <div class="tst-card">
+                            <div class="tst-stars" aria-label="5 out of 5 stars">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.5 7 .8-5.2 4.7 1.5 6.9L12 17.8 5.2 20.9l1.5-6.9L1.5 9.3l7-.8z" /></svg>
+                            </div>
+                            <p class="tst-quote">“Kiểu cắt Teddy của Maya cho bé Poodle đẹp như tranh vẽ. Chương trình tích điểm rất thích, lần thứ 6 được miễn phí hoàn toàn!”</p>
+                            <div class="tst-who"><img src="~/img/client-4.jpg" alt="Marcus T." width="50" height="50" loading="lazy"><div><div class="n">Marcus T.</div><div class="p">Chủ của bé Mochi</div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tst-nav">
+                <button class="tst-arrow tst-prev" type="button" aria-label="Previous reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6" /></svg></button>
+                <div class="tst-dots" role="tablist" aria-label="Review pages"></div>
+                <button class="tst-arrow tst-next" type="button" aria-label="Next reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================= HOURS / LOCATION -->
+<section class="section bg-paper" id="visit">
+    <div class="container container-x">
+        <div class="section-head center reveal mb-5">
+            <span class="kicker is-coral">Ghé thăm chúng tôi</span>
+            <h2 class="section-title">Giờ mở cửa & Địa chỉ</h2>
+            <p class="section-sub">Đặt lịch trước để được phục vụ chu đáo nhất. Có bãi đậu xe miễn phí phía trước cửa hàng.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 reveal">
+                <div class="info-card">
+                    <h3 class="mb-3" style="font-size:1.25rem">Giờ hoạt động</h3>
+                    <ul class="hours-list">
+                        <li class="today"><span class="day">Thứ Hai</span><span class="hrs">8:00 – 18:00</span></li>
+                        <li><span class="day">Thứ Ba</span><span class="hrs">8:00 – 18:00</span></li>
+                        <li><span class="day">Thứ Tư</span><span class="hrs">8:00 – 18:00</span></li>
+                        <li><span class="day">Thứ Năm</span><span class="hrs">8:00 – 19:00</span></li>
+                        <li><span class="day">Thứ Sáu</span><span class="hrs">8:00 – 19:00</span></li>
+                        <li><span class="day">Thứ Bảy</span><span class="hrs">9:00 – 16:00</span></li>
+                        <li class="closed"><span class="day">Chủ Nhật</span><span class="hrs">Nghỉ</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 reveal d1">
+                <div class="info-card">
+                    <h3 class="mb-3" style="font-size:1.25rem">Thông tin liên hệ</h3>
+                    <div class="contact-line">
+                        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z" /><circle cx="12" cy="10" r="3" /></svg></span>
+                        <div><div class="t">Địa chỉ Salon</div><a href="https://maps.google.com/?q=Fetch+Grooming+Co" target="_blank" rel="noopener">148 Maple Row, Riverside District</a></div>
+                    </div>
+                    <div class="contact-line">
+                        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z" /></svg></span>
+                        <div><div class="t">Hotline</div><a href="tel:+15550142020">(555) 014-2020</a></div>
+                    </div>
+                    <div class="contact-line">
+                        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3" /><path d="m2 7 10 6 10-6" /></svg></span>
+                        <div><div class="t">Email</div><a href="mailto:hello@fetchgrooming.co">hello@fetchgrooming.co</a></div>
+                    </div>
+                    <a class="btn btn-paw w-100 mt-2" asp-controller="Appointments" asp-action="Create">Đặt lịch hẹn ngay</a>
+                </div>
+            </div>
+            <div class="col-lg-4 reveal d2">
+                <div class="map-embed">
+                    <img src="~/img/salon-map.jpg" alt="Bản đồ chỉ đường đến Fetch Grooming Co." width="500" height="400" loading="lazy">
+                    <div class="map-pin"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z" /><circle cx="12" cy="10" r="3" /></svg></span> Fetch Grooming Co.</div>
+                    <a class="btn btn-white map-cta btn-icon" href="https://maps.google.com/?q=Fetch+Grooming+Co" target="_blank" rel="noopener">
+                        Chỉ đường
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================= CTA BAND -->
+<section class="section-tight bg-cream">
+    <div class="container container-x">
+        <div class="cta-band reveal">
+            <svg class="paw-bg pb1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg>
+            <svg class="paw-bg pb2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg>
+            <div class="position-relative">
+                <span class="kicker is-yellow" style="background:rgba(255,255,255,.16);color:#fff">Sẵn sàng phục vụ</span>
+                <h2>Đặt lịch Spa cho bé yêu ngay hôm nay</h2>
+                <p>Chọn dịch vụ, chọn khung giờ phù hợp và để chúng tôi chăm sóc tận tình cho người bạn bốn chân của bạn.</p>
+                <div class="d-flex flex-wrap gap-3 justify-content-center">
+                    <a class="btn btn-sun btn-lg btn-icon" asp-controller="Appointments" asp-action="Create">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="3" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
+                        Đặt lịch ngay
+                    </a>
+                    <a class="btn btn-white btn-lg" href="tel:+15550142020">Gọi (555) 014-2020</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

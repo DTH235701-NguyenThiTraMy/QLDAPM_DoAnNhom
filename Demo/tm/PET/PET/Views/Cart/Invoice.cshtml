@@ -1,0 +1,123 @@
+﻿@model PET.Models.Order
+
+@{
+    ViewData["Title"] = $"Hóa đơn #{Model.Id}";
+}
+
+<style>
+    @@media print {
+        header, footer, .no-print, #aiChatToggleBtn, #aiChatBox {
+            display: none !important;
+        }
+
+        body, .bg-paper {
+            background: #fff !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .invoice-box {
+            box-shadow: none !important;
+            border: 1px solid #ddd !important;
+            max-width: 100% !important;
+        }
+    }
+</style>
+
+<section class="section bg-paper" style="padding-top: 120px; padding-bottom: 80px; min-height: 85vh;">
+    <div class="container container-x">
+        <!-- Thanh thao tác không hiển thị khi in -->
+        <div class="d-flex justify-content-between align-items-center mb-4 mx-auto no-print" style="max-width: 780px;">
+            <a asp-action="MyOrders" class="text-decoration-none fw-bold text-muted">← Quay lại danh sách đơn hàng</a>
+            <button type="button" onclick="window.print()" class="btn btn-paw px-4">
+                🖨️ In hóa đơn / Lưu PDF
+            </button>
+        </div>
+
+        <!-- Khung Hóa đơn -->
+        <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white mx-auto invoice-box" style="max-width: 780px;">
+            <!-- Header Hóa đơn -->
+            <div class="d-flex justify-content-between align-items-start pb-4 mb-4 border-bottom">
+                <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                        <span class="fw-bold fs-3" style="font-family: 'Fredoka', sans-serif; color: #1f4e52;">Fetch<span style="color: #f4a261;">.</span></span>
+                        <span class="badge bg-light text-dark border">Pet Care & Shop</span>
+                    </div>
+                    <div class="small text-muted">Trung tâm Chăm sóc & Phụ kiện Thú cưng Fetch</div>
+                    <div class="small text-muted">Hotline: (555) 014-2020 • hello@fetchgrooming.co</div>
+                </div>
+                <div class="text-end">
+                    <h2 class="h4 fw-bold text-uppercase mb-1">Hóa đơn bán hàng</h2>
+                    <div class="fw-bold text-primary">Mã đơn: #@Model.Id</div>
+                    <div class="small text-muted">Ngày lập: @Model.OrderDate.ToString("dd/MM/yyyy HH:mm")</div>
+                </div>
+            </div>
+
+            <!-- Thông tin khách hàng -->
+            <div class="row g-3 mb-4 bg-light rounded-3 p-3">
+                <div class="col-sm-6">
+                    <div class="small text-muted fw-bold">KHÁCH HÀNG</div>
+                    <div class="fw-bold">@(Model.User?.UserName ?? "Khách hàng")</div>
+                    <div class="small">SĐT: <strong>@Model.PhoneNumber</strong></div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="small text-muted fw-bold">ĐỊA CHỈ GIAO HÀNG</div>
+                    <div class="small">@Model.ShippingAddress</div>
+                </div>
+            </div>
+
+            <!-- Bảng chi tiết sản phẩm -->
+            <div class="table-responsive mb-4">
+                <table class="table table-bordered align-middle mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th class="text-center" style="width: 50px;">STT</th>
+                            <th>Tên sản phẩm</th>
+                            <th class="text-end">Đơn giá</th>
+                            <th class="text-center" style="width: 80px;">SL</th>
+                            <th class="text-end">Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.OrderDetails != null)
+                        {
+                            int stt = 1;
+                            foreach (var item in Model.OrderDetails)
+                            {
+                                <tr>
+                                    <td class="text-center">@(stt++)</td>
+                                    <td class="fw-semibold">@(item.Product?.Name ?? "Sản phẩm")</td>
+                                    <td class="text-end">@item.UnitPrice.ToString("N0") đ</td>
+                                    <td class="text-center">@item.Quantity</td>
+                                    <td class="text-end fw-bold">@((item.Quantity * item.UnitPrice).ToString("N0")) đ</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4" class="text-end fw-bold">Phí vận chuyển:</td>
+                            <td class="text-end text-success fw-bold">0 đ</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-end fw-bold fs-5">TỔNG THANH TOÁN:</td>
+                            <td class="text-end fw-bold fs-5 text-danger">@Model.TotalAmount.ToString("N0") đ</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <!-- Chân trang hóa đơn -->
+            <div class="row pt-3 text-center small text-muted">
+                <div class="col-6">
+                    <div class="fw-bold text-dark mb-4">Khách hàng ký nhận</div>
+                    <div>(Ký và ghi rõ họ tên)</div>
+                </div>
+                <div class="col-6">
+                    <div class="fw-bold text-dark mb-4">Đại diện Fetch Pet Care</div>
+                    <div>Cảm ơn bạn đã tin tưởng Fetch! 🐾</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

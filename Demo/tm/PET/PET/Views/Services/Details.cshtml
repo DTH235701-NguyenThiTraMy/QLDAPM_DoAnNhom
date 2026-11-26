@@ -1,48 +1,83 @@
 ﻿@model PET.Models.Service
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = Model.Name;
 }
 
-<h1>Details</h1>
+<section class="section bg-paper" style="padding-top: 120px; padding-bottom: 80px; min-height: 85vh;">
+    <div class="container container-x">
+        <!-- Điều hướng quay lại -->
+        <div class="mb-4">
+            <a asp-action="Index" class="text-decoration-none fw-bold text-muted">
+                ← Quay lại danh sách dịch vụ
+            </a>
+        </div>
 
-<div>
-    <h4>Service</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DurationMinutes)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DurationMinutes)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white">
+                    <div class="row g-0">
+                        <!-- Cột trái: Ảnh minh họa dịch vụ -->
+                        <div class="col-md-5 bg-light position-relative" style="min-height: 320px;">
+                            <img src="@(string.IsNullOrEmpty(Model.ImageUrl) ? Url.Content("~/img/hero-grooming.jpg") : Model.ImageUrl)"
+                                 alt="@Model.Name"
+                                 class="w-100 h-100"
+                                 style="object-fit: cover;" />
+                            <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill shadow-sm fw-bold">
+                                ⏱ @Model.DurationMinutes phút
+                            </span>
+                        </div>
+
+                        <!-- Cột phải: Nội dung chi tiết -->
+                        <div class="col-md-7 p-4 p-md-5 d-flex flex-column justify-content-between">
+                            <div>
+                                <span class="kicker mb-2">
+                                    <svg class="paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg>
+                                    Chi tiết gói chăm sóc
+                                </span>
+
+                                <h1 class="h2 fw-bold mb-2">@Model.Name</h1>
+
+                                <div class="d-flex align-items-baseline gap-2 mb-4">
+                                    <span class="h3 fw-bold text-primary mb-0">@Model.Price.ToString("N0")đ</span>
+                                    <span class="text-muted small">/ trọn gói dịch vụ</span>
+                                </div>
+
+                                <div class="p-3 rounded-4 bg-light border mb-4">
+                                    <div class="fw-bold text-dark small mb-1">Mô tả quy trình chăm sóc:</div>
+                                    <p class="text-muted mb-0" style="line-height: 1.6;">
+                                        @(string.IsNullOrEmpty(Model.Description) ? "Gói chăm sóc toàn diện sử dụng sản phẩm thiên nhiên an toàn, giúp bé thư giãn, sạch sẽ và thơm mát." : Model.Description)
+                                    </p>
+                                </div>
+
+                                <!-- Cam kết chất lượng nhỏ của Fetch -->
+                                <div class="row g-2 small text-muted mb-4">
+                                    <div class="col-6">✔ Sản phẩm thảo mộc an toàn</div>
+                                    <div class="col-6">✔ Chuyên viên tận tâm, nhẹ nhàng</div>
+                                    <div class="col-6">✔ Vệ sinh khử khuẩn dụng cụ 100%</div>
+                                    <div class="col-6">✔ Tích điểm nhận ưu đãi Spa</div>
+                                </div>
+                            </div>
+
+                            <!-- Thanh nút hành động -->
+                            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 pt-3 border-top">
+                                <a asp-controller="Appointments" asp-action="Create" asp-route-serviceId="@Model.Id" class="btn btn-paw btn-icon px-4">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
+                                    Đặt lịch dịch vụ này
+                                </a>
+
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <div class="d-flex gap-2">
+                                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-ghost">Chỉnh sửa</a>
+                                        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger rounded-pill px-3">Xóa</a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

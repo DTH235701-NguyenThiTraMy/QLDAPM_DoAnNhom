@@ -1,59 +1,113 @@
 ﻿@model IEnumerable<PET.Models.Service>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Dịch vụ chăm sóc thú cưng";
+    var cardThemes = new[] { "", "tint-coral", "tint-yellow" };
+    int index = 0;
 }
 
-<h1>Index</h1>
+<section class="section bg-paper" style="padding-top: 120px; padding-bottom: 80px; min-height: 85vh;">
+    <div class="container container-x">
+        <!-- Tiêu đề & Nút thêm mới (chỉ hiện với Admin) -->
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5 gap-3">
+            <div class="section-head mb-0">
+                <span class="kicker">
+                    <svg class="paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg>
+                    Bảng giá & Dịch vụ Spa
+                </span>
+                <h1 class="section-title mb-2">Dịch vụ chăm sóc toàn diện</h1>
+                <p class="section-sub mb-0">Lựa chọn gói Spa, tắm gội hoặc cắt tỉa phù hợp nhất cho người bạn bốn chân của bạn.</p>
+            </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DurationMinutes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DurationMinutes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+            @if (User.IsInRole("Admin"))
+            {
+                <div>
+                    <a asp-action="Create" class="btn btn-paw btn-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>
+                        Thêm dịch vụ mới
+                    </a>
+                </div>
+            }
+        </div>
+
+        @if (!Model.Any())
+        {
+            <!-- Giao diện khi chưa có dịch vụ nào -->
+            <div class="text-center p-5 bg-white rounded-4 shadow-sm border">
+                <div style="font-size: 48px;" class="mb-3">🛁</div>
+                <h3>Chưa có dịch vụ nào được cập nhật</h3>
+                <p class="text-muted mb-4">Danh sách dịch vụ Spa đang được cập nhật, vui lòng quay lại sau nhé!</p>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-action="Create" class="btn btn-paw">Tạo dịch vụ đầu tiên</a>
+                }
+            </div>
+        }
+        else
+        {
+            <!-- Danh sách thẻ dịch vụ chuẩn style Fetch -->
+            <div class="row g-4">
+                @foreach (var item in Model)
+                {
+                    var themeClass = cardThemes[index % cardThemes.Length];
+                    index++;
+
+                    <div class="col-md-6 col-lg-4">
+                        <article class="svc-card @themeClass h-100 d-flex flex-column justify-content-between">
+                            <div>
+                                <!-- Ảnh minh họa dịch vụ (nếu có) hoặc Icon mặc định của Fetch -->
+                                @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                {
+                                    <div class="mb-3 rounded-4 overflow-hidden shadow-sm" style="height: 170px;">
+                                        <img src="@item.ImageUrl" alt="@item.Name" class="w-100 h-100" style="object-fit: cover;" />
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="svc-ic">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3" /><circle cx="6" cy="18" r="3" /><path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12" /></svg>
+                                    </div>
+                                }
+
+                                <h3>@item.Name</h3>
+                                <p class="svc-desc">
+                                    @(string.IsNullOrEmpty(item.Description) ? "Gói chăm sóc tiêu chuẩn với sản phẩm thiên nhiên an toàn cho thú cưng." : item.Description)
+                                </p>
+                            </div>
+
+                            <div>
+                                <!-- Giá & Thời lượng -->
+                                <div class="svc-foot">
+                                    <div>
+                                        <span class="svc-meta">
+                                            <span class="price">@item.Price.ToString("N0")đ</span>
+                                        </span>
+                                        <br />
+                                        <span class="svc-time">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
+                                            @item.DurationMinutes phút
+                                        </span>
+                                    </div>
+
+                                    <a class="btn btn-paw" asp-controller="Appointments" asp-action="Create" asp-route-serviceId="@item.Id">
+                                        Đặt lịch
+                                    </a>
+                                </div>
+
+                                <!-- Thanh quản trị dành riêng cho Admin -->
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <div class="mt-3 pt-2 border-top d-flex justify-content-end gap-2">
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-light rounded-pill px-3">Chi tiết</a>
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary rounded-pill px-3">Sửa</a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger rounded-pill px-3">Xóa</a>
+                                    </div>
+                                }
+                            </div>
+                        </article>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>

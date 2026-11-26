@@ -1,0 +1,287 @@
+﻿@using System.Text.Json
+@{
+    ViewData["Title"] = "Bảng điều khiển Admin";
+
+    decimal deliveredRevenue = ViewBag.DeliveredRevenue ?? 0m;
+    decimal expectedRevenue = ViewBag.ExpectedRevenue ?? 0m;
+    int pendingOrdersCount = ViewBag.PendingOrdersCount ?? 0;
+    int totalOrdersCount = ViewBag.TotalOrdersCount ?? 0;
+    int pendingAppointmentsCount = ViewBag.PendingAppointmentsCount ?? 0;
+    int totalAppointmentsCount = ViewBag.TotalAppointmentsCount ?? 0;
+    int totalPetsCount = ViewBag.TotalPetsCount ?? 0;
+    int totalProductsCount = ViewBag.TotalProductsCount ?? 0;
+
+    var recentOrders = ViewBag.RecentOrders as List<PET.Models.Order> ?? new List<PET.Models.Order>();
+    var upcomingAppointments = ViewBag.UpcomingAppointments as List<PET.Models.Appointment> ?? new List<PET.Models.Appointment>();
+    var lowStockProducts = ViewBag.LowStockProducts as List<PET.Models.Product> ?? new List<PET.Models.Product>();
+
+    var chartLabelsJson = JsonSerializer.Serialize(ViewBag.ChartLabels ?? new List<string>());
+    var chartValuesJson = JsonSerializer.Serialize(ViewBag.ChartValues ?? new List<decimal>());
+}
+
+<section class="section bg-paper" style="padding-top: 120px; padding-bottom: 80px; min-height: 90vh;">
+    <div class="container container-x">
+        <!-- Header Dashboard -->
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+            <div>
+                <span class="kicker is-yellow mb-2">
+                    <svg class="paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg>
+                    Trung tâm quản trị Fetch
+                </span>
+                <h1 class="h2 fw-bold mb-1">Dashboard Thống kê & Vận hành</h1>
+                <p class="text-muted small mb-0">Cập nhật tình hình kinh doanh, đơn hàng và lịch chăm sóc thú cưng theo thời gian thực.</p>
+            </div>
+
+            <!-- Lối tắt thao tác nhanh -->
+            <div class="d-flex flex-wrap gap-2">
+                <a asp-controller="Products" asp-action="Create" class="btn btn-paw btn-sm px-3">+ Thêm sản phẩm</a>
+                <a asp-controller="Services" asp-action="Create" class="btn btn-outline-dark btn-sm rounded-pill px-3 fw-bold">+ Thêm dịch vụ</a>
+                <a asp-controller="Cart" asp-action="MyOrders" class="btn btn-outline-primary btn-sm rounded-pill px-3 fw-bold">📦 Duyệt đơn hàng</a>
+            </div>
+        </div>
+
+        <!-- 4 THẺ CHỈ SỐ KPI -->
+        <div class="row g-3 mb-4">
+            <div class="col-sm-6 col-xl-3">
+                <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="small fw-bold text-muted text-uppercase">Doanh thu thực nhận</span>
+                        <span class="badge bg-success-subtle text-success rounded-pill px-2 py-1">Đã giao</span>
+                    </div>
+                    <div class="h3 fw-bold text-success mb-1">@deliveredRevenue.ToString("N0") đ</div>
+                    <div class="small text-muted">Dự kiến (chưa hủy): <strong>@expectedRevenue.ToString("N0") đ</strong></div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-3">
+                <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="small fw-bold text-muted text-uppercase">Đơn hàng cửa hàng</span>
+                        <span class="badge bg-warning text-dark rounded-pill px-2 py-1">@pendingOrdersCount chờ duyệt</span>
+                    </div>
+                    <div class="h3 fw-bold text-dark mb-1">@totalOrdersCount đơn</div>
+                    <a asp-controller="Cart" asp-action="MyOrders" class="small text-decoration-none fw-bold text-primary">Xem tất cả đơn hàng →</a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-3">
+                <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="small fw-bold text-muted text-uppercase">Lịch hẹn Spa</span>
+                        <span class="badge bg-info text-dark rounded-pill px-2 py-1">@pendingAppointmentsCount chờ xác nhận</span>
+                    </div>
+                    <div class="h3 fw-bold text-dark mb-1">@totalAppointmentsCount lịch</div>
+                    <a asp-controller="Appointments" asp-action="Index" class="small text-decoration-none fw-bold text-primary">Quản lý lịch hẹn →</a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xl-3">
+                <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="small fw-bold text-muted text-uppercase">Hồ sơ & Kho hàng</span>
+                        <span class="badge bg-light text-dark border rounded-pill px-2 py-1">@totalProductsCount SP</span>
+                    </div>
+                    <div class="h3 fw-bold text-dark mb-1">@totalPetsCount thú cưng</div>
+                    <a asp-controller="Pets" asp-action="Index" class="small text-decoration-none fw-bold text-primary">Danh sách thú cưng →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- BIỂU ĐỒ DOANH THU + CẢNH BÁO TỒN KHO -->
+        <div class="row g-4 mb-4">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3 class="h5 fw-bold mb-0">📈 Doanh thu đơn hàng 7 ngày qua</h3>
+                        <span class="small text-muted">Đơn vị: VNĐ</span>
+                    </div>
+                    <div style="height: 270px;">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+                        <h3 class="h5 fw-bold mb-0">⚠️ Cảnh báo sắp hết kho</h3>
+                        <span class="badge bg-danger rounded-pill">@lowStockProducts.Count</span>
+                    </div>
+
+                    @if (!lowStockProducts.Any())
+                    {
+                        <div class="text-center text-muted my-auto py-4">
+                            <div class="fs-3 mb-2">✅</div>
+                            <p class="small mb-0">Tất cả sản phẩm đều còn đủ số lượng trong kho.</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="d-flex flex-column gap-3">
+                            @foreach (var item in lowStockProducts)
+                            {
+                                <div class="d-flex align-items-center justify-content-between p-2 rounded-3 bg-light">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="@(string.IsNullOrEmpty(item.ImageUrl) ? Url.Content("~/img/product-1.jpg") : item.ImageUrl)"
+                                             class="rounded-2 border" style="width: 40px; height: 40px; object-fit: cover;" />
+                                        <div>
+                                            <div class="fw-bold small">@item.Name</div>
+                                            <span class="badge @(item.StockQuantity == 0 ? "bg-danger" : "bg-warning text-dark")">
+                                                @(item.StockQuantity == 0 ? "Hết hàng" : $"Còn {item.StockQuantity}")
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <a asp-controller="Products" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-dark rounded-pill">Nhập thêm</a>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- ĐƠN HÀNG MỚI NHẤT & LỊCH HẸN GẦN ĐÂY -->
+        <div class="row g-4">
+            <!-- Bảng đơn hàng mới nhất -->
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white h-100">
+                    <div class="card-header bg-white border-bottom p-3 px-4 d-flex justify-content-between align-items-center">
+                        <h3 class="h6 fw-bold mb-0">🛒 Đơn hàng mới nhất</h3>
+                        <a asp-controller="Cart" asp-action="MyOrders" class="small fw-bold text-decoration-none">Tất cả →</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0 small">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="ps-4">Mã</th>
+                                    <th>Khách hàng</th>
+                                    <th>Tổng tiền</th>
+                                    <th class="pe-4 text-end">Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (!recentOrders.Any())
+                                {
+                                    <tr><td colspan="4" class="text-center text-muted py-4">Chưa có đơn hàng nào.</td></tr>
+                                }
+                                else
+                                {
+                                    @foreach (var o in recentOrders)
+                                    {
+                                        string badge = o.Status switch
+                                        {
+                                            "Pending" => "bg-warning text-dark",
+                                            "Shipping" => "bg-info text-dark",
+                                            "Delivered" => "bg-success text-white",
+                                            "Cancelled" => "bg-secondary text-white",
+                                            _ => "bg-light text-dark"
+                                        };
+                                        <tr>
+                                            <td class="ps-4 fw-bold">#@o.Id</td>
+                                            <td>@(o.User?.UserName?.Split('@')[0] ?? o.PhoneNumber)</td>
+                                            <td class="fw-bold text-danger">@o.TotalAmount.ToString("N0") đ</td>
+                                            <td class="pe-4 text-end"><span class="badge @badge rounded-pill">@o.Status</span></td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bảng lịch hẹn Spa gần đây -->
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white h-100">
+                    <div class="card-header bg-white border-bottom p-3 px-4 d-flex justify-content-between align-items-center">
+                        <h3 class="h6 fw-bold mb-0">📅 Lịch hẹn Spa gần đây</h3>
+                        <a asp-controller="Appointments" asp-action="Index" class="small fw-bold text-decoration-none">Tất cả →</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0 small">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="ps-4">Thú cưng</th>
+                                    <th>Dịch vụ</th>
+                                    <th>Thời gian</th>
+                                    <th class="pe-4 text-end">Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (!upcomingAppointments.Any())
+                                {
+                                    <tr><td colspan="4" class="text-center text-muted py-4">Chưa có lịch hẹn nào.</td></tr>
+                                }
+                                else
+                                {
+                                    @foreach (var a in upcomingAppointments)
+                                    {
+                                        string badge = a.Status switch
+                                        {
+                                            "Pending" => "bg-warning text-dark",
+                                            "Confirmed" => "bg-primary text-white",
+                                            "Completed" => "bg-success text-white",
+                                            "Cancelled" => "bg-secondary text-white",
+                                            _ => "bg-light text-dark"
+                                        };
+                                        <tr>
+                                            <td class="ps-4 fw-bold">@(a.Pet?.Name ?? "Bé cưng")</td>
+                                            <td>@(a.Service?.Name ?? "Dịch vụ")</td>
+                                            <td>@a.AppointmentDate.ToString("dd/MM HH:mm")</td>
+                                            <td class="pe-4 text-end"><span class="badge @badge rounded-pill">@a.Status</span></td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const ctx = document.getElementById('revenueChart');
+            if (!ctx) return;
+
+            const labels = @Html.Raw(chartLabelsJson);
+            const values = @Html.Raw(chartValuesJson);
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Doanh thu (VNĐ)',
+                        data: values,
+                        backgroundColor: 'rgba(46, 139, 139, 0.8)',
+                        borderColor: 'rgba(46, 139, 139, 1)',
+                        borderWidth: 1,
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function (value) {
+                                    return value.toLocaleString('vi-VN') + ' đ';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+}

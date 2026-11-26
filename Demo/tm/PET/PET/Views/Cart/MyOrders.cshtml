@@ -1,0 +1,151 @@
+﻿@model IEnumerable<PET.Models.Order>
+
+@{
+    ViewData["Title"] = User.IsInRole("Admin") ? "Quản lý đơn hàng" : "Đơn hàng của tôi";
+}
+
+<section class="section bg-paper" style="padding-top: 120px; padding-bottom: 80px; min-height: 85vh;">
+    <div class="container container-x">
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+            <div>
+                <span class="kicker mb-2">
+                    <svg class="paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg>
+                    Theo dõi đơn hàng
+                </span>
+                <h1 class="h2 fw-bold mb-0">@ViewData["Title"]</h1>
+            </div>
+            <a asp-controller="Products" asp-action="Index" class="btn btn-paw px-4">+ Mua thêm sản phẩm</a>
+        </div>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show rounded-3 border-0 shadow-sm mb-4" role="alert">
+                @TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+
+        @if (!Model.Any())
+        {
+            <div class="card border-0 shadow-sm rounded-4 p-5 text-center bg-white">
+                <div class="display-4 mb-3">📦</div>
+                <h3 class="h5 fw-bold mb-2">Chưa có đơn hàng nào</h3>
+                <p class="text-muted mb-4">Các đơn đặt mua thức ăn & phụ kiện thú cưng sẽ hiển thị tại đây.</p>
+                <div>
+                    <a asp-controller="Products" asp-action="Index" class="btn btn-paw px-4">Đi tới cửa hàng</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="d-flex flex-column gap-4">
+                @foreach (var order in Model)
+                {
+                    string badgeClass = order.Status switch
+                    {
+                        "Pending" => "bg-warning text-dark",
+                        "Shipping" => "bg-info text-dark",
+                        "Delivered" => "bg-success text-white",
+                        "Cancelled" => "bg-secondary text-white",
+                        _ => "bg-light text-dark"
+                    };
+
+                    string statusText = order.Status switch
+                    {
+                        "Pending" => "⏳ Chờ xử lý",
+                        "Shipping" => "🚚 Đang giao hàng",
+                        "Delivered" => "✅ Đã giao thành công",
+                        "Cancelled" => "❌ Đã hủy",
+                        _ => order.Status
+                    };
+
+                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white">
+                        <div class="card-header bg-light border-bottom p-3 px-4 d-flex flex-wrap justify-content-between align-items-center gap-2">
+                            <div>
+                                <span class="fw-bold fs-5 me-2">Đơn hàng #@order.Id</span>
+                                <span class="badge @badgeClass rounded-pill px-3 py-2">@statusText</span>
+                                <div class="small text-muted mt-1">
+                                    Ngày đặt: @order.OrderDate.ToString("dd/MM/yyyy HH:mm")
+                                    @if (User.IsInRole("Admin") && order.User != null)
+                                    {
+                                        <span> • Khách hàng: <strong>@order.User.UserName</strong></span>
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-wrap align-items-center gap-2">
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    @if (order.Status == "Pending")
+                                    {
+                                        <form asp-action="UpdateOrderStatus" method="post" class="d-inline">
+                                            <input type="hidden" name="id" value="@order.Id" />
+                                            <input type="hidden" name="status" value="Shipping" />
+                                            <button type="submit" class="btn btn-sm btn-info fw-bold rounded-pill px-3">🚚 Giao hàng</button>
+                                        </form>
+                                    }
+                                    @if (order.Status == "Shipping")
+                                    {
+                                        <form asp-action="UpdateOrderStatus" method="post" class="d-inline">
+                                            <input type="hidden" name="id" value="@order.Id" />
+                                            <input type="hidden" name="status" value="Delivered" />
+                                            <button type="submit" class="btn btn-sm btn-success fw-bold rounded-pill px-3">✅ Hoàn tất giao</button>
+                                        </form>
+                                    }
+                                }
+
+                                @if (order.Status == "Pending")
+                                {
+                                    <form asp-action="UpdateOrderStatus" method="post" class="d-inline" onsubmit="return confirm('Bạn chắc chắn muốn hủy đơn hàng #@order.Id?');">
+                                        <input type="hidden" name="id" value="@order.Id" />
+                                        <input type="hidden" name="status" value="Cancelled" />
+                                        <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill px-3">Hủy đơn</button>
+                                    </form>
+                                }
+                                <a asp-action="Invoice" asp-route-id="@order.Id" class="btn btn-sm btn-outline-dark rounded-pill px-3">
+                                    🖨️ Hóa đơn
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-4">
+                            <div class="row g-3">
+                                <div class="col-md-8">
+                                    @if (order.OrderDetails != null)
+                                    {
+                                        @foreach (var item in order.OrderDetails)
+                                        {
+                                            <div class="d-flex align-items-center justify-content-between py-2 border-bottom">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <img src="@(string.IsNullOrEmpty(item.Product?.ImageUrl) ? Url.Content("~/img/product-1.jpg") : item.Product.ImageUrl)"
+                                                         class="rounded-3 border" style="width: 52px; height: 52px; object-fit: cover;" />
+                                                    <div>
+                                                        <div class="fw-bold">@(item.Product?.Name ?? "Sản phẩm")</div>
+                                                        <div class="small text-muted">Số lượng: @item.Quantity × @item.UnitPrice.ToString("N0") đ</div>
+                                                    </div>
+                                                </div>
+                                                <div class="fw-bold">@((item.Quantity * item.UnitPrice).ToString("N0")) đ</div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+
+                                <div class="col-md-4 bg-light rounded-3 p-3 d-flex flex-column justify-content-between">
+                                    <div>
+                                        <div class="small text-muted fw-bold mb-1">THÔNG TIN NHẬN HÀNG</div>
+                                        <div class="small mb-1">📞 <strong>@order.PhoneNumber</strong></div>
+                                        <div class="small text-muted">📍 @order.ShippingAddress</div>
+                                    </div>
+                                    <div class="pt-3 mt-3 border-top d-flex justify-content-between align-items-center">
+                                        <span class="fw-bold">Tổng tiền:</span>
+                                        <span class="fw-bold fs-5 text-danger">@order.TotalAmount.ToString("N0") đ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>

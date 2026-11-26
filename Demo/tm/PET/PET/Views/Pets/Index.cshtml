@@ -1,86 +1,103 @@
 ﻿@model IEnumerable<PET.Models.Pet>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Hồ sơ Thú cưng";
 }
 
-<h1>Index</h1>
+<section class="section bg-paper" style="padding-top: 120px; padding-bottom: 80px; min-height: 80vh;">
+    <div class="container container-x">
+        <!-- Tiêu đề & Nút thêm mới -->
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-5 gap-3">
+            <div>
+                <span class="kicker">
+                    <svg class="paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg>
+                    Quản lý hồ sơ
+                </span>
+                <h1 class="section-title mb-1">Thú cưng của bạn</h1>
+                <p class="text-muted mb-0">Theo dõi thông tin sức khỏe, cân nặng và mã QR định danh của từng bé.</p>
+            </div>
+            <div>
+                <a asp-action="Create" class="btn btn-paw btn-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14" /></svg>
+                    Thêm thú cưng mới
+                </a>
+            </div>
+        </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Species)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Breed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BirthDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Weight)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MedicalHistory)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.QRCodePath)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Species)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Breed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Weight)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MedicalHistory)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
-            <td>
-                    @if (!string.IsNullOrEmpty(item.QRCodePath))
-                    {
-                        <img src="@item.QRCodePath" alt="QR" style="width: 60px; height: 60px;" />
-                    }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        @if (!Model.Any())
+        {
+            <!-- Giao diện khi chưa có thú cưng nào -->
+            <div class="text-center p-5 bg-white rounded-4 shadow-sm border">
+                <div style="font-size: 48px;" class="mb-3">🐾</div>
+                <h3>Chưa có hồ sơ thú cưng nào</h3>
+                <p class="text-muted mb-4">Hãy thêm thông tin bé cưng đầu tiên để đặt lịch Spa và nhận tư vấn từ AI nhé!</p>
+                <a asp-action="Create" class="btn btn-paw">Tạo hồ sơ ngay</a>
+            </div>
+        }
+        else
+        {
+            <!-- Danh sách thẻ thú cưng -->
+            <div class="row g-4">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                            <!-- Ảnh đại diện & Loài -->
+                            <div class="position-relative bg-light" style="height: 220px;">
+                                <img src="@(string.IsNullOrEmpty(item.ImageUrl) ? Url.Content("~/img/pet-1.jpg") : item.ImageUrl)"
+                                     alt="@item.Name"
+                                     class="w-100 h-100"
+                                     style="object-fit: cover;" />
+                                <span class="badge bg-primary position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">
+                                    @item.Species
+                                </span>
+                                @if (!string.IsNullOrEmpty(item.QRCodePath))
+                                {
+                                    <div class="position-absolute bottom-0 end-0 m-2 bg-white p-1 rounded-3 shadow-sm" title="Mã QR định danh">
+                                        <img src="@item.QRCodePath" alt="QR @item.Name" style="width: 56px; height: 56px;" />
+                                    </div>
+                                }
+                            </div>
+
+                            <!-- Thông tin chi tiết -->
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h3 class="h4 mb-0 fw-bold">@item.Name</h3>
+                                    <span class="badge bg-warning text-dark rounded-pill">@item.Weight kg</span>
+                                </div>
+                                <p class="text-muted small mb-3">
+                                    <strong>Giống:</strong> @(string.IsNullOrEmpty(item.Breed) ? "Chưa cập nhật" : item.Breed)
+                                    @if (item.BirthDate.HasValue)
+                                    {
+                                        <span> • <strong>Ngày sinh:</strong> @item.BirthDate.Value.ToString("dd/MM/yyyy")</span>
+                                    }
+                                </p>
+
+                                <div class="p-2 px-3 rounded-3 bg-light small mb-3">
+                                    <strong>Tiền sử bệnh / Lưu ý:</strong>
+                                    <span class="text-muted">@(string.IsNullOrEmpty(item.MedicalHistory) ? "Khỏe mạnh bình thường" : item.MedicalHistory)</span>
+                                </div>
+
+                                @if (User.IsInRole("Admin") && item.User != null)
+                                {
+                                    <div class="small text-primary mb-2">
+                                        <strong>Chủ nuôi:</strong> @item.User.Email
+                                    </div>
+                                }
+                            </div>
+
+                            <!-- Thanh nút thao tác -->
+                            <div class="card-footer bg-white border-top px-4 py-3 d-flex justify-content-between align-items-center">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary rounded-pill px-3">Chi tiết & QR</a>
+                                <div class="d-flex gap-2">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-light rounded-pill px-3">Sửa</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger rounded-pill px-3">Xóa</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>

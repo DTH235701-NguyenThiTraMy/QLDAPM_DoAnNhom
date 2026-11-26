@@ -1,0 +1,113 @@
+﻿@model IEnumerable<PET.Models.ApplicationUser>
+
+@{
+    ViewData["Title"] = "Quản lý tài khoản & phân quyền";
+    var adminIds = ViewBag.AdminIds as HashSet<string> ?? new HashSet<string>();
+    string currentUserId = ViewBag.CurrentUserId ?? "";
+}
+
+<section class="section bg-paper" style="padding-top: 120px; padding-bottom: 80px; min-height: 85vh;">
+    <div class="container container-x">
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+            <div>
+                <span class="kicker is-yellow mb-2">
+                    <svg class="paw" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="16" rx="5" ry="4.2" /><circle cx="5.5" cy="10" r="2.1" /><circle cx="10" cy="6.5" r="2.1" /><circle cx="14" cy="6.5" r="2.1" /><circle cx="18.5" cy="10" r="2.1" /></svg>
+                    Quản trị hệ thống
+                </span>
+                <h1 class="h2 fw-bold mb-0">Quản lý Người dùng & Phân quyền</h1>
+            </div>
+            <a asp-action="Dashboard" class="btn btn-ghost">← Quay lại Dashboard</a>
+        </div>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show rounded-3 border-0 shadow-sm mb-4">
+                @TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+        @if (TempData["WarningMessage"] != null)
+        {
+            <div class="alert alert-warning alert-dismissible fade show rounded-3 border-0 shadow-sm mb-4">
+                @TempData["WarningMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white">
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th class="ps-4 py-3">Tài khoản / Email</th>
+                            <th class="py-3">Số điện thoại</th>
+                            <th class="py-3 text-center">Vai trò</th>
+                            <th class="py-3 text-center">Trạng thái</th>
+                            <th class="pe-4 py-3 text-end">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            bool isAdmin = adminIds.Contains(user.Id);
+                            bool isLocked = user.LockoutEnd != null && user.LockoutEnd > DateTimeOffset.Now;
+                            bool isSelf = user.Id == currentUserId;
+
+                            <tr>
+                                <td class="ps-4 py-3">
+                                    <div class="fw-bold">@user.UserName</div>
+                                    <div class="small text-muted">@user.Email</div>
+                                </td>
+                                <td class="py-3">@(string.IsNullOrEmpty(user.PhoneNumber) ? "—" : user.PhoneNumber)</td>
+                                <td class="py-3 text-center">
+                                    @if (isAdmin)
+                                    {
+                                        <span class="badge bg-primary rounded-pill px-3 py-2">👑 Admin</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-light text-dark border rounded-pill px-3 py-2">Khách hàng</span>
+                                    }
+                                </td>
+                                <td class="py-3 text-center">
+                                    @if (isLocked)
+                                    {
+                                        <span class="badge bg-danger rounded-pill px-3 py-2">🔒 Đã khóa</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success-subtle text-success rounded-pill px-3 py-2">● Hoạt động</span>
+                                    }
+                                </td>
+                                <td class="pe-4 py-3 text-end">
+                                    @if (isSelf)
+                                    {
+                                        <span class="text-muted small fst-italic">Tài khoản hiện tại</span>
+                                    }
+                                    else
+                                    {
+                                        <div class="d-inline-flex gap-2">
+                                            <form asp-action="ToggleAdminRole" method="post">
+                                                <input type="hidden" name="userId" value="@user.Id" />
+                                                <button type="submit" class="btn btn-sm @(isAdmin ? "btn-outline-secondary" : "btn-outline-primary") rounded-pill px-3">
+                                                    @(isAdmin ? "Gỡ Admin" : "Cấp Admin")
+                                                </button>
+                                            </form>
+
+                                            <form asp-action="ToggleLockUser" method="post">
+                                                <input type="hidden" name="userId" value="@user.Id" />
+                                                <button type="submit" class="btn btn-sm @(isLocked ? "btn-success" : "btn-outline-danger") rounded-pill px-3">
+                                                    @(isLocked ? "Mở khóa" : "Khóa")
+                                                </button>
+                                            </form>
+                                        </div>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
