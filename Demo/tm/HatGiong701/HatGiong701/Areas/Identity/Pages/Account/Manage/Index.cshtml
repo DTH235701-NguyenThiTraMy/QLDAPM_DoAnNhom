@@ -1,0 +1,79 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Hồ sơ cá nhân";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+<div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-4">
+    <h5 class="fw-bold text-success mb-0">
+        <i class="bi bi-person-vcard me-2"></i>@ViewData["Title"]
+    </h5>
+    <span class="badge bg-light text-secondary border">Thông tin liên hệ & Giao hàng</span>
+</div>
+
+<partial name="_StatusMessage" for="StatusMessage" />
+
+<form id="profile-form" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger small" role="alert"></div>
+
+    <div class="row g-3 mb-3">
+        <div class="col-md-6">
+            <label asp-for="Username" class="form-label fw-semibold">Email</label>
+            <div class="input-group">
+                <span class="input-group-text bg-light"><i class="bi bi-envelope text-success"></i></span>
+                <input asp-for="Username" class="form-control bg-light" disabled />
+            </div>
+            <small class="text-muted">Email dùng để đăng nhập và nhận thông báo đơn hàng.</small>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Input.FullName" class="form-label fw-semibold">Tên tài khoản<span class="text-danger">*</span></label>
+            <div class="input-group">
+                <span class="input-group-text bg-white"><i class="bi bi-person text-success"></i></span>
+                <input asp-for="Input.FullName" class="form-control" placeholder="Nhập họ và tên đầy đủ" />
+            </div>
+            <span asp-validation-for="Input.FullName" class="text-danger small"></span>
+        </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+        <div class="col-md-6">
+            <label asp-for="Input.PhoneNumber" class="form-label fw-semibold">Số điện thoại liên hệ</label>
+            <div class="input-group">
+                <span class="input-group-text bg-white"><i class="bi bi-telephone text-success"></i></span>
+                <input asp-for="Input.PhoneNumber" class="form-control"/>
+            </div>
+            <span asp-validation-for="Input.PhoneNumber" class="text-danger small"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label fw-semibold">Trạng thái tài khoản</label>
+            <div class="input-group">
+                <span class="input-group-text bg-light"><i class="bi bi-patch-check-fill text-success"></i></span>
+                <input type="text" class="form-control bg-light text-success fw-semibold" value="Đang hoạt động" disabled />
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-4">
+        <label asp-for="Input.Address" class="form-label fw-semibold">Địa chỉ giao hàng mặc định</label>
+        <div class="input-group">
+            <span class="input-group-text bg-white"><i class="bi bi-geo-alt text-success"></i></span>
+            <textarea asp-for="Input.Address" class="form-control" rows="2" placeholder="Số nhà, tên đường, phường/xã, quận/huyện, tỉnh/thành phố..."></textarea>
+        </div>
+        <span asp-validation-for="Input.Address" class="text-danger small"></span>
+        <small class="text-muted">Thông tin này sẽ tự động điền sẵn khi bạn tiến hành đặt hàng.</small>
+    </div>
+
+    <div class="border-top pt-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <small class="text-muted"><i class="bi bi-info-circle me-1"></i>Sau khi sửa thông tin, nhấn Lưu thay đổi để cập nhật.</small>
+        <button id="update-profile-button" type="submit" class="btn btn-success px-4 fw-semibold">
+            <i class="bi bi-check2-circle me-1"></i> Lưu thay đổi
+        </button>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

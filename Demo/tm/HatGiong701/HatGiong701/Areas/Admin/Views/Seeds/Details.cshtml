@@ -1,0 +1,147 @@
+﻿@model HatGiong701.Models.Seed
+
+@{
+    ViewData["Title"] = $"Chi tiết: {Model.Name}";
+}
+
+<div class="container-fluid py-3">
+    <!-- Header & Breadcrumb -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+        <div>
+            <nav aria-label="breadcrumb" class="mb-1">
+                <ol class="breadcrumb small mb-0">
+                    <li class="breadcrumb-item">
+                        <a asp-action="Index" class="text-success text-decoration-none">Quản lý hạt giống</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Chi tiết sản phẩm</li>
+                </ol>
+            </nav>
+            <h3 class="fw-bold text-dark mb-1">
+               Chi tiết sản phẩm hạt giống
+            </h3>
+            <p class="text-muted small mb-0">Thông tin đầy đủ và hướng dẫn kỹ thuật gieo trồng</p>
+        </div>
+
+        <a asp-action="Index" class="btn btn-light bg-white border text-dark rounded-3 px-3 shadow-sm">
+            <i class="bi bi-arrow-left me-1"></i>Quay lại danh sách
+        </a>
+    </div>
+
+    <div class="row g-4">
+        <!-- CỘT TRÁI: HÌNH ẢNH, GIÁ BÁN & TỒN KHO -->
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm rounded-4 text-center h-100">
+                <div class="card-body p-4 d-flex flex-column">
+                    <img src="@(string.IsNullOrEmpty(Model.ImageUrl) ? "/images/seeds/seed1.jpg" : Model.ImageUrl)"
+                         alt="@Model.Name"
+                         style="width: 100%; height: 250px; object-fit: cover;"
+                         class="rounded-4 border shadow-sm mb-3" />
+
+                    <div class="mb-2">
+                        <span class="badge rounded-pill bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-3 py-2">
+                            @(Model.Category?.Name ?? "Chưa phân loại")
+                        </span>
+                    </div>
+
+                    <h5 class="fw-bold text-dark mb-2">@Model.Name</h5>
+                    <h4 class="fw-bold text-danger mb-3">@Model.Price.ToString("N0") ₫</h4>
+
+                    <div class="border-top pt-3 mt-auto">
+                        <span class="text-muted small d-block mb-2">Tình trạng kho hàng</span>
+                        @if (Model.StockQuantity <= 0)
+                        {
+                            <span class="badge rounded-pill bg-danger bg-opacity-25 text-danger fs-6 px-3 py-2">
+                                <i class="bi bi-x-circle me-1"></i>Hết hàng (0 gói)
+                            </span>
+                        }
+                        else if (Model.StockQuantity < 10)
+                        {
+                            <span class="badge rounded-pill bg-warning bg-opacity-25 text-dark fs-6 px-3 py-2">
+                                <i class="bi bi-exclamation-triangle me-1"></i>Còn @Model.StockQuantity gói (Sắp hết)
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge rounded-pill bg-success bg-opacity-25 text-success fs-6 px-3 py-2">
+                                <i class="bi bi-check-circle me-1"></i>Còn @Model.StockQuantity gói
+                            </span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CỘT PHẢI: THÔNG SỐ KỸ THUẬT & HƯỚNG DẪN -->
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-header bg-white border-bottom py-3">
+                    <h6 class="fw-bold text-dark mb-0">
+                        <i class="bi bi-sliders text-success me-2"></i>Đặc tính sinh trưởng & Kỹ thuật
+                    </h6>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-6 col-md-4">
+                            <div class="bg-light p-3 rounded-3 border h-100">
+                                <small class="text-muted d-block mb-1">Mùa vụ thích hợp</small>
+                                <strong class="text-dark"><i class="bi bi-sun-fill text-warning me-1"></i>@Model.PlantingSeason</strong>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="bg-light p-3 rounded-3 border h-100">
+                                <small class="text-muted d-block mb-1">Không gian trồng</small>
+                                <strong class="text-dark"><i class="bi bi-house-door-fill text-info me-1"></i>@Model.SuitableSpace</strong>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="bg-light p-3 rounded-3 border h-100">
+                                <small class="text-muted d-block mb-1">Độ khó chăm sóc</small>
+                                <strong class="text-dark"><i class="bi bi-speedometer2 text-primary me-1"></i>@Model.CareLevel</strong>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="bg-light p-3 rounded-3 border">
+                                <small class="text-muted d-block mb-1">Tỷ lệ nảy mầm tiêu chuẩn</small>
+                                <strong class="text-success fs-5">@Model.GerminationRate%</strong>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="bg-light p-3 rounded-3 border">
+                                <small class="text-muted d-block mb-1">Thời gian thu hoạch dự kiến</small>
+                                <strong class="text-dark fs-5">~@Model.HarvestDays ngày</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h6 class="fw-bold text-dark mb-2">
+                            <i class="bi bi-card-text text-success me-1"></i>Mô tả chi tiết
+                        </h6>
+                        <div class="text-secondary bg-light p-3 rounded-3 border">
+                            @(string.IsNullOrEmpty(Model.Description) ? "Chưa có mô tả chi tiết." : Model.Description)
+                        </div>
+                    </div>
+
+                    <div class="mb-0">
+                        <h6 class="fw-bold text-dark mb-2">
+                            <i class="bi bi-journal-check text-success me-1"></i>Hướng dẫn gieo trồng
+                        </h6>
+                        <div class="text-secondary bg-light p-3 rounded-3 border" style="white-space: pre-line;">
+                            @(string.IsNullOrEmpty(Model.PlantingGuide) ? "Chưa có hướng dẫn gieo trồng." : Model.PlantingGuide)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- THANH NÚT THAO TÁC -->
+    <div class="card border-0 shadow-sm rounded-4 mt-4">
+        <div class="card-body py-3 px-4 d-flex justify-content-end gap-2">
+            @*<a asp-action="Index" class="btn btn-light border rounded-3 px-4">Quay lại danh sách</a> *@
+            <a asp-action="Edit" asp-route-id="@Model?.SeedId" class="btn btn-success rounded-3 px-4 fw-semibold">
+                <i class="bi bi-pencil-square me-1"></i>Chỉnh sửa hạt giống
+            </a>
+        </div>
+    </div>
+</div>

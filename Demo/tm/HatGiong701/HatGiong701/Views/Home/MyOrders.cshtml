@@ -1,0 +1,168 @@
+﻿@model IEnumerable<HatGiong701.Models.Order>
+@{
+    ViewData["Title"] = "Đơn hàng của tôi";
+}
+
+<div class="container my-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+        <div>
+            <h4 class="fw-bold text-success mb-1">
+                ĐƠN HÀNG CỦA TÔI
+            </h4>
+            <small class="text-muted">Theo dõi tình trạng xử lý và lịch sử mua hạt giống của bạn</small>
+        </div>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-success btn-sm rounded-3 px-3">
+            <i class="bi bi-arrow-left me-1"></i>Tiếp tục mua sắm
+        </a>
+    </div>
+
+    @if (TempData["OrderMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm rounded-3" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>@TempData["OrderMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    @if (TempData["OrderError"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show border-0 shadow-sm rounded-3" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>@TempData["OrderError"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="card border-0 shadow-sm rounded-4 p-5 text-center bg-white">
+            <div class="mb-3 text-muted opacity-50">
+                <i class="bi bi-inbox" style="font-size: 3rem;"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-2">Bạn chưa có đơn hàng nào</h5>
+            <p class="text-muted small mb-4">Hãy khám phá các loại hạt giống rau, hoa phù hợp với khu vườn của bạn.</p>
+            <div>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-success rounded-3 px-4">
+                    <i class="bi bi-shop me-1"></i>Xem danh sách hạt giống
+                </a>
+            </div>
+        </div>
+    }
+    else
+    {
+        foreach (var order in Model)
+        {
+            var formattedOrderCode = $"#ĐH{order.OrderId:D4}";
+
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+                <!-- Header thẻ đơn hàng -->
+                <div class="card-header bg-light border-bottom d-flex flex-wrap justify-content-between align-items-center gap-2 py-3 px-4">
+                    <div class="d-flex flex-wrap align-items-center gap-2">
+                        <span class="fw-bold text-dark fs-6">Đơn hàng @formattedOrderCode</span>
+                        <span class="text-muted d-none d-sm-inline">|</span>
+                        <small class="text-muted">
+                            <i class="bi bi-calendar3 me-1"></i>Ngày đặt: @order.OrderDate.ToString("dd/MM/yyyy HH:mm")
+                        </small>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-2">
+                        @if (order.Status == "Chờ xác nhận")
+                        {
+                            <span class="badge rounded-pill bg-warning bg-opacity-25 text-dark px-3 py-2">
+                                <i class="bi bi-clock me-1"></i>@order.Status
+                            </span>
+                        }
+                        else if (order.Status == "Đang giao")
+                        {
+                            <span class="badge rounded-pill bg-info bg-opacity-25 text-dark px-3 py-2">
+                                <i class="bi bi-truck me-1"></i>@order.Status
+                            </span>
+                        }
+                        else if (order.Status == "Hoàn thành")
+                        {
+                            <span class="badge rounded-pill bg-success bg-opacity-25 text-success px-3 py-2">
+                                <i class="bi bi-check-circle-fill me-1"></i>@order.Status
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge rounded-pill bg-danger bg-opacity-25 text-danger px-3 py-2">
+                                <i class="bi bi-x-circle-fill me-1"></i>@order.Status
+                            </span>
+                        }
+
+                        @if (order.Status == "Chờ xác nhận")
+                        {
+                            <form asp-action="CancelOrder" method="post" class="d-inline"
+                                  onsubmit="return confirm('Bạn có chắc muốn hủy đơn hàng @formattedOrderCode không?');">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="id" value="@order.OrderId" />
+                                <button type="submit" class="btn btn-outline-danger btn-sm rounded-3">
+                                    <i class="bi bi-x-lg me-1"></i>Hủy đơn
+                                </button>
+                            </form>
+                        }
+                    </div>
+                </div>
+
+                <!-- Nội dung đơn hàng -->
+                <div class="card-body p-4">
+                    <div class="row g-2 mb-3 p-3 bg-light rounded-3 small text-secondary">
+                        <div class="col-md-4">
+                            <i class="bi bi-person me-1 text-success"></i><strong>Người nhận:</strong> @order.ReceiverName
+                        </div>
+                        <div class="col-md-4">
+                            <i class="bi bi-telephone me-1 text-success"></i><strong>Số điện thoại:</strong> @order.PhoneNumber
+                        </div>
+                        <div class="col-md-4">
+                            <i class="bi bi-geo-alt me-1 text-success"></i><strong>Địa chỉ giao:</strong> @order.ShippingAddress
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="bg-light text-secondary small text-uppercase">
+                                <tr>
+                                    <th class="py-2">Hạt giống</th>
+                                    <th class="text-center py-2" style="width: 110px;">Số lượng</th>
+                                    <th class="text-end py-2" style="width: 140px;">Đơn giá</th>
+                                    <th class="text-end py-2" style="width: 150px;">Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (order.OrderDetails != null)
+                                {
+                                    foreach (var detail in order.OrderDetails)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <img src="@(string.IsNullOrEmpty(detail.Seed?.ImageUrl) ? "/images/seeds/seed1.jpg" : detail.Seed.ImageUrl)"
+                                                         alt="@detail.Seed?.Name"
+                                                         style="width: 44px; height: 44px; object-fit: cover;" class="rounded-3 border" />
+                                                    <span class="fw-semibold text-dark">@detail.Seed?.Name</span>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="badge bg-light text-dark border px-2 py-1">@detail.Quantity gói</span>
+                                            </td>
+                                            <td class="text-end text-secondary">@detail.UnitPrice.ToString("N0") ₫</td>
+                                            <td class="text-end fw-semibold text-dark">@((detail.Quantity * detail.UnitPrice).ToString("N0")) ₫</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tổng thanh toán -->
+                <div class="card-footer bg-white border-top d-flex justify-content-between align-items-center py-3 px-4">
+                    <span class="badge bg-light text-dark border">Thanh toán khi nhận hàng (COD)</span>
+                    <div>
+                        <span class="text-muted me-2">Tổng thanh toán:</span>
+                        <span class="fs-5 fw-bold text-danger">@order.TotalAmount.ToString("N0") ₫</span>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

@@ -1,0 +1,225 @@
+﻿@model IEnumerable<HatGiong701.Models.Order>
+@{
+    ViewData["Title"] = "QUẢN LÝ ĐƠN HÀNG";
+    var totalOrders = Model.Count();
+    var pendingCount = Model.Count(o => o.Status == "Chờ xác nhận");
+    var shippingCount = Model.Count(o => o.Status == "Đang giao");
+    var completedCount = Model.Count(o => o.Status == "Hoàn thành");
+}
+
+<div class="container-fluid py-3">
+    <!-- Header -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+        <div>
+            <h3 class="fw-bold text-dark mb-1">
+                Quản lý đơn hàng
+            </h3>
+            <p class="text-muted small mb-0">Theo dõi, kiểm duyệt và cập nhật trạng thái giao hàng của khách</p>
+        </div>
+    </div>
+
+    <!-- Thông báo -->
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm rounded-3 mb-4" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>@TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <!-- Thẻ thống kê nhanh -->
+    <div class="row g-3 mb-4">
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm rounded-3 h-100">
+                <div class="card-body d-flex align-items-center justify-content-between">
+                    <div>
+                        <div class="text-muted small fw-semibold text-uppercase">Tổng đơn hàng</div>
+                        <div class="fs-4 fw-bold text-dark mt-1">@totalOrders</div>
+                    </div>
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-3 p-3">
+                        <i class="bi bi-bag-check fs-4"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm rounded-3 h-100">
+                <div class="card-body d-flex align-items-center justify-content-between">
+                    <div>
+                        <div class="text-muted small fw-semibold text-uppercase">Chờ xác nhận</div>
+                        <div class="fs-4 fw-bold text-warning mt-1">@pendingCount</div>
+                    </div>
+                    <div class="bg-warning bg-opacity-10 text-warning rounded-3 p-3">
+                        <i class="bi bi-hourglass-split fs-4"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm rounded-3 h-100">
+                <div class="card-body d-flex align-items-center justify-content-between">
+                    <div>
+                        <div class="text-muted small fw-semibold text-uppercase">Đang giao</div>
+                        <div class="fs-4 fw-bold text-info mt-1">@shippingCount</div>
+                    </div>
+                    <div class="bg-info bg-opacity-10 text-info rounded-3 p-3">
+                        <i class="bi bi-truck fs-4"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm rounded-3 h-100">
+                <div class="card-body d-flex align-items-center justify-content-between">
+                    <div>
+                        <div class="text-muted small fw-semibold text-uppercase">Hoàn thành</div>
+                        <div class="fs-4 fw-bold text-success mt-1">@completedCount</div>
+                    </div>
+                    <div class="bg-success bg-opacity-10 text-success rounded-3 p-3">
+                        <i class="bi bi-check2-circle fs-4"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Khung bảng chính -->
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <!-- Thanh lọc & tìm kiếm -->
+        <div class="card-header bg-white border-bottom py-3">
+            <div class="row g-2 align-items-center justify-content-between">
+                <div class="col-md-7">
+                    <div class="d-flex flex-wrap gap-1" id="statusFilterGroup">
+                        <button type="button" class="btn btn-sm btn-success rounded-pill px-3 filter-btn active" data-status="all">
+                            Tất cả (@totalOrders)
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3 filter-btn" data-status="Chờ xác nhận">
+                            Chờ xác nhận (@pendingCount)
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3 filter-btn" data-status="Đang giao">
+                            Đang giao (@shippingCount)
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3 filter-btn" data-status="Hoàn thành">
+                            Hoàn thành (@completedCount)
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3 filter-btn" data-status="Đã hủy">
+                            Đã hủy
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text bg-light border-end-0">
+                            <i class="bi bi-search text-muted"></i>
+                        </span>
+                        <input type="text" id="orderSearchInput" class="form-control bg-light border-start-0"
+                               placeholder="Tìm mã đơn, tên khách, SĐT...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bảng dữ liệu -->
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0" id="ordersTable">
+                <thead class="bg-light text-secondary small text-uppercase">
+                    <tr>
+                        <th class="ps-4 py-3">Mã ĐH</th>
+                        <th class="py-3">Ngày đặt</th>
+                        <th class="py-3">Khách hàng</th>
+                        <th class="py-3">Số điện thoại</th>
+                        <th class="py-3 text-end">Tổng tiền</th>
+                        <th class="py-3 text-center">Trạng thái</th>
+                        <th class="py-3 text-end pe-4" style="width: 190px;">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center text-muted py-5">
+                                <i class="bi bi-inbox fs-1 d-block mb-2 opacity-50"></i>
+                                Chưa có đơn hàng nào trong hệ thống.
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr class="order-row" data-status="@item.Status">
+                                <td class="ps-4">
+                                    <span class="fw-bold text-primary">@($"#ĐH{item.OrderId:D4}")</span>
+                                </td>
+                                <td>
+                                    <div class="fw-medium text-dark">@item.OrderDate.ToString("dd/MM/yyyy")</div>
+                                    <small class="text-muted">@item.OrderDate.ToString("HH:mm")</small>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-success bg-opacity-10 text-success rounded-circle d-flex align-items-center justify-content-center me-2 fw-bold"
+                                             style="width: 34px; height: 34px; font-size: 0.85rem;">
+                                            @(string.IsNullOrEmpty(item.ReceiverName) ? "K" : item.ReceiverName.Substring(0, 1).ToUpper())
+                                        </div>
+                                        <span class="fw-semibold text-dark">@item.ReceiverName</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="text-secondary"><i class="bi bi-telephone me-1 small"></i>@item.PhoneNumber</span>
+                                </td>
+                                <td class="text-end">
+                                    <span class="fw-bold text-danger">@item.TotalAmount.ToString("N0") ₫</span>
+                                </td>
+                                <td class="text-center">
+                                    @if (item.Status == "Chờ xác nhận")
+                                    {
+                                        <span class="badge rounded-pill bg-warning bg-opacity-25 text-dark px-3 py-2">
+                                            <i class="bi bi-clock me-1"></i>@item.Status
+                                        </span>
+                                    }
+                                    else if (item.Status == "Đang giao")
+                                    {
+                                        <span class="badge rounded-pill bg-info bg-opacity-25 text-dark px-3 py-2">
+                                            <i class="bi bi-truck me-1"></i>@item.Status
+                                        </span>
+                                    }
+                                    else if (item.Status == "Hoàn thành")
+                                    {
+                                        <span class="badge rounded-pill bg-success bg-opacity-25 text-success px-3 py-2">
+                                            <i class="bi bi-check-circle-fill me-1"></i>@item.Status
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge rounded-pill bg-danger bg-opacity-25 text-danger px-3 py-2">
+                                            <i class="bi bi-x-circle-fill me-1"></i>@item.Status
+                                        </span>
+                                    }
+                                </td>
+                                <td class="text-end pe-4">
+                                    <div class="d-inline-flex gap-1">
+                                        <a asp-action="Details" asp-route-id="@item.OrderId"
+                                           class="btn btn-sm btn-success rounded-3 px-3" title="Xem chi tiết & cập nhật">
+                                            <i class="bi bi-pencil-square me-1"></i>Xử lý
+                                        </a>
+                                        <form asp-action="Delete" asp-route-id="@item.OrderId" method="post" class="d-inline"
+                                              onsubmit="return confirm('Bạn có chắc chắn muốn xóa đơn hàng #@item.OrderId không?');">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn btn-sm btn-outline-danger rounded-3" title="Xóa đơn hàng">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/admin-orders.js" asp-append-version="true"></script>
+}

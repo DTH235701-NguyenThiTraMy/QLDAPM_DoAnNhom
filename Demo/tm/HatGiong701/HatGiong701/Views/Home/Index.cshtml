@@ -1,0 +1,212 @@
+﻿@model IEnumerable<HatGiong701.Models.Seed>
+@{
+    ViewData["Title"] = "Cửa hàng Hạt Giống Xanh";
+    var seasonalSeeds = ViewBag.SeasonalSeeds as List<HatGiong701.Models.Seed>;
+    bool isAuthenticated = User.Identity != null && User.Identity.IsAuthenticated;
+    bool isAdmin = User.IsInRole("Admin");
+
+    int currentPage = ViewBag.CurrentPage ?? 1;
+    int totalPages = ViewBag.TotalPages ?? 1;
+    int totalItems = ViewBag.TotalItems ?? 0;
+}
+
+<!-- 1. BỘ LỌC GỢI Ý HẠT GIỐNG THEO KHÔNG GIAN & NHU CẦU -->
+<div class="p-4 mb-4 bg-success bg-opacity-10 border border-success rounded-3">
+    <h4 class="text-success fw-bold mb-3">Tìm hạt giống phù hợp với khu vườn của bạn</h4>
+    <form asp-action="Index" method="get" class="row g-3">
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Tên hạt giống</label>
+            <input type="text" name="searchString" value="@ViewBag.SearchString" class="form-control" placeholder="VD: Cải ngọt, Cà chua..." />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label fw-semibold">Không gian trồng của bạn?</label>
+            <select name="space" class="form-select">
+                <option value="">-- Tất cả không gian --</option>
+                <option value="Ban công" selected="@(ViewBag.SelectedSpace == "Ban công")">Ban công</option>
+                <option value="Sân vườn" selected="@(ViewBag.SelectedSpace == "Sân vườn")">Sân vườn / Sân thượng</option>
+                <option value="Trong nhà" selected="@(ViewBag.SelectedSpace == "Trong nhà")">Trong nhà</option>
+                <option value="Thủy canh" selected="@(ViewBag.SelectedSpace == "Thủy canh")">Thủy canh</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Độ khó chăm sóc</label>
+            <select name="careLevel" class="form-select">
+                <option value="">-- Tất cả --</option>
+                <option value="Dễ" selected="@(ViewBag.SelectedCareLevel == "Dễ")">Dễ (Cho người mới)</option>
+                <option value="Trung bình" selected="@(ViewBag.SelectedCareLevel == "Trung bình")">Trung bình</option>
+                <option value="Khó" selected="@(ViewBag.SelectedCareLevel == "Khó")">Khó</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label class="form-label fw-semibold">Danh mục</label>
+            <select name="categoryId" class="form-select">
+                <option value="0">-- Tất cả --</option>
+                @if (ViewBag.Categories != null)
+                {
+                    foreach (var cat in ViewBag.Categories)
+                    {
+                        <option value="@cat.CategoryId" selected="@(ViewBag.SelectedCategory == cat.CategoryId)">@cat.Name</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="col-md-2 d-flex align-items-end gap-2">
+            <button type="submit" class="btn btn-success w-100">Lọc gợi ý</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Xóa</a>
+        </div>
+    </form>
+</div>
+
+<!-- 2. GỢI Ý GIEO TRỒNG THEO MÙA HIỆN TẠI -->
+@if (string.IsNullOrEmpty(ViewBag.SearchString) && string.IsNullOrEmpty(ViewBag.SelectedSpace) && string.IsNullOrEmpty(ViewBag.SelectedCareLevel) && (ViewBag.SelectedCategory == null || ViewBag.SelectedCategory == 0))
+{
+    <div class="mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="fw-bold text-dark">Hạt giống gợi ý cho mùa @ViewBag.CurrentSeason</h4>
+            <span class="badge bg-warning text-dark">Đề xuất theo thời tiết tháng @DateTime.Now.Month</span>
+        </div>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            @if (seasonalSeeds != null)
+            {
+                foreach (var item in seasonalSeeds)
+                {
+                    <div class="col">
+                        <div class="card h-100 border-warning shadow-sm">
+                            <img src="@(string.IsNullOrEmpty(item.ImageUrl) ? "/images/seeds/seed1.jpg" : item.ImageUrl)" class="card-img-top" alt="@item.Name" style="height: 180px; object-fit: cover;">
+                            <div class="card-body">
+                                <span class="badge bg-success mb-1">@item.SuitableSpace</span>
+                                <span class="badge bg-info text-dark mb-1">Mùa: @item.PlantingSeason</span>
+                                <h6 class="card-title fw-bold mt-1">@item.Name</h6>
+                                <p class="text-danger fw-bold mb-1">@item.Price.ToString("N0") ₫</p>
+                                <small class="text-muted">Thu hoạch: ~@item.HarvestDays ngày | Nảy mầm: @item.GerminationRate%</small>
+                            </div>
+                            <div class="card-footer bg-white border-top-0 d-flex gap-2">
+                                <a asp-action="Details" asp-route-id="@item.SeedId" class="btn btn-sm btn-outline-success w-50">Chi tiết</a>
+                                @if (item.StockQuantity <= 0)
+                                {
+                                    <button class="btn btn-sm btn-secondary w-50" disabled>Hết hàng</button>
+                                }
+                                else if (isAuthenticated)
+                                {
+                                    <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.SeedId" class="btn btn-sm btn-success w-50">+ Giỏ hàng</a>
+                                }
+                                else
+                                {
+                                    <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Context.Request.Path" class="btn btn-sm btn-outline-success w-50">Đăng nhập mua</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+}
+
+<!-- 3. DANH SÁCH HẠT GIỐNG -->
+<div id="danh-sach-hat-giong" class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="fw-bold mb-0">Danh sách hạt giống</h4>
+    
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning">Không tìm thấy hạt giống nào phù hợp với điều kiện lọc của bạn.</div>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="@(string.IsNullOrEmpty(item.ImageUrl) ? "/images/seeds/seed1.jpg" : item.ImageUrl)" class="card-img-top" alt="@item.Name" style="height: 180px; object-fit: cover;">
+                    <div class="card-body">
+                        <span class="badge bg-secondary mb-1">@item.SuitableSpace</span>
+                        <span class="badge bg-light text-dark border mb-1">Độ khó: @item.CareLevel</span>
+                        <h6 class="card-title fw-bold mt-1">@item.Name</h6>
+                        <p class="text-danger fw-bold mb-1">@item.Price.ToString("N0") ₫</p>
+                        @if (isAdmin)
+                        {
+                            <small class="text-muted">Còn lại: @item.StockQuantity gói</small>
+                        }
+                        else
+                        {
+                            <small class="@(item.StockQuantity > 0 ? "text-success" : "text-danger") fw-semibold">
+                                @(item.StockQuantity > 0 ? "Còn hàng" : "Tạm hết hàng")
+                            </small>
+                        }
+                    </div>
+                    <div class="card-footer bg-white border-top-0 d-flex gap-2">
+                        <a asp-action="Details" asp-route-id="@item.SeedId" class="btn btn-sm btn-outline-primary w-50">Xem hướng dẫn</a>
+                        @if (item.StockQuantity <= 0)
+                        {
+                            <button class="btn btn-sm btn-secondary w-50" disabled>Hết hàng</button>
+                        }
+                        else if (isAuthenticated)
+                        {
+                            <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.SeedId" class="btn btn-sm btn-success w-50">Chọn mua</a>
+                        }
+                        else
+                        {
+                            <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Context.Request.Path" class="btn btn-sm btn-outline-success w-50">Đăng nhập mua</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- 4. THANH PHÂN TRANG -->
+    @if (totalPages > 1)
+    {
+        <nav aria-label="Phân trang hạt giống" class="mt-4">
+            <ul class="pagination justify-content-center">
+                <!-- Nút Trang trước -->
+                <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                    <a class="page-link text-success"
+                       asp-action="Index"
+                       asp-route-page="@(currentPage - 1)"
+                       asp-route-searchString="@ViewBag.SearchString"
+                       asp-route-space="@ViewBag.SelectedSpace"
+                       asp-route-careLevel="@ViewBag.SelectedCareLevel"
+                       asp-route-categoryId="@ViewBag.SelectedCategory"
+                       asp-fragment="danh-sach-hat-giong">
+                        « Trước
+                    </a>
+                </li>
+
+                <!-- Các số trang -->
+                @for (int i = 1; i <= totalPages; i++)
+                {
+                    <li class="page-item @(i == currentPage ? "active" : "")">
+                        <a class="page-link @(i == currentPage ? "bg-success border-success text-white" : "text-success")"
+                           asp-action="Index"
+                           asp-route-page="@i"
+                           asp-route-searchString="@ViewBag.SearchString"
+                           asp-route-space="@ViewBag.SelectedSpace"
+                           asp-route-careLevel="@ViewBag.SelectedCareLevel"
+                           asp-route-categoryId="@ViewBag.SelectedCategory"
+                           asp-fragment="danh-sach-hat-giong">
+                            @i
+                        </a>
+                    </li>
+                }
+
+                <!-- Nút Trang sau -->
+                <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                    <a class="page-link text-success"
+                       asp-action="Index"
+                       asp-route-page="@(currentPage + 1)"
+                       asp-route-searchString="@ViewBag.SearchString"
+                       asp-route-space="@ViewBag.SelectedSpace"
+                       asp-route-careLevel="@ViewBag.SelectedCareLevel"
+                       asp-route-categoryId="@ViewBag.SelectedCategory"
+                       asp-fragment="danh-sach-hat-giong">
+                        Sau »
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    }
+}

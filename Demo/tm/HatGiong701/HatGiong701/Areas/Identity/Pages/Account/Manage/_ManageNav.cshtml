@@ -1,0 +1,47 @@
+﻿@inject SignInManager<User> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<style>
+    .manage-nav .nav-link {
+        color: #1f2937;
+        font-weight: 500;
+        border-radius: 8px;
+        margin-bottom: 4px;
+    }
+
+        .manage-nav .nav-link:hover,
+        .manage-nav .nav-link:focus {
+            color: #1f2937;
+            background-color: transparent;
+        }
+
+        .manage-nav .nav-link.active,
+        .manage-nav .nav-link.active:hover {
+            background-color: #198754 !important;
+            color: #ffffff !important;
+            font-weight: 600;
+        }
+</style>
+
+<ul class="nav nav-pills flex-column manage-nav">
+    <li class="nav-item">
+        <a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">
+            <i class="bi bi-person-vcard me-2"></i> Hồ sơ cá nhân
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">
+            <i class="bi bi-shield-lock me-2"></i> Đổi mật khẩu
+        </a>
+    </li>
+    @if (hasExternalLogins)
+    {
+        <li id="external-logins" class="nav-item">
+            <a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">
+                <i class="bi bi-box-arrow-in-right me-2"></i> Liên kết ngoài
+            </a>
+        </li>
+    }
+</ul>

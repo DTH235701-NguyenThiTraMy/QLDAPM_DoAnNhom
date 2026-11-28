@@ -1,0 +1,169 @@
+﻿@model IEnumerable<HatGiong701.Models.Seed>
+
+@{
+    ViewData["Title"] = "QUẢN LÝ HẠT GIỐNG  ";
+    var totalSeeds = Model.Count();
+    var lowStockCount = Model.Count(s => s.StockQuantity > 0 && s.StockQuantity < 10);
+    var outOfStockCount = Model.Count(s => s.StockQuantity <= 0);
+}
+
+<div class="container-fluid py-3">
+    <!-- Header -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+        <div>
+            <h3 class="fw-bold text-dark mb-1">
+                Danh sách sản phẩm hạt giống
+            </h3>
+            <p class="text-muted small mb-0">Quản lý kho hàng, giá bán và thông số kỹ thuật gieo trồng</p>
+        </div>
+        <a asp-action="Create" class="btn btn-success rounded-3 px-3 shadow-sm fw-semibold">
+            <i class="bi bi-plus-circle me-1"></i>Thêm hạt giống mới
+        </a>
+    </div>
+
+    <!-- Thông báo -->
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm rounded-3 mb-4" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>@TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <!-- Khung bảng chính -->
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <!-- Thanh lọc & Tìm kiếm -->
+        <div class="card-header bg-white border-bottom py-3">
+            <div class="row g-2 align-items-center justify-content-between">
+                <div class="col-md-7">
+                    <div class="d-flex flex-wrap gap-1" id="seedFilterGroup">
+                        <button type="button" class="btn btn-sm btn-success rounded-pill px-3 seed-filter-btn active" data-filter="all">
+                            Tất cả (@totalSeeds)
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3 seed-filter-btn" data-filter="low">
+                            Sắp hết hàng (@lowStockCount)
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3 seed-filter-btn" data-filter="out">
+                            Hết hàng (@outOfStockCount)
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text bg-light border-end-0">
+                            <i class="bi bi-search text-muted"></i>
+                        </span>
+                        <input type="text" id="seedSearchInput" class="form-control bg-light border-start-0"
+                               placeholder="Tìm tên hạt giống, danh mục, mùa vụ...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bảng dữ liệu 5 cột gọn gàng (không tràn ngang) -->
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0" id="seedsTable">
+                <thead class="bg-light text-secondary small text-uppercase">
+                    <tr>
+                        <th class="ps-4 py-3">Sản phẩm hạt giống</th>
+                        <th class="py-3">Danh mục</th>
+                        <th class="py-3 text-end">Giá bán</th>
+                        <th class="py-3 text-center">Tồn kho</th>
+                        <th class="py-3 text-end pe-4" style="width: 220px;">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center text-muted py-5">
+                                <i class="bi bi-inbox fs-1 d-block mb-2 opacity-50"></i>
+                                Chưa có sản phẩm hạt giống nào. Hãy bấm <strong>Thêm hạt giống mới</strong> để bắt đầu.
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+                            var stockState = item.StockQuantity <= 0 ? "out" : (item.StockQuantity < 10 ? "low" : "ok");
+
+                            <tr class="seed-row" data-stock="@stockState">
+                                <!-- Cột 1: Ảnh + Tên + Thông số tóm tắt -->
+                                <td class="ps-4 py-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <img src="@(string.IsNullOrEmpty(item.ImageUrl) ? "/images/seeds/seed1.jpg" : item.ImageUrl)"
+                                             alt="@item.Name"
+                                             style="width: 54px; height: 54px; object-fit: cover;"
+                                             class="rounded-3 border shadow-sm flex-shrink-0" />
+                                        <div>
+                                            <div class="fw-bold text-dark mb-1">@item.Name</div>
+                                            <div class="small text-muted">
+                                                <span>Mùa: <strong class="text-dark fw-normal">@item.PlantingSeason</strong></span>
+                                                <span class="mx-1">•</span>
+                                                <span>Nảy mầm: <strong class="text-success">@item.GerminationRate%</strong></span>
+                                                <span class="mx-1">•</span>
+                                                <span>~@item.HarvestDays ngày</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <!-- Cột 2: Danh mục chữ bình thường -->
+                                <td class="text-dark">
+                                    @(item.Category?.Name ?? "Chưa phân loại")
+                                </td>
+
+                                <!-- Cột 3: Giá bán -->
+                                <td class="text-end fw-bold text-danger text-nowrap">
+                                    @item.Price.ToString("N0") ₫
+                                </td>
+
+                                <!-- Cột 4: Tồn kho -->
+                                <td class="text-center text-nowrap">
+                                    @if (item.StockQuantity <= 0)
+                                    {
+                                        <span class="badge rounded-pill bg-danger bg-opacity-25 text-danger px-3 py-2">
+                                            <i class="bi bi-x-circle me-1"></i>Hết hàng (0)
+                                        </span>
+                                    }
+                                    else if (item.StockQuantity < 10)
+                                    {
+                                        <span class="badge rounded-pill bg-warning bg-opacity-25 text-dark px-3 py-2">
+                                            <i class="bi bi-exclamation-triangle me-1"></i>@item.StockQuantity gói
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge rounded-pill bg-light text-dark border px-3 py-2">
+                                            @item.StockQuantity gói
+                                        </span>
+                                    }
+                                </td>
+
+                                <!-- Cột 5: Thao tác hiển thị đầy đủ -->
+                                <td class="text-end pe-4 text-nowrap">
+                                    <div class="d-inline-flex gap-1">
+                                        <a asp-action="Edit" asp-route-id="@item.SeedId" class="btn btn-sm btn-outline-primary rounded-3">
+                                            <i class="bi bi-pencil-square"></i> Sửa
+                                        </a>
+                                        <a asp-action="Details" asp-route-id="@item.SeedId" class="btn btn-sm btn-outline-secondary rounded-3">
+                                            <i class="bi bi-eye"></i> Xem
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.SeedId" class="btn btn-sm btn-outline-danger rounded-3">
+                                            <i class="bi bi-trash"></i> Xóa
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/admin-seeds.js" asp-append-version="true"></script>
+}

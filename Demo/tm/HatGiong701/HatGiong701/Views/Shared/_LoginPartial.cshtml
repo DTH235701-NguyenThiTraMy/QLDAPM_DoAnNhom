@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using HatGiong701.Models
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<ul class="navbar-nav align-items-lg-center gap-1">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        var currentUser = await UserManager.GetUserAsync(User);
+        var displayName = !string.IsNullOrEmpty(currentUser?.FullName) ? currentUser.FullName : User.Identity?.Name;
+
+        <li class="nav-item">
+            <a class="nav-link text-white fw-semibold text-nowrap d-flex align-items-center gap-2" asp-area="Identity" asp-page="/Account/Manage/Index" title="Quản lý tài khoản">
+                @if (!string.IsNullOrEmpty(currentUser?.AvatarUrl))
+                {
+                    <img src="@currentUser.AvatarUrl" alt="Avatar" class="rounded-circle border border-white"
+                         style="width: 28px; height: 28px; object-fit: cover;" />
+                }
+                else
+                {
+                    <i class="bi bi-person-circle fs-5"></i>
+                }
+                <span>Xin chào, @displayName!</span>
+            </a>
+        </li>
+        <li class="nav-item ms-lg-2">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"
+                  onsubmit="return confirm('Bạn có chắc chắn muốn đăng xuất khỏi tài khoản không?');">
+                <button type="submit" class="btn btn-outline-light btn-sm text-nowrap">
+                    <i class="bi bi-box-arrow-right me-1"></i> Đăng xuất
+                </button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-white text-nowrap" asp-area="Identity" asp-page="/Account/Register">Đăng ký</a>
+        </li>
+        <li class="nav-item ms-lg-2">
+            <a class="btn btn-warning btn-sm fw-semibold text-dark px-3 text-nowrap" asp-area="Identity" asp-page="/Account/Login">Đăng nhập</a>
+        </li>
+    }
+</ul>

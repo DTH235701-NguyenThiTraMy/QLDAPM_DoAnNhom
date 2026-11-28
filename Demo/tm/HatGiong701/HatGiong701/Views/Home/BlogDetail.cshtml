@@ -1,0 +1,107 @@
+﻿@model HatGiong701.Models.BlogPost
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container my-4">
+    <!-- Thanh điều hướng Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb small mb-0">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index" class="text-success text-decoration-none">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Blog" class="text-success text-decoration-none">Cẩm nang</a></li>
+            <li class="breadcrumb-item active text-truncate" style="max-width: 320px;" aria-current="page">@Model.Title</li>
+        </ol>
+    </nav>
+
+    <div class="row g-4">
+        <!-- CỘT TRÁI: NỘI DUNG BÀI VIẾT CHÍNH -->
+        <div class="col-lg-8">
+            <article class="card border shadow-sm rounded-3 p-4 p-md-5 bg-white">
+                <!-- Nhãn chủ đề & Ngày đăng -->
+                <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
+                    <span class="badge bg-success bg-opacity-10 text-success border border-success px-3 py-2">
+                        <i class="bi bi-tag-fill me-1"></i>@Model.Category
+                    </span>
+                    <small class="text-muted">
+                        <i class="bi bi-calendar3 me-1"></i>Đăng ngày @Model.CreatedDate.ToString("dd/MM/yyyy")
+                    </small>
+                    <small class="text-muted">
+                        <i class="bi bi-person-check me-1"></i>HạtGiống701
+                    </small>
+                </div>
+
+                <!-- Tiêu đề chính đặt lên đầu -->
+                <h1 class="h2 fw-bold text-dark mb-3" style="line-height: 1.35;">@Model.Title</h1>
+
+                <!-- Đoạn tóm tắt nổi bật -->
+                <div class="p-3 mb-4 rounded-3 bg-success bg-opacity-10 border-start border-4 border-success text-dark">
+                    <p class="mb-0 fw-medium" style="line-height: 1.6;">@Model.Summary</p>
+                </div>
+
+                <!-- Ảnh bìa hiển thị trọn vẹn khung hình, không bị cắt chữ -->
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <figure class="figure w-100 text-center mb-4">
+                        <div class="bg-light rounded-3 border p-2">
+                            <img src="@Model.ImageUrl" alt="@Model.Title"
+                                 class="img-fluid rounded-2"
+                                 style="max-height: 420px; width: auto; object-fit: contain;" />
+                        </div>
+                        <figcaption class="figure-caption text-center mt-2 fst-italic">
+                            Minh họa: @Model.Title
+                        </figcaption>
+                    </figure>
+                }
+
+                <!-- Nội dung chi tiết bài viết -->
+                <div class="text-dark fs-6" style="line-height: 1.85; white-space: pre-line;">@Model.Content</div>
+
+                <hr class="my-4" />
+
+                <!-- Chân bài viết -->
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                    <a asp-action="Blog" class="btn btn-outline-success fw-semibold">
+                        <i class="bi bi-arrow-left me-1"></i> Xem các bài cẩm nang khác
+                    </a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-area="Admin" asp-controller="AdminBlog" asp-action="Edit" asp-route-id="@Model.BlogPostId"
+                           class="btn btn-outline-secondary btn-sm">
+                            <i class="bi bi-pencil-square me-1"></i> Chỉnh sửa bài viết này
+                        </a>
+                    }
+                </div>
+            </article>
+        </div>
+
+        <!-- CỘT PHẢI: KHUNG THÔNG TIN BỔ TRỢ -->
+        <div class="col-lg-4">
+            <div class="sticky-top" style="top: 85px;">
+                <!-- Thẻ giới thiệu & Kêu gọi mua hạt giống -->
+                <div class="card border shadow-sm rounded-3 p-4 mb-4 bg-white">
+                    <h6 class="fw-bold text-success border-bottom pb-2 mb-3">
+                        <i class="bi bi-flower1 me-2"></i>Bắt đầu khu vườn của bạn
+                    </h6>
+                    <p class="small text-muted mb-3" style="line-height: 1.6;">
+                        Áp dụng ngay kỹ thuật trên với các gói hạt giống tuyển chọn tỷ lệ nảy mầm cao tại <strong>HạtGiống701</strong>.
+                    </p>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-success w-100 fw-semibold">
+                        <i class="bi bi-shop me-1"></i> Khám phá hạt giống ngay
+                    </a>
+                </div>
+
+                <!-- Thẻ lưu ý nhanh khi gieo hạt -->
+                <div class="card border shadow-sm rounded-3 p-4 bg-light">
+                    <h6 class="fw-bold text-dark mb-3">
+                        <i class="bi bi-lightbulb-fill text-warning me-2"></i>Lưu ý vàng khi ươm hạt
+                    </h6>
+                    <ul class="small text-muted ps-3 mb-0" style="line-height: 1.7;">
+                        <li class="mb-2">Luôn giữ giá thể <strong>ẩm vừa phải</strong>, tránh tưới xối mạnh làm trôi hạt.</li>
+                        <li class="mb-2">Đặt khay ươm nơi thoáng mát, có ánh sáng tán xạ khi hạt chưa nảy mầm.</li>
+                        <li>Khi cây có 2–3 lá thật mới đưa dần ra nắng nhẹ buổi sáng.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

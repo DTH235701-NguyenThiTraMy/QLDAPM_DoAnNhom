@@ -1,0 +1,51 @@
+﻿@model IEnumerable<HatGiong701.Models.BlogPost>
+@{
+    ViewData["Title"] = "Cẩm nang gieo trồng";
+}
+
+<div class="container my-4">
+    <div class="p-4 mb-4 bg-success bg-opacity-10 border border-success rounded-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div>
+            <h3 class="fw-bold text-success mb-1">Cẩm nang gieo trồng</h3>
+            <p class="text-muted mb-0">Chia sẻ kinh nghiệm ủ hạt, trộn đất và chăm sóc vườn rau sạch tại nhà</p>
+        </div>
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-area="Admin" asp-controller="AdminBlog" asp-action="Index" class="btn btn-success fw-semibold">
+                <i class="bi bi-gear me-1"></i> Quản lý bài viết
+            </a>
+        }
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-light border text-center py-5">
+            <p class="text-muted mb-0">Hiện chưa có bài viết cẩm nang nào được đăng.</p>
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @foreach (var post in Model)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
+                        <img src="@(string.IsNullOrEmpty(post.ImageUrl) ? "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=800&q=80" : post.ImageUrl)"
+                             class="card-img-top" alt="@post.Title" style="height: 210px; object-fit: cover;" />
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-success bg-opacity-10 text-success border border-success">@post.Category</span>
+                                <small class="text-muted"><i class="bi bi-calendar3 me-1"></i>@post.CreatedDate.ToString("dd/MM/yyyy")</small>
+                            </div>
+                            <h5 class="card-title fw-bold text-dark">@post.Title</h5>
+                            <p class="card-text text-muted small flex-grow-1">@post.Summary</p>
+                            <a asp-action="BlogDetail" asp-route-id="@post.BlogPostId" class="btn btn-outline-success btn-sm fw-semibold mt-2 align-self-start">
+                                Đọc chi tiết <i class="bi bi-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

@@ -1,0 +1,110 @@
+﻿html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* ===== CUSTOM NAVBAR & DROPDOWN ===== */
+.navbar-custom {
+    background-color: #198754;
+}
+
+    .navbar-custom .nav-link,
+    .navbar-custom .navbar-brand {
+        color: #ffffff !important;
+    }
+
+        .navbar-custom .nav-link:hover,
+        .navbar-custom .nav-link:focus {
+            color: #ffffff !important;
+        }
+
+    .navbar-custom .dropdown-menu {
+        border-radius: 0.5rem;
+        border: 1px solid #d1e7dd;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12);
+    }
+
+    .navbar-custom .dropdown-item:hover,
+    .navbar-custom .dropdown-item:focus {
+        background-color: #e8f5e9;
+        color: #198754;
+        font-weight: 600;
+    }
+/* ===== CHÂN TRANG (FOOTER) ===== */
+.footer-custom {
+    background-color: #146c43;
+    border-top: 4px solid #198754;
+}
+
+    .footer-custom .footer-heading {
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 1rem;
+        color: #ffffff;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+        padding-bottom: 0.5rem;
+        display: inline-block;
+    }
+
+    .footer-custom .footer-description {
+        color: rgba(255, 255, 255, 0.88);
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    .footer-custom .footer-links li,
+    .footer-custom .footer-contact li {
+        margin-bottom: 0.6rem;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .footer-custom .footer-links a {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+    }
+
+        /* Tắt hiệu ứng động khi rê chuột */
+        .footer-custom .footer-links a:hover,
+        .footer-custom .footer-links a:focus,
+        .footer-custom .footer-social:hover,
+        .footer-custom .footer-social:focus {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transform: none;
+        }
+
+    .footer-custom .footer-social {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        font-size: 1.1rem;
+        text-decoration: none;
+    }
+
+    .footer-custom .footer-divider {
+        border-color: rgba(255, 255, 255, 0.2);
+    }

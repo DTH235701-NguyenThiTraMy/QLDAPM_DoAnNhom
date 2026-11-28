@@ -1,0 +1,107 @@
+﻿@model HatGiong701.Models.Seed
+
+@{
+    ViewData["Title"] = $"Xóa: {Model.Name}";
+}
+
+<div class="container-fluid py-3">
+    <!-- Header & Breadcrumb -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+        <div>
+            <nav aria-label="breadcrumb" class="mb-1">
+                <ol class="breadcrumb small mb-0">
+                    <li class="breadcrumb-item">
+                        <a asp-action="Index" class="text-success text-decoration-none">Quản lý hạt giống</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Xác nhận xóa</li>
+                </ol>
+            </nav>
+            <h3 class="fw-bold text-danger mb-1">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>Xác nhận xóa hạt giống
+            </h3>
+            <p class="text-muted small mb-0">Hành động này không thể hoàn tác sau khi thực hiện</p>
+        </div>
+
+        <a asp-action="Index" class="btn btn-light bg-white border text-dark rounded-3 px-3 shadow-sm">
+            <i class="bi bi-arrow-left me-1"></i>Quay lại danh sách
+        </a>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-9">
+            <!-- Thông báo cảnh báo -->
+            <div class="alert alert-danger border-0 shadow-sm rounded-4 d-flex align-items-center p-3 mb-4" role="alert">
+                <div class="bg-danger bg-opacity-10 text-danger rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0"
+                     style="width: 44px; height: 44px;">
+                    <i class="bi bi-shield-exclamation fs-4"></i>
+                </div>
+                <div>
+                    <strong class="d-block">Cảnh báo dữ liệu liên quan</strong>
+                    <span class="small">Bạn có chắc chắn muốn xóa vĩnh viễn sản phẩm hạt giống này khỏi hệ thống không? Các dữ liệu liên quan trong giỏ hàng hoặc chi tiết đơn hàng có thể bị ảnh hưởng.</span>
+                </div>
+            </div>
+
+            <!-- Thẻ thông tin sản phẩm cần xóa -->
+            <div class="card border-0 border-top border-danger border-4 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-body p-4">
+                    <div class="row g-4 align-items-center">
+                        <!-- Cột ảnh sản phẩm -->
+                        <div class="col-md-4 text-center">
+                            <img src="@(string.IsNullOrEmpty(Model.ImageUrl) ? "/images/seeds/seed1.jpg" : Model.ImageUrl)"
+                                 alt="@Model.Name"
+                                 style="width: 100%; height: 220px; object-fit: cover;"
+                                 class="rounded-4 border shadow-sm" />
+                        </div>
+
+                        <!-- Cột thông tin chi tiết -->
+                        <div class="col-md-8">
+                            <span class="badge rounded-pill bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-3 py-1 mb-2">
+                                @(Model.Category?.Name ?? "Chưa phân loại")
+                            </span>
+                            <h4 class="fw-bold text-dark mb-3">@Model.Name</h4>
+
+                            <div class="bg-light rounded-3 p-3 border">
+                                <div class="row g-2 small">
+                                    <div class="col-sm-4 text-muted fw-semibold">Giá bán:</div>
+                                    <div class="col-sm-8 fw-bold text-danger">@Model.Price.ToString("N0") ₫</div>
+
+                                    <div class="col-sm-4 text-muted fw-semibold">Số lượng tồn kho:</div>
+                                    <div class="col-sm-8 fw-semibold text-dark">@Model.StockQuantity gói</div>
+
+                                    <div class="col-sm-4 text-muted fw-semibold">Đặc tính trồng:</div>
+                                    <div class="col-sm-8">
+                                        <span class="badge bg-white text-dark border me-1">Mùa: @Model.PlantingSeason</span>
+                                        <span class="badge bg-white text-dark border me-1">@Model.SuitableSpace</span>
+                                        <span class="badge bg-white text-dark border">@Model.CareLevel</span>
+                                    </div>
+
+                                    <div class="col-sm-4 text-muted fw-semibold">Chỉ số sinh trưởng:</div>
+                                    <div class="col-sm-8 text-dark">
+                                        Nảy mầm <strong class="text-success">@Model.GerminationRate%</strong> • Thu hoạch ~<strong>@Model.HarvestDays ngày</strong>
+                                    </div>
+
+                                    <div class="col-sm-4 text-muted fw-semibold">Mô tả ngắn:</div>
+                                    <div class="col-sm-8 text-secondary">
+                                        @(string.IsNullOrEmpty(Model.Description) ? "Không có mô tả" : Model.Description)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer xác nhận xóa -->
+                <div class="card-footer bg-light border-top py-3 px-4 d-flex justify-content-end gap-2">
+                    <a asp-action="Index" class="btn btn-light border rounded-3 px-4">Hủy bỏ</a>
+                    <form asp-action="Delete" method="post" class="d-inline">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="SeedId" />
+                        <button type="submit" class="btn btn-danger rounded-3 px-4 fw-semibold">
+                            <i class="bi bi-trash-fill me-1"></i>Xác nhận xóa vĩnh viễn
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

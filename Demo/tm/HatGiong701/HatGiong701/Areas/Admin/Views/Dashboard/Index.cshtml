@@ -1,0 +1,335 @@
+﻿@using System.Text.Json
+@{
+    ViewData["Title"] = "BẢNG ĐIỀU KHIỂN THỐNG KÊ";
+    var lowStockSeeds = ViewBag.LowStockSeeds as List<HatGiong701.Models.Seed>;
+    var recentOrders = ViewBag.RecentOrders as List<HatGiong701.Models.Order>;
+    var catNames = ViewBag.CategoryNames as List<string> ?? new List<string>();
+    var catRevenues = ViewBag.CategoryRevenues as List<decimal> ?? new List<decimal>();
+    var topSeedNames = ViewBag.TopSeedNames as List<string> ?? new List<string>();
+    var topSeedSold = ViewBag.TopSeedSold as List<int> ?? new List<int>();
+    var availableYears = ViewBag.AvailableYears as List<int> ?? new List<int> { DateTime.Now.Year };
+
+    int pendingCount = ViewBag.PendingOrdersCount ?? 0;
+    string period = ViewBag.Period ?? "all";
+    string selectedWeek = ViewBag.SelectedWeek ?? "";
+    string selectedMonth = ViewBag.SelectedMonth ?? "";
+    int selectedYear = ViewBag.SelectedYear ?? DateTime.Now.Year;
+    string periodLabel = ViewBag.PeriodLabel ?? "Toàn thời gian";
+}
+
+<div class="container-fluid py-3">
+    <!-- 1. THANH THÔNG BÁO XỬ LÝ ĐƠN HÀNG -->
+    @if (pendingCount > 0)
+    {
+        <div class="alert alert-warning border-0 rounded-4 d-flex flex-wrap justify-content-between align-items-center gap-2 shadow-sm mb-4">
+            <div>
+                <i class="bi bi-bell-fill text-danger me-2"></i>
+                Hiện có <strong>@pendingCount đơn hàng</strong> đang ở trạng thái <strong>Chờ xác nhận</strong> cần xử lý.
+            </div>
+            <a asp-area="Admin" asp-controller="Orders" asp-action="Index" class="btn btn-sm btn-warning rounded-3 fw-bold text-dark text-nowrap">
+                Xử lý ngay »
+            </a>
+        </div>
+    }
+
+    <!-- 2. HEADER & BỘ LỌC THỜI GIAN -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+        <div>
+            <h3 class="fw-bold text-dark mb-1">
+                THỐNG KÊ
+            </h3>
+            <p class="text-muted small mb-0">
+                Tổng quan hoạt động kinh doanh — Kỳ thống kê: <strong class="text-success">@periodLabel</strong>
+            </p>
+        </div>
+
+        <form asp-action="Index" method="get" id="filterStatsForm"
+              class="d-flex flex-wrap align-items-center gap-2 bg-white shadow-sm rounded-3 p-2 border">
+            <span class="text-muted small fw-semibold ps-1">
+                <i class="bi bi-calendar3 text-success me-1"></i>Xem theo:
+            </span>
+
+            <select name="period" id="periodSelect" class="form-select form-select-sm rounded-2 fw-semibold text-dark" style="width: auto;">
+                @if (period == "all")
+                {
+                    <option value="all" selected>Tất cả thời gian</option>
+                }
+                else
+                {
+                    <option value="all">Tất cả thời gian</option>
+                }
+
+                @if (period == "week")
+                {
+                    <option value="week" selected>Theo tuần</option>
+                }
+                else
+                {
+                    <option value="week">Theo tuần</option>
+                }
+
+                @if (period == "month")
+                {
+                    <option value="month" selected>Theo tháng</option>
+                }
+                else
+                {
+                    <option value="month">Theo tháng</option>
+                }
+
+                @if (period == "year")
+                {
+                    <option value="year" selected>Theo năm</option>
+                }
+                else
+                {
+                    <option value="year">Theo năm</option>
+                }
+            </select>
+
+            @if (period == "week")
+            {
+                <input type="week" name="weekValue" value="@selectedWeek"
+                       onchange="this.form.submit()"
+                       class="form-control form-control-sm rounded-2 border-success text-success fw-semibold"
+                       style="width: auto;" />
+            }
+            else if (period == "month")
+            {
+                <input type="month" name="monthValue" value="@selectedMonth"
+                       onchange="this.form.submit()"
+                       class="form-control form-control-sm rounded-2 border-success text-success fw-semibold"
+                       style="width: auto;" />
+            }
+            else if (period == "year")
+            {
+                <select name="year" onchange="this.form.submit()"
+                        class="form-select form-select-sm rounded-2 border-success text-success fw-semibold"
+                        style="width: auto;">
+                    @foreach (var y in availableYears)
+                    {
+                        if (y == selectedYear)
+                        {
+                            <option value="@y" selected>Năm @y</option>
+                        }
+                        else
+                        {
+                            <option value="@y">Năm @y</option>
+                        }
+                    }
+                </select>
+            }
+        </form>
+    </div>
+
+    <!-- 3. 4 THẺ CHỈ SỐ TỔNG QUAN -->
+    <div class="row g-3 mb-4">
+        <div class="col-sm-6 col-xl-3">
+            <div class="card text-white bg-success border-0 rounded-4 shadow-sm h-100">
+                <div class="card-body d-flex justify-content-between align-items-center p-3 px-4">
+                    <div class="me-2">
+                        <div class="small opacity-75 mb-1 text-nowrap">Doanh thu hoàn thành</div>
+                        <h3 class="fw-bold mb-0 text-nowrap">@(((decimal)ViewBag.TotalRevenue).ToString("N0")) ₫</h3>
+                    </div>
+                    <i class="bi bi-cash-coin fs-1 opacity-50 flex-shrink-0"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="card text-white bg-primary border-0 rounded-4 shadow-sm h-100">
+                <div class="card-body d-flex justify-content-between align-items-center p-3 px-4">
+                    <div class="me-2">
+                        <div class="small opacity-75 mb-1 text-nowrap">Tổng đơn hàng</div>
+                        <h3 class="fw-bold mb-0">@ViewBag.TotalOrders</h3>
+                        <small class="opacity-75 text-nowrap">Chờ duyệt: @pendingCount đơn</small>
+                    </div>
+                    <i class="bi bi-bag-check-fill fs-1 opacity-50 flex-shrink-0"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="card text-dark bg-warning border-0 rounded-4 shadow-sm h-100">
+                <div class="card-body d-flex justify-content-between align-items-center p-3 px-4">
+                    <div class="me-2">
+                        <div class="small opacity-75 mb-1 text-nowrap">Sản phẩm hạt giống</div>
+                        <h3 class="fw-bold mb-0">@ViewBag.TotalSeeds</h3>
+                        <small class="text-dark opacity-75 text-nowrap">Sắp hết: @(lowStockSeeds?.Count ?? 0) loại</small>
+                    </div>
+                    <i class="bi bi-flower1 fs-1 opacity-50 flex-shrink-0"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="card text-white bg-info border-0 rounded-4 shadow-sm h-100">
+                <div class="card-body d-flex justify-content-between align-items-center p-3 px-4">
+                    <div class="me-2">
+                        <div class="small opacity-75 mb-1 text-nowrap">Tài khoản người dùng</div>
+                        <h3 class="fw-bold mb-0">@ViewBag.TotalUsers</h3>
+                    </div>
+                    <i class="bi bi-people-fill fs-1 opacity-50 flex-shrink-0"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. BIỂU ĐỒ THỐNG KÊ -->
+    <div class="row g-4 mb-4">
+        <div class="col-lg-6">
+            <div class="card border-0 rounded-4 shadow-sm h-100 overflow-hidden">
+                <div class="card-header bg-white border-bottom py-3 fw-bold text-success">
+                    <i class="bi bi-pie-chart-fill me-1"></i> Doanh thu theo Danh mục (@periodLabel)
+                </div>
+                <div class="card-body d-flex align-items-center justify-content-center p-4" style="height: 340px;">
+                    @if (catNames.Any())
+                    {
+                        <div style="position: relative; width: 100%; height: 100%;">
+                            <canvas id="categoryChart"
+                                    data-labels='@Html.Raw(JsonSerializer.Serialize(catNames))'
+                                    data-values='@Html.Raw(JsonSerializer.Serialize(catRevenues))'></canvas>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center text-muted">
+                            <i class="bi bi-bar-chart fs-1 d-block mb-2 opacity-50"></i>
+                            Chưa có đơn hàng hoàn thành trong khoảng thời gian này.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card border-0 rounded-4 shadow-sm h-100 overflow-hidden">
+                <div class="card-header bg-white border-bottom py-3 fw-bold text-success">
+                    <i class="bi bi-bar-chart-fill me-1"></i> Top 5 hạt giống bán chạy (@periodLabel)
+                </div>
+                <div class="card-body d-flex align-items-center justify-content-center p-4" style="height: 340px;">
+                    @if (topSeedNames.Any())
+                    {
+                        <div style="position: relative; width: 100%; height: 100%;">
+                            <canvas id="topSeedChart"
+                                    data-labels='@Html.Raw(JsonSerializer.Serialize(topSeedNames))'
+                                    data-values='@Html.Raw(JsonSerializer.Serialize(topSeedSold))'></canvas>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center text-muted">
+                            <i class="bi bi-graph-up fs-1 d-block mb-2 opacity-50"></i>
+                            Chưa có dữ liệu bán hàng trong khoảng thời gian này.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. HÀNG DƯỚI: ĐƠN HÀNG MỚI NHẤT & CẢNH BÁO TỒN KHO THẤP -->
+    <div class="row g-4">
+        <div class="col-lg-6">
+            <div class="card border-0 rounded-4 shadow-sm h-100 overflow-hidden">
+                <div class="card-header bg-white border-bottom py-3 fw-bold d-flex justify-content-between align-items-center">
+                    <span class="text-primary"><i class="bi bi-clock-history me-1"></i> Đơn hàng mới nhất (@periodLabel)</span>
+                    <a asp-area="Admin" asp-controller="Orders" asp-action="Index" class="btn btn-sm btn-outline-primary rounded-3">Xem tất cả</a>
+                </div>
+                <div class="card-body p-0">
+                    @if (recentOrders != null && recentOrders.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="bg-light text-secondary small text-uppercase">
+                                    <tr>
+                                        <th class="ps-3 py-2 text-nowrap">Mã đơn</th>
+                                        <th class="py-2">Khách hàng</th>
+                                        <th class="py-2 text-end text-nowrap">Tổng tiền</th>
+                                        <th class="py-2 text-center text-nowrap">Trạng thái</th>
+                                        <th class="text-end pe-3 py-2 text-nowrap">Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var order in recentOrders)
+                                    {
+                                        string badgeClass = order.Status switch
+                                        {
+                                            "Chờ xác nhận" => "bg-warning text-dark",
+                                            "Đang giao" => "bg-info text-dark",
+                                            "Hoàn thành" => "bg-success text-white",
+                                            "Đã hủy" => "bg-danger text-white",
+                                            _ => "bg-secondary text-white"
+                                        };
+                                        <tr>
+                                            <td class="ps-3 fw-bold text-nowrap">#ĐH@(order.OrderId.ToString("D4"))</td>
+                                            <td>@(order.User?.FullName ?? order.User?.Email ?? "Khách hàng")</td>
+                                            <td class="text-danger fw-semibold text-end text-nowrap">@order.TotalAmount.ToString("N0") ₫</td>
+                                            <td class="text-center text-nowrap">
+                                                <span class="badge rounded-pill @badgeClass">@order.Status</span>
+                                            </td>
+                                            <td class="text-end pe-3 text-nowrap">
+                                                <a asp-area="Admin" asp-controller="Orders" asp-action="Details" asp-route-id="@order.OrderId" class="btn btn-sm btn-outline-secondary rounded-3">Chi tiết</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted text-center my-4">Chưa có đơn hàng nào trong khoảng thời gian này.</p>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card border-0 border-top border-danger border-4 rounded-4 shadow-sm h-100 overflow-hidden">
+                <div class="card-header bg-white border-bottom py-3 text-danger fw-bold">
+                    <i class="bi bi-exclamation-triangle-fill me-1"></i> Cảnh báo hạt giống sắp hết hàng (Tồn kho < 10)
+                </div>
+                <div class="card-body p-0">
+                    @if (lowStockSeeds != null && lowStockSeeds.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="bg-light text-secondary small text-uppercase">
+                                    <tr>
+                                        <th class="ps-3 py-2">Tên hạt giống</th>
+                                        <th class="py-2 text-nowrap">Mùa vụ</th>
+                                        <th class="py-2 text-center text-nowrap">Còn lại</th>
+                                        <th class="text-end pe-3 py-2 text-nowrap">Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in lowStockSeeds)
+                                    {
+                                        <tr>
+                                            <td class="ps-3 fw-semibold">@item.Name</td>
+                                            <td class="text-nowrap">@item.PlantingSeason</td>
+                                            <td class="text-danger fw-bold text-center text-nowrap">@item.StockQuantity gói</td>
+                                            <td class="text-end pe-3 text-nowrap">
+                                                <a asp-area="Admin" asp-controller="Seeds" asp-action="Edit" asp-route-id="@item.SeedId" class="btn btn-sm btn-outline-danger rounded-3">Nhập thêm</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-success text-center my-4">
+                            <i class="bi bi-check-circle-fill fs-4 d-block mb-1"></i>
+                            Tất cả hạt giống đều đang có số lượng tồn kho ổn định.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/js/admin-dashboard.js" asp-append-version="true"></script>
+}

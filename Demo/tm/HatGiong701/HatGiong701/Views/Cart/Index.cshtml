@@ -1,0 +1,65 @@
+﻿@model List<HatGiong701.Models.CartItem>
+@{
+    ViewData["Title"] = "Giỏ hàng của bạn";
+}
+
+<h2 class="fw-bold my-4">Giỏ hàng của bạn</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-info">
+        Giỏ hàng của bạn đang trống. <a asp-controller="Home" asp-action="Index" class="alert-link">Quay lại chọn hạt giống ngay!</a>
+    </div>
+}
+else
+{
+    <table class="table table-bordered align-middle">
+        <thead class="table-success">
+            <tr>
+                <th>Hình ảnh</th>
+                <th>Tên hạt giống</th>
+                <th>Đơn giá</th>
+                <th style="width: 150px;">Số lượng</th>
+                <th>Thành tiền</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="@item.Seed.ImageUrl" style="width: 60px; height: 60px; object-fit: cover;" class="rounded" /></td>
+                    <td class="fw-semibold">@item.Seed.Name</td>
+                    <td>@item.Seed.Price.ToString("N0") ₫</td>
+                    <td>
+                        <form asp-action="UpdateCart" method="post" class="d-flex gap-1">
+                            <input type="hidden" name="id" value="@item.Seed.SeedId" />
+                            <input type="number" name="quantity" value="@item.Quantity" min="1" max="@item.Seed.StockQuantity" class="form-control form-control-sm" />
+                            <button type="submit" class="btn btn-sm btn-outline-primary">Lưu</button>
+                        </form>
+                    </td>
+                    <td class="text-danger fw-bold">@item.TotalPrice.ToString("N0") ₫</td>
+                    <td>
+                        <a asp-action="RemoveCart" asp-route-id="@item.Seed.SeedId" class="btn btn-sm btn-danger">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="text-end fw-bold fs-5">Tổng cộng:</td>
+                <td colspan="2" class="text-danger fw-bold fs-5">@Model.Sum(i => i.TotalPrice).ToString("N0") ₫</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="d-flex justify-content-between mt-3">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">← Tiếp tục mua hạt giống</a>
+        <a asp-action="Checkout" class="btn btn-success btn-lg px-4">Tiến hành đặt hàng →</a>
+    </div>
+}

@@ -1,0 +1,194 @@
+﻿@model IEnumerable<HatGiong701.Models.User>
+
+@{
+    ViewData["Title"] = "QUẢN LÝ TÀI KHOẢN";
+    var userRoles = ViewBag.UserRoles as Dictionary<string, string> ?? new Dictionary<string, string>();
+    string currentAdminId = ViewBag.CurrentAdminId ?? "";
+    var totalUsers = Model.Count();
+}
+
+<div class="container-fluid py-3">
+    <!-- Header -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+        <div>
+            <h3 class="fw-bold text-dark mb-1">
+               Danh sách tài khoản hệ thống
+            </h3>
+            <p class="text-muted small mb-0">Quản lý thông tin người dùng, phân quyền quản trị và trạng thái hoạt động</p>
+        </div>
+    </div>
+
+    <!-- Thông báo -->
+    @if (TempData["UserMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm rounded-3 mb-4" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>@TempData["UserMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    @if (TempData["UserError"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show border-0 shadow-sm rounded-3 mb-4" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>@TempData["UserError"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <!-- Khung bảng chính -->
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <!-- Thanh tổng quan & Tìm kiếm -->
+        <div class="card-header bg-white border-bottom py-3">
+            <div class="row g-2 align-items-center justify-content-between">
+                <div class="col-md-5">
+                    <span class="badge rounded-pill bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-3 py-2">
+                        Tổng cộng: @totalUsers tài khoản
+                    </span>
+                </div>
+                <div class="col-md-5">
+                    <form asp-action="Index" method="get" class="d-flex gap-2 justify-content-md-end">
+                        <div class="input-group input-group-sm" style="max-width: 280px;">
+                            <span class="input-group-text bg-light border-end-0">
+                                <i class="bi bi-search text-muted"></i>
+                            </span>
+                            <input type="text" name="searchString" value="@ViewBag.SearchString"
+                                   class="form-control bg-light border-start-0"
+                                   placeholder="Tìm theo tên hoặc email..." />
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-success rounded-3 px-3 text-nowrap fw-semibold">
+                            Tìm
+                        </button>
+                        @if (!string.IsNullOrEmpty(ViewBag.SearchString))
+                        {
+                            <a asp-action="Index" class="btn btn-sm btn-light border rounded-3 text-nowrap">Xóa lọc</a>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bảng dữ liệu -->
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="bg-light text-secondary small text-uppercase">
+                    <tr>
+                        <th class="ps-4 py-3">Người dùng</th>
+                        <th class="py-3">Email</th>
+                        <th class="py-3">Địa chỉ</th>
+                        <th class="py-3 text-center">Vai trò</th>
+                        <th class="py-3 text-center">Trạng thái</th>
+                        <th class="py-3 text-center pe-4" style="width: 230px;">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center py-5 text-muted">
+                                <i class="bi bi-person-x fs-1 d-block mb-2 opacity-50"></i>
+                                Không tìm thấy tài khoản nào phù hợp.
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var user in Model)
+                        {
+                            string role = userRoles.ContainsKey(user.Id) ? userRoles[user.Id] : "Customer";
+                            bool isLocked = user.LockoutEnd != null && user.LockoutEnd > DateTimeOffset.UtcNow;
+                            bool isSelf = user.Id == currentAdminId;
+
+                            <tr>
+                                <td class="ps-4 py-3">
+                                    <div class="d-flex align-items-center gap-2">
+                                        @if (!string.IsNullOrEmpty(user.AvatarUrl))
+                                        {
+                                            <img src="@user.AvatarUrl" alt="Avatar" class="rounded-circle border shadow-sm" style="width: 38px; height: 38px; object-fit: cover;" />
+                                        }
+                                        else
+                                        {
+                                            <div class="rounded-circle bg-success bg-opacity-10 text-success border border-success border-opacity-25 d-flex align-items-center justify-content-center fw-bold flex-shrink-0"
+                                                 style="width: 38px; height: 38px;">
+                                                @(string.IsNullOrEmpty(user.FullName) ? "U" : user.FullName.Substring(0, 1).ToUpper())
+                                            </div>
+                                        }
+                                        <div>
+                                            <div class="fw-bold text-dark">
+                                                @(string.IsNullOrEmpty(user.FullName) ? "(Chưa cập nhật tên)" : user.FullName)
+                                            </div>
+                                            @if (isSelf)
+                                            {
+                                                <span class="badge rounded-pill bg-info bg-opacity-15 text-dark border border-info border-opacity-25" style="font-size: 0.7rem;">
+                                                    Tài khoản của bạn
+                                                </span>
+                                            }
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-dark">@user.Email</td>
+                                <td class="text-secondary small">
+                                    @(string.IsNullOrEmpty(user.Address) ? "—" : user.Address)
+                                </td>
+                                <td class="text-center text-nowrap">
+                                    @if (role == "Admin")
+                                    {
+                                        <span class="badge rounded-pill bg-warning bg-opacity-25 text-dark border border-warning border-opacity-50 px-3 py-1">
+                                            <i class="bi bi-shield-lock-fill me-1"></i>Admin
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge rounded-pill bg-secondary bg-opacity-10 text-secondary border px-3 py-1">
+                                            Customer
+                                        </span>
+                                    }
+                                </td>
+                                <td class="text-center text-nowrap">
+                                    @if (isLocked)
+                                    {
+                                        <span class="badge rounded-pill bg-danger text-white px-3 py-1">
+                                            <i class="bi bi-lock-fill me-1"></i>Đã khóa
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge rounded-pill bg-success text-white px-3 py-1">
+                                            <i class="bi bi-check-circle me-1"></i>Hoạt động
+                                        </span>
+                                    }
+                                </td>
+                                <td class="text-center pe-4 text-nowrap">
+                                    @if (isSelf)
+                                    {
+                                        <span class="text-muted small fst-italic">Tài khoản hiện tại</span>
+                                    }
+                                    else
+                                    {
+                                        <div class="d-inline-flex gap-1">
+                                            <!-- Nút đổi quyền -->
+                                            <form asp-action="ToggleRole" asp-route-id="@user.Id" method="post"
+                                                  onsubmit="return confirm('Xác nhận thay đổi quyền của tài khoản @user.Email?');">
+                                                @Html.AntiForgeryToken()
+                                                <button type="submit" class="btn btn-sm rounded-3 @(role == "Admin" ? "btn-outline-secondary" : "btn-outline-warning text-dark")" title="Đổi vai trò">
+                                                    <i class="bi bi-person-gear me-1"></i>@(role == "Admin" ? "Hạ quyền" : "Cấp Admin")
+                                                </button>
+                                            </form>
+
+                                            <!-- Nút khóa / mở khóa -->
+                                            <form asp-action="ToggleLock" asp-route-id="@user.Id" method="post"
+                                                  onsubmit="return confirm('Xác nhận @(isLocked ? "mở khóa" : "khóa") tài khoản @user.Email?');">
+                                                @Html.AntiForgeryToken()
+                                                <button type="submit" class="btn btn-sm rounded-3 @(isLocked ? "btn-outline-success" : "btn-outline-danger")" title="@(isLocked ? "Mở khóa" : "Khóa tài khoản")">
+                                                    <i class="bi @(isLocked ? "bi-unlock" : "bi-lock") me-1"></i>@(isLocked ? "Mở khóa" : "Khóa")
+                                                </button>
+                                            </form>
+                                        </div>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

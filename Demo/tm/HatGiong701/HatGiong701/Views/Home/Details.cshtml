@@ -1,0 +1,191 @@
+﻿@model HatGiong701.Models.Seed
+@{
+    ViewData["Title"] = Model.Name;
+    var relatedSeeds = ViewBag.RelatedSeeds as List<HatGiong701.Models.Seed>;
+}
+
+<div class="row mt-4">
+    <div class="col-md-5">
+        <img src="@(string.IsNullOrEmpty(Model.ImageUrl) ? "/images/seeds/seed1.jpg" : Model.ImageUrl)" class="img-fluid rounded shadow" alt="@Model.Name" style="width: 100%; max-height: 400px; object-fit: cover;" />
+    </div>
+    <div class="col-md-7">
+        <span class="badge bg-success mb-2">@Model.Category?.Name</span>
+        <h2 class="fw-bold">@Model.Name</h2>
+        <h3 class="text-danger fw-bold my-3">@Model.Price.ToString("N0") ₫</h3>
+        <p>@Model.Description</p>
+
+        <table class="table table-bordered table-sm my-3">
+            <tr>
+                <th class="bg-light" style="width: 35%;">Không gian trồng lý tưởng</th>
+                <td><strong>@Model.SuitableSpace</strong></td>
+            </tr>
+            <tr>
+                <th class="bg-light">Mùa vụ gieo trồng</th>
+                <td>@Model.PlantingSeason</td>
+            </tr>
+            <tr>
+                <th class="bg-light">Mức độ chăm sóc</th>
+                <td>@Model.CareLevel</td>
+            </tr>
+            <tr>
+                <th class="bg-light">Tỷ lệ nảy mầm</th>
+                <td>@Model.GerminationRate%</td>
+            </tr>
+            <tr>
+                <th class="bg-light">Thời gian thu hoạch</th>
+                <td>Khoảng @Model.HarvestDays ngày</td>
+            </tr>
+            <tr>
+                <th class="bg-light">Tình trạng</th>
+                <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @(Model.StockQuantity > 0 ? $"Còn {Model.StockQuantity} gói" : "Tạm hết hàng")
+                    }
+                    else
+                    {
+                        if (Model.StockQuantity > 0)
+                        {
+                            <span class="badge bg-success">Còn hàng</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Tạm hết hàng</span>
+                        }
+                    }
+                </td>
+            </tr>
+        </table>
+
+        <div class="alert alert-success">
+            <h6 class="fw-bold">📖 Hướng dẫn gieo trồng nhanh:</h6>
+            <p class="mb-0">@Model.PlantingGuide</p>
+        </div>
+
+        @if (Model.StockQuantity > 0)
+        {
+            if (User.Identity != null && User.Identity.IsAuthenticated)
+            {
+                <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.SeedId" class="btn btn-success btn-lg px-5">
+                    🛒 Thêm vào giỏ hàng
+                </a>
+            }
+            else
+            {
+                <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Context.Request.Path" class="btn btn-outline-success btn-lg px-5">
+                    Đăng nhập để mua hàng
+                </a>
+            }
+        }
+        else
+        {
+            <button class="btn btn-secondary btn-lg px-5" disabled>Tạm hết hàng</button>
+        }
+    </div>
+</div>
+
+<hr class="my-5" />
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="fw-bold mb-3">⭐ Đánh giá từ người trồng (@(Model.Reviews?.Count ?? 0) đánh giá)</h4>
+
+        @if (TempData["ReviewError"] != null)
+        {
+            <div class="alert alert-warning">@TempData["ReviewError"]</div>
+        }
+        @if (TempData["ReviewSuccess"] != null)
+        {
+            <div class="alert alert-success">@TempData["ReviewSuccess"]</div>
+        }
+
+        <!-- Form viết đánh giá -->
+        @if (User.Identity != null && User.Identity.IsAuthenticated)
+        {
+            <div class="card mb-4 bg-light">
+                <div class="card-body">
+                    <h6 class="fw-bold">Viết đánh giá của bạn</h6>
+                    <form asp-action="AddReview" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="seedId" value="@Model.SeedId" />
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label class="form-label">Chất lượng hạt giống</label>
+                                <select name="rating" class="form-select">
+                                    <option value="5">⭐⭐⭐⭐⭐ (5 sao - Tuyệt vời)</option>
+                                    <option value="4">⭐⭐⭐⭐ (4 sao - Tốt)</option>
+                                    <option value="3">⭐⭐⭐ (3 sao - Bình thường)</option>
+                                    <option value="2">⭐⭐ (2 sao - Tỷ lệ nảy mầm thấp)</option>
+                                    <option value="1">⭐ (1 sao - Kém)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label">Nhận xét thực tế</label>
+                                <input type="text" name="comment" class="form-control" placeholder="Chia sẻ tỷ lệ nảy mầm, cách chăm sóc..." required />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Ảnh thực tế (Tùy chọn)</label>
+                                <input type="file" name="reviewImage" class="form-control" accept="image/*" />
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-success">Gửi đánh giá</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">Vui lòng <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Context.Request.Path">đăng nhập</a> để viết đánh giá.</p>
+        }
+
+        <!-- Danh sách đánh giá -->
+        @if (Model.Reviews != null && Model.Reviews.Any())
+        {
+            foreach (var rev in Model.Reviews.OrderByDescending(r => r.CreatedAt))
+            {
+                <div class="border rounded p-3 mb-3">
+                    <div class="d-flex justify-content-between">
+                        <strong>@(rev.User?.FullName ?? rev.User?.UserName)</strong>
+                        <small class="text-muted">@rev.CreatedAt.ToString("dd/MM/yyyy HH:mm")</small>
+                    </div>
+                    <div class="text-warning my-1">
+                        @(new string('★', rev.Rating))@(new string('☆', 5 - rev.Rating))
+                    </div>
+                    <p class="mb-2">@rev.Comment</p>
+                    @if (!string.IsNullOrEmpty(rev.ImageUrl))
+                    {
+                        <img src="@rev.ImageUrl" alt="Ảnh thực tế" style="max-height: 120px; border-radius: 6px;" class="border" />
+                    }
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted fst-italic">Chưa có đánh giá nào cho hạt giống này.</p>
+        }
+    </div>
+</div>
+
+<!-- Gợi ý hạt giống cùng không gian trồng -->
+@if (relatedSeeds != null && relatedSeeds.Any())
+{
+    <hr class="my-5" />
+    <h4 class="fw-bold mb-3">🪴 Hạt giống khác cũng phù hợp trồng ở "@Model.SuitableSpace"</h4>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        @foreach (var item in relatedSeeds)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="@item.ImageUrl" class="card-img-top" style="height: 150px; object-fit: cover;">
+                    <div class="card-body">
+                        <h6 class="fw-bold">@item.Name</h6>
+                        <p class="text-danger fw-bold mb-0">@item.Price.ToString("N0") ₫</p>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <a asp-action="Details" asp-route-id="@item.SeedId" class="btn btn-sm btn-outline-success w-100">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

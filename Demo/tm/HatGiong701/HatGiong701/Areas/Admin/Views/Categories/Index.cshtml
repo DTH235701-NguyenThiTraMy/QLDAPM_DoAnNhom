@@ -1,0 +1,118 @@
+﻿@model IEnumerable<HatGiong701.Models.Category>
+
+@{
+    ViewData["Title"] = "QUẢN LÝ DANH MỤC";
+    var totalCategories = Model.Count();
+}
+
+<div class="container-fluid py-3">
+    <!-- Header -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+        <div>
+            <h3 class="fw-bold text-dark mb-1">
+                Danh sách danh mục hạt giống
+            </h3>
+            <p class="text-muted small mb-0">Phân loại các nhóm sản phẩm hạt giống đang kinh doanh trên hệ thống</p>
+        </div>
+        <a asp-action="Create" class="btn btn-success rounded-3 px-3 shadow-sm fw-semibold">
+            <i class="bi bi-plus-circle me-1"></i>Thêm danh mục mới
+        </a>
+    </div>
+
+    <!-- Thông báo -->
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm rounded-3 mb-4" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>@TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <!-- Khung bảng chính -->
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <!-- Thanh tổng quan & Tìm kiếm -->
+        <div class="card-header bg-white border-bottom py-3">
+            <div class="row g-2 align-items-center justify-content-between">
+                <div class="col-md-6">
+                    <span class="badge rounded-pill bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-3 py-2">
+                        Tổng cộng: @totalCategories danh mục
+                    </span>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text bg-light border-end-0">
+                            <i class="bi bi-search text-muted"></i>
+                        </span>
+                        <input type="text" id="categorySearchInput" class="form-control bg-light border-start-0"
+                               placeholder="Tìm tên danh mục hoặc mô tả...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bảng dữ liệu -->
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0" id="categoriesTable">
+                <thead class="bg-light text-secondary small text-uppercase">
+                    <tr>
+                        <th style="width: 75px;" class="ps-4 py-3 text-center">STT</th>
+                        <th style="width: 28%;" class="py-3">@Html.DisplayNameFor(model => model.Name)</th>
+                        <th class="py-3">@Html.DisplayNameFor(model => model.Description)</th>
+                        <th style="width: 220px;" class="py-3 text-center pe-4">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="4" class="text-center text-muted py-5">
+                                <i class="bi bi-folder2-open fs-1 d-block mb-2 opacity-50"></i>
+                                Chưa có danh mục nào. Hãy bấm <strong>Thêm danh mục mới</strong> để bắt đầu.
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        int stt = 1;
+                        foreach (var item in Model)
+                        {
+                            <tr class="category-row">
+                                <td class="ps-4 text-center fw-semibold text-muted">@(stt++)</td>
+                                <td class="fw-bold text-dark">
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td class="text-secondary">
+                                    @(string.IsNullOrEmpty(item.Description) ? "Chưa có mô tả" : item.Description)
+                                </td>
+                                <td class="text-center pe-4 text-nowrap">
+                                    <div class="d-inline-flex gap-1">
+                                        <a asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-sm btn-outline-primary rounded-3" title="Sửa">
+                                            <i class="bi bi-pencil-square"></i> Sửa
+                                        </a>
+                                        <a asp-action="Details" asp-route-id="@item.CategoryId" class="btn btn-sm btn-outline-secondary rounded-3" title="Chi tiết">
+                                            <i class="bi bi-eye"></i> Xem
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.CategoryId" class="btn btn-sm btn-outline-danger rounded-3" title="Xóa">
+                                            <i class="bi bi-trash"></i> Xóa
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("categorySearchInput")?.addEventListener("input", function () {
+            const keyword = this.value.toLowerCase().trim();
+            document.querySelectorAll(".category-row").forEach(row => {
+                row.style.display = row.innerText.toLowerCase().includes(keyword) ? "" : "none";
+            });
+        });
+    </script>
+}

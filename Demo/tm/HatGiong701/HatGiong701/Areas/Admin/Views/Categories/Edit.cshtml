@@ -1,0 +1,75 @@
+﻿@model HatGiong701.Models.Category
+
+@{
+    ViewData["Title"] = $"Chỉnh sửa: {Model.Name}";
+}
+
+<div class="container-fluid py-3">
+    <!-- Header & Breadcrumb -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+        <div>
+            <nav aria-label="breadcrumb" class="mb-1">
+                <ol class="breadcrumb small mb-0">
+                    <li class="breadcrumb-item">
+                        <a asp-action="Index" class="text-success text-decoration-none">Quản lý danh mục</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa</li>
+                </ol>
+            </nav>
+            <h3 class="fw-bold text-dark mb-1">
+               Chỉnh sửa danh mục hạt giống
+            </h3>
+            <p class="text-muted small mb-0">Cập nhật thông tin nhóm phân loại sản phẩm trên hệ thống</p>
+        </div>
+
+        <a asp-action="Index" class="btn btn-light bg-white border text-dark rounded-3 px-3 shadow-sm">
+            <i class="bi bi-arrow-left me-1"></i>Quay lại danh sách
+        </a>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-header bg-white border-bottom py-3">
+                    <h6 class="fw-bold text-dark mb-0">
+                        <i class="bi bi-card-text text-success me-2"></i>Thông tin danh mục
+                    </h6>
+                </div>
+
+                <form asp-action="Edit" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="CategoryId" />
+
+                    <div class="card-body p-4">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger border-0 shadow-sm rounded-3 mb-3" role="alert"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label fw-semibold text-dark"></label>
+                            <input asp-for="Name" class="form-control rounded-3" placeholder="VD: Hạt giống rau ăn lá..." />
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-0">
+                            <label asp-for="Description" class="form-label fw-semibold text-dark"></label>
+                            <textarea asp-for="Description" class="form-control rounded-3" rows="4" placeholder="Nhập mô tả ngắn gọn về nhóm hạt giống này..."></textarea>
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer bg-light border-top py-3 px-4 d-flex justify-content-end gap-2">
+                        <a asp-action="Index" class="btn btn-light border rounded-3 px-4">Hủy bỏ</a>
+                        <button type="submit" class="btn btn-success rounded-3 px-4 fw-semibold">
+                            <i class="bi bi-check2-circle me-1"></i>Cập nhật danh mục
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

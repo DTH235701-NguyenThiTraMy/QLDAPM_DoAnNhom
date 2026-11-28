@@ -1,0 +1,117 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using HatGiong701.Models
+@inject UserManager<User> UserManager
+
+@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout != null)
+    {
+        Layout = parentLayout.ToString();
+    }
+    else
+    {
+        Layout = "/Views/Shared/_Layout.cshtml";
+    }
+
+    var currentUser = await UserManager.GetUserAsync(User);
+    var fullName = !string.IsNullOrEmpty(currentUser?.FullName) ? currentUser.FullName : User.Identity?.Name;
+    var firstLetter = !string.IsNullOrEmpty(fullName) ? fullName.Substring(0, 1).ToUpper() : "U";
+    var isProfilePage = ViewData["ActivePage"]?.ToString() == ManageNavPages.Index;
+}
+
+<div class="my-4">
+    <div class="p-3 mb-4 bg-success bg-opacity-10 border border-success rounded-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div>
+            <h4 class="fw-bold text-success mb-1"><i class="bi bi-person-gear me-2"></i>Quản lý tài khoản cá nhân</h4>
+            <small class="text-muted">Quản lý thông tin hồ sơ, địa chỉ nhận hàng và bảo mật tài khoản</small>
+        </div>
+        <a asp-area="" asp-controller="Home" asp-action="MyOrders" class="btn btn-outline-success btn-sm fw-semibold">
+            <i class="bi bi-bag-check me-1"></i> Xem đơn hàng của tôi
+        </a>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4 col-lg-3">
+            <!-- Thẻ tóm tắt tài khoản & Chọn Avatar -->
+            <div class="card border shadow-sm rounded-3 p-3 mb-3 text-center">
+                @if (!string.IsNullOrEmpty(currentUser?.AvatarUrl))
+                {
+                    <img id="avatarPreviewImg" src="@currentUser.AvatarUrl" alt="Avatar"
+                         class="mx-auto mb-2 rounded-circle border border-2 border-success"
+                         style="width: 84px; height: 84px; object-fit: cover;" />
+                }
+                else
+                {
+                    <div id="avatarFallbackDiv"
+                         class="mx-auto mb-2 d-flex align-items-center justify-content-center rounded-circle bg-success text-white fw-bold fs-3"
+                         style="width: 84px; height: 84px;">
+                        @firstLetter
+                    </div>
+                    <img id="avatarPreviewImg" src="" alt="Avatar"
+                         class="mx-auto mb-2 rounded-circle border border-2 border-success d-none"
+                         style="width: 84px; height: 84px; object-fit: cover;" />
+                }
+
+                @if (isProfilePage)
+                {
+                    <div class="mb-2">
+                        <label for="avatarFileInput" class="btn btn-outline-success btn-sm fw-semibold" style="cursor: pointer;">
+                            <i class="bi bi-camera me-1"></i> Chọn ảnh đại diện
+                        </label>
+                        <input id="avatarFileInput" name="Input.AvatarFile" form="profile-form"
+                               type="file" class="d-none" accept="image/*" onchange="previewSelectedAvatar(this)" />
+                        <div id="avatarFileName" class="small text-success mt-1 text-truncate"></div>
+                    </div>
+                }
+
+                <h6 class="fw-bold text-dark mb-1">@fullName</h6>
+                <small class="text-muted d-block mb-2">@currentUser?.Email</small>
+                <div>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <span class="badge bg-warning text-dark">Quản trị viên</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-success bg-opacity-10 text-success border border-success">Khách hàng thân thiết</span>
+                    }
+                </div>
+            </div>
+
+            <!-- Menu điều hướng -->
+            <div class="card border shadow-sm rounded-3 p-2">
+                <partial name="_ManageNav" />
+            </div>
+        </div>
+
+        <div class="col-md-8 col-lg-9">
+            <div class="card border shadow-sm rounded-3 p-4 h-100">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function previewSelectedAvatar(input) {
+        if (input.files && input.files[0]) {
+            const file = input.files[0];
+            document.getElementById('avatarFileName').textContent = 'Đã chọn: ' + file.name;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = document.getElementById('avatarPreviewImg');
+                const fallback = document.getElementById('avatarFallbackDiv');
+                img.src = e.target.result;
+                img.classList.remove('d-none');
+                if (fallback) {
+                    fallback.classList.add('d-none');
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

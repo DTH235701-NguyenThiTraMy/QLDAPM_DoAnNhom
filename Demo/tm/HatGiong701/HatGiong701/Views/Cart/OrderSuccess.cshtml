@@ -1,0 +1,49 @@
+﻿@model HatGiong701.Models.Order
+@{
+    ViewData["Title"] = "Đặt hàng thành công";
+    var formattedOrderCode = $"#ĐH{Model.OrderId:D4}";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card border-0 shadow-sm rounded-4 text-center p-4 p-md-5 bg-white">
+                <div class="mb-3">
+                    <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center"
+                         style="width: 80px; height: 80px;">
+                        <i class="bi bi-check-circle-fill" style="font-size: 3rem;"></i>
+                    </div>
+                </div>
+
+                <h2 class="text-success fw-bold mb-2">Đặt hàng thành công!</h2>
+                <p class="text-muted mb-4">
+                    Cảm ơn bạn đã tin tưởng và đặt mua hạt giống tại <strong>HạtGiống701</strong>. Đơn hàng của bạn đang chờ được xác nhận.
+                </p>
+
+                <div class="bg-light rounded-3 p-3 mb-4 text-start border">
+                    <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+                        <span class="text-muted">Mã đơn hàng:</span>
+                        <strong class="text-dark fs-6">@formattedOrderCode</strong>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+                        <span class="text-muted">Người nhận:</span>
+                        <span class="fw-semibold text-dark">@Model.ReceiverName</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-muted">Tổng thanh toán (COD):</span>
+                        <strong class="text-danger fs-5">@Model.TotalAmount.ToString("N0") ₫</strong>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-wrap justify-content-center gap-2">
+                    <a asp-controller="Home" asp-action="MyOrders" class="btn btn-outline-success rounded-3 px-4 fw-semibold">
+                        <i class="bi bi-receipt me-1"></i>Xem đơn hàng của tôi
+                    </a>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-success rounded-3 px-4 fw-semibold">
+                        <i class="bi bi-shop me-1"></i>Tiếp tục mua sắm
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

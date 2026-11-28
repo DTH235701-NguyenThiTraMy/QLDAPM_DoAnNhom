@@ -1,0 +1,128 @@
+﻿@model HatGiong701.Models.BlogPost
+
+@{
+    ViewData["Title"] = $"Chỉnh sửa: {Model.Title}";
+}
+
+<div class="container-fluid py-3">
+    <!-- Header & Breadcrumb -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+        <div>
+            <nav aria-label="breadcrumb" class="mb-1">
+                <ol class="breadcrumb small mb-0">
+                    <li class="breadcrumb-item">
+                        <a asp-action="Index" class="text-success text-decoration-none">Cẩm nang gieo trồng</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa bài viết</li>
+                </ol>
+            </nav>
+            <h3 class="fw-bold text-dark mb-1">
+                Chỉnh sửa bài viết cẩm nang
+            </h3>
+            <p class="text-muted small mb-0">Cập nhật nội dung hướng dẫn kỹ thuật, chủ đề và ảnh bìa bài viết</p>
+        </div>
+
+        <a asp-action="Index" class="btn btn-light bg-white border text-dark rounded-3 px-3 shadow-sm">
+            <i class="bi bi-arrow-left me-1"></i>Quay lại danh sách
+        </a>
+    </div>
+
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="BlogPostId" />
+        <input type="hidden" asp-for="ImageUrl" />
+        <input type="hidden" asp-for="CreatedDate" />
+
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger border-0 shadow-sm rounded-3 mb-4" role="alert"></div>
+
+        <div class="row g-4">
+            <!-- CỘT TRÁI: NỘI DUNG BÀI VIẾT -->
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm rounded-4 h-100">
+                    <div class="card-header bg-white border-bottom py-3">
+                        <h6 class="fw-bold text-dark mb-0">
+                            <i class="bi bi-file-earmark-text text-success me-2"></i>Nội dung bài viết
+                        </h6>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label fw-semibold text-dark"></label>
+                            <input asp-for="Title" class="form-control rounded-3" placeholder="VD: Cách ủ hạt giống rau mầm nảy mầm 99% tại nhà" />
+                            <span asp-validation-for="Title" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Summary" class="form-label fw-semibold text-dark"></label>
+                            <textarea asp-for="Summary" class="form-control rounded-3" rows="2" placeholder="Đoạn giới thiệu ngắn hiển thị ngoài danh sách bài viết..."></textarea>
+                            <span asp-validation-for="Summary" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-0">
+                            <label asp-for="Content" class="form-label fw-semibold text-dark"></label>
+                            <textarea asp-for="Content" class="form-control rounded-3" rows="12" placeholder="Nhập nội dung chi tiết hướng dẫn gieo trồng..."></textarea>
+                            <span asp-validation-for="Content" class="text-danger small"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CỘT PHẢI: PHÂN LOẠI & ẢNH BÌA -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 h-100">
+                    <div class="card-header bg-white border-bottom py-3">
+                        <h6 class="fw-bold text-dark mb-0">
+                            <i class="bi bi-sliders text-success me-2"></i>Thiết lập bài viết
+                        </h6>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="mb-4">
+                            <label asp-for="Category" class="form-label fw-semibold text-dark"></label>
+                            <select asp-for="Category" class="form-select rounded-3">
+                                <option value="Kỹ thuật gieo trồng">Kỹ thuật gieo trồng</option>
+                                <option value="Chăm sóc & Bón phân">Chăm sóc & Bón phân</option>
+                                <option value="Phòng trừ sâu bệnh">Phòng trừ sâu bệnh</option>
+                                <option value="Vườn ban công">Vườn ban công</option>
+                            </select>
+                            <span asp-validation-for="Category" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-0">
+                            <label class="form-label fw-semibold text-dark">Ảnh bìa bài viết</label>
+                            <div class="bg-light rounded-3 p-3 border text-center">
+                                <img id="blogCoverPreview"
+                                     src="@(string.IsNullOrEmpty(Model.ImageUrl) ? "/images/seeds/seed1.jpg" : Model.ImageUrl)"
+                                     alt="@Model.Title"
+                                     class="rounded-3 border bg-white shadow-sm mb-3 w-100"
+                                     style="height: 190px; object-fit: cover;" />
+                                <input type="file" name="imageFile" id="blogImageInput" class="form-control form-control-sm" accept="image/*" />
+                                <small class="text-muted d-block mt-2">Chọn tệp mới để thay ảnh bìa hoặc giữ nguyên ảnh hiện tại</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- THANH NÚT THAO TÁC -->
+        <div class="card border-0 shadow-sm rounded-4 mt-4">
+            <div class="card-body py-3 px-4 d-flex justify-content-end gap-2">
+                <a asp-action="Index" class="btn btn-light border rounded-3 px-4">Hủy bỏ</a>
+                <button type="submit" class="btn btn-success rounded-3 px-4 fw-semibold">
+                    <i class="bi bi-check2-circle me-1"></i>Lưu cập nhật
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.getElementById("blogImageInput")?.addEventListener("change", function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                document.getElementById("blogCoverPreview").src = URL.createObjectURL(file);
+            }
+        });
+    </script>
+}

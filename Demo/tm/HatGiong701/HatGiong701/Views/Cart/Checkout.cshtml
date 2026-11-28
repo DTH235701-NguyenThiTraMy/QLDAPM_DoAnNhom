@@ -1,0 +1,95 @@
+﻿@model HatGiong701.Models.Order
+@{
+    ViewData["Title"] = "Xác nhận đặt hàng";
+    var cartItems = ViewBag.CartItems as List<HatGiong701.Models.CartItem>;
+}
+
+<div class="d-flex justify-content-between align-items-center my-4">
+    <h2 class="fw-bold mb-0">Thông tin giao hàng</h2>
+    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left me-1"></i> Quay lại giỏ hàng
+    </a>
+</div>
+
+<div class="row g-4">
+    <!-- CỘT TRÁI: FORM THÔNG TIN NGƯỜI NHẬN -->
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-success text-white fw-bold">
+                <i class="bi bi-person-lines-fill me-1"></i> Địa chỉ & Người nhận hàng
+            </div>
+            <div class="card-body p-4">
+                <form asp-action="Checkout" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="ReceiverName" class="form-label fw-semibold"></label>
+                        <input asp-for="ReceiverName" class="form-control" placeholder="Nhập họ tên người nhận..." />
+                        <span asp-validation-for="ReceiverName" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="PhoneNumber" class="form-label fw-semibold"></label>
+                        <input asp-for="PhoneNumber" class="form-control" placeholder="Nhập số điện thoại liên hệ..." />
+                        <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ShippingAddress" class="form-label fw-semibold"></label>
+                        <textarea asp-for="ShippingAddress" class="form-control" rows="3" placeholder="Số nhà, tên đường, phường/xã, quận/huyện, tỉnh/thành phố..."></textarea>
+                        <span asp-validation-for="ShippingAddress" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Thông tin phương thức thanh toán -->
+                    <div class="alert alert-light border d-flex align-items-center gap-2 mb-4">
+                        <i class="bi bi-cash-coin text-success fs-4"></i>
+                        <div class="small">
+                            <div class="fw-bold text-dark">Thanh toán khi nhận hàng (COD)</div>
+                            <span class="text-muted">Kiểm tra hạt giống nguyên vẹn trước khi thanh toán.</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-lg w-100 fw-bold shadow-sm">
+                        <i class="bi bi-check-circle me-1"></i> Xác nhận đặt hàng (@Model.TotalAmount.ToString("N0") ₫)
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- CỘT PHẢI: TÓM TẮT ĐƠN HÀNG -->
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-light fw-bold text-success">
+                <i class="bi bi-bag-check-fill me-1"></i> Tóm tắt đơn hàng của bạn (@(cartItems?.Count ?? 0) sản phẩm)
+            </div>
+            <ul class="list-group list-group-flush">
+                @if (cartItems != null)
+                {
+                    foreach (var item in cartItems)
+                    {
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                            <div>
+                                <div class="fw-semibold">@item.Seed.Name</div>
+                                <small class="text-muted">@item.Seed.Price.ToString("N0") ₫ x @item.Quantity gói</small>
+                            </div>
+                            <span class="fw-semibold">@item.TotalPrice.ToString("N0") ₫</span>
+                        </li>
+                    }
+                }
+                <li class="list-group-item d-flex justify-content-between text-muted">
+                    <span>Phí vận chuyển:</span>
+                    <span class="text-success fw-semibold">Miễn phí</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center fw-bold text-danger fs-5 bg-light py-3">
+                    <span>Tổng thanh toán:</span>
+                    <span>@Model.TotalAmount.ToString("N0") ₫</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
